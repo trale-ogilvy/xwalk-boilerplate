@@ -2,4 +2,21 @@
 .head h2,
 .head h3 {
   margin: 0;
+  font-family: var(--heading-font-family);
+  line-height: 1.2;
+}
+
+.head h1 {
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 700;
+}
+
+.head h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+}
+
+.head h3 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 600;
 }
