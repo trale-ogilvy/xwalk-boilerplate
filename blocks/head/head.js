@@ -4,25 +4,27 @@ export default function decorate(block) {
   console.log('Block rows:', rows);
   if (!rows.length) return;
 
-  // const cell = (rowIndex) => rows[rowIndex]?.children[0]?.textContent?.trim() || '';
-  // console.log('Cell values:', cell())
+  const cell = (rowIndex) => rows[rowIndex]?.children[0]?.textContent?.trim() || '';
+  console.log('Cell values:', cell())
 
-  // const tag = (cell(0) || 'h2').toLowerCase();
-  // const allowedTags = ['h1', 'h2', 'h3'];
-  // const headingTag = allowedTags.includes(tag) ? tag : 'h2';
+  const tag = (cell(0) || 'h2').toLowerCase();
+  const allowedTags = ['h1', 'h2', 'h3'];
+  const headingTag = allowedTags.includes(tag) ? tag : 'h2';
 
-  // const heading = document.createElement(headingTag);
-  // heading.textContent = cell(1);
+  const heading = document.createElement(headingTag);
+  heading.textContent = cell(1);
 
-  // const fontSize = cell(2);
-  // const fontWeight = cell(3);
-  // const textAlign = cell(4);
-  // const color = cell(5);
+  const fontSize = cell(2);
+  const fontWeight = cell(3);
+  const textAlign = cell(4);
+  const color = cell(5);
 
-  // if (fontSize) heading.style.fontSize = fontSize;
-  // if (fontWeight) heading.style.fontWeight = fontWeight;
-  // if (textAlign) heading.style.textAlign = textAlign;
-  // if (color) heading.style.color = color;
+  if (fontSize) heading.style.fontSize = fontSize;
+  if (fontWeight) heading.style.fontWeight = fontWeight;
+  if (textAlign) heading.style.textAlign = textAlign;
+  if (color) heading.style.color = color;
+
+  console.log('Created heading:', heading);
 
   // block.replaceChildren(heading);
 }
