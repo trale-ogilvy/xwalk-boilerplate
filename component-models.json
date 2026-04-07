@@ -190,6 +190,30 @@
     ]
   },
   {
+    "id": "head",
+    "fields": [
+      {
+        "component": "select",
+        "name": "tag",
+        "label": "Tag",
+        "valueType": "string",
+        "value": "h2",
+        "options": [
+          { "name": "H1", "value": "h1" },
+          { "name": "H2", "value": "h2" },
+          { "name": "H3", "value": "h3" }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
