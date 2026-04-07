@@ -1,4 +1,5 @@
 export default function decorate(block) {
+  console.log('Decorating head block', block);
   const rows = [...block.children];
   if (!rows.length) return;
 
