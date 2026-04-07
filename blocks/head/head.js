@@ -3,7 +3,8 @@ export default function decorate(block) {
   const rows = [...block.children];
   if (!rows.length) return;
 
-  // const cells = [...rows[0].children];
+  const cells = [...rows[0].children];
+  console.log('Cells:', cells);
   // const [tagCell, textCell, fontSizeCell, fontWeightCell, textAlignCell, colorCell] = cells;
 
   // const tag = (tagCell?.textContent?.trim() || 'h2').toLowerCase();
