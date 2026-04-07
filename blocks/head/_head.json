@@ -45,40 +45,6 @@
           "label": "Font Size (e.g. 32px, 2rem)",
           "valueType": "string",
           "value": ""
-        },
-        {
-          "component": "select",
-          "name": "fontWeight",
-          "label": "Font Weight",
-          "valueType": "string",
-          "value": "",
-          "options": [
-            { "name": "Default", "value": "" },
-            { "name": "Normal (400)", "value": "400" },
-            { "name": "Medium (500)", "value": "500" },
-            { "name": "Semi-Bold (600)", "value": "600" },
-            { "name": "Bold (700)", "value": "700" }
-          ]
-        },
-        {
-          "component": "select",
-          "name": "textAlign",
-          "label": "Text Align",
-          "valueType": "string",
-          "value": "",
-          "options": [
-            { "name": "Default", "value": "" },
-            { "name": "Left", "value": "left" },
-            { "name": "Center", "value": "center" },
-            { "name": "Right", "value": "right" }
-          ]
-        },
-        {
-          "component": "text",
-          "name": "color",
-          "label": "Color (e.g. #333, red)",
-          "valueType": "string",
-          "value": ""
         }
       ]
     }

@@ -15,14 +15,8 @@ export default function decorate(block) {
   heading.textContent = cell(1);
 
   const fontSize = cell(2);
-  const fontWeight = cell(3);
-  const textAlign = cell(4);
-  const color = cell(5);
 
   if (fontSize) heading.style.fontSize = fontSize;
-  if (fontWeight) heading.style.fontWeight = fontWeight;
-  if (textAlign) heading.style.textAlign = textAlign;
-  if (color) heading.style.color = color;
 
   console.log('Created heading:', heading);
 
