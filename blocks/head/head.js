@@ -26,5 +26,5 @@ export default function decorate(block) {
 
   console.log('Created heading:', heading);
 
-  // block.replaceChildren(heading);
+  block.replaceChildren(heading);
 }
