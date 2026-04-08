@@ -1,0 +1,402 @@
+.newsletter-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -9999;
+    transition: all 0.7s ease;
+
+    & > div {
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
+        .newsletter-modal.block {
+            -webkit-box-sizing: border-box;
+            /* Safari/Chrome, other WebKit */
+            -moz-box-sizing: border-box;
+            /* Firefox, other Gecko */
+            box-sizing: border-box;
+            width: 100%;
+            max-height: 90vh;
+            height: 100%;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: scroll;
+            padding: 64px 40px;
+            position: relative;
+            max-width: 520px;
+            transition: all 0.7s ease;
+
+            @media screen and (max-width: 767px) {
+                max-height: 80vh;
+                max-width: 90vw !important;
+                margin: auto;
+            }
+        }
+    }
+}
+
+.newsletter-modal-wrapper {
+    width: 100%;
+}
+
+.newsletter-modal .newsletter-modal-header {
+    text-align: center;
+
+    .desc {
+        /* privacy */
+        p {
+            font-family: var(--font-gill-sans), "Cabin", sans-serif;
+            line-height: 130%;
+            letter-spacing: 0;
+            color: var(--text-grey);
+        }
+    }
+
+    /* Optionally, add a background color or other styling */
+    .pill-dropdown-button:focus {
+        outline: 0px solid #9c856b;
+        border-color: #9c856b;
+    }
+
+    .relative:has(.field-error) .pill-dropdown-button {
+        outline: 0px solid #9c856b;
+        border-color: #9c856b;
+    }
+
+    /* Target .relative only if it contains the captcha field and its related error */
+    .relative:has([name="captchaValue"] + .field-error) > .field-error {
+        margin-top: 0;
+        /* Remove top margin */
+        text-align: center;
+        /* Center the error message */
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.newsletter-modal input,
+.newsletter-modal select {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    display: block;
+}
+
+.newsletter-modal input {
+    cursor: text;
+}
+
+.newsletter-modal .name-inputs {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+
+    .relative {
+        width: 100%;
+    }
+}
+
+.newsletter-modal .name-inputs input {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.newsletter-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-modal form {
+    width: 100%;
+}
+
+.newsletter-modal form > div {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-modal form > div > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-modal form > div > div,
+.newsletter-modal form > div > div > select,
+.newsletter-modal form > div > div > input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.newsletter-modal input {
+    width: 100%;
+    font-size: 1rem;
+}
+
+.newsletter-modal .pill-dropdown-button {
+    margin-bottom: 16px;
+    margin-top: 0;
+}
+
+.newsletter-modal .cta-button {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.field-error {
+    margin-top: -20px;
+    left: 0;
+    z-index: 1;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-gill-sans), "Cabin", sans-serif;
+    width: calc(100% - 24px);
+    text-align: left;
+    gap: 8px;
+    color: rgb(var(--brand-golden));
+
+    @media (max-width: 1024px) {
+        margin-top: -10px;
+    }
+
+    @media (max-width: 767px) {
+        margin-top: -10px;
+        /* Adjust for smaller screens */
+    }
+
+    @media (max-width: 480px) {
+        margin-top: -10px;
+        /* Further adjustments for very small screens */
+    }
+}
+
+.relative {
+    position: relative;
+}
+
+.newsletter-modal .terms-text a {
+    color: inherit;
+}
+
+.newsletter-modal .terms-text {
+    text-wrap: balanced;
+    margin-bottom: 0;
+}
+
+.newsletter-modal .modal-header {
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+
+    p {
+        color: #000;
+    }
+}
+
+.newsletter-modal .newsletter-modal-success-header .modal-header {
+    margin-top: 0;
+    margin-bottom: 1.4rem;
+}
+
+.newsletter-modal select:focus,
+.newsletter-modal input:focus {
+    outline: 1px solid #333333;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.newsletter-modal input,
+.newsletter-modal select {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #333333 !important;
+}
+
+.newsletter-modal input::placeholder {
+    opacity: 0.6;
+    color: #333333;
+}
+
+.newsletter-modal select:has(option:first-child:checked) {
+    color: rgba(51, 51, 51, 0.6);
+    /* opacity: 0.6; */
+}
+
+.newsletter-modal select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.newsletter-modal div:has(> select) {
+    position: relative;
+}
+
+.newsletter-modal div:has(> select)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 1.2rem;
+    top: 1rem;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    background: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Type=Chev Down, State=Dark"><mask id="mask0_384_392" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect id="Bounding box" width="24" height="24" fill="%23D9D9D9"/></mask><g mask="url(%23mask0_384_392)"><path id="keyboard_arrow_up" d="M12.0002 12.5751L15.9002 8.6751C16.0835 8.49176 16.3169 8.4001 16.6002 8.4001C16.8835 8.4001 17.1169 8.49176 17.3002 8.6751C17.4835 8.85843 17.5752 9.09177 17.5752 9.3751C17.5752 9.65843 17.4835 9.89176 17.3002 10.0751L12.7002 14.6751C12.5002 14.8751 12.2669 14.9751 12.0002 14.9751C11.7335 14.9751 11.5002 14.8751 11.3002 14.6751L6.7002 10.0751C6.51686 9.89176 6.4252 9.65843 6.4252 9.3751C6.4252 9.09177 6.51686 8.85843 6.7002 8.6751C6.88353 8.49176 7.11686 8.4001 7.4002 8.4001C7.68353 8.4001 7.91686 8.49176 8.1002 8.6751L12.0002 12.5751Z" fill="%23333333"/></g></g></svg>')
+        no-repeat center center;
+    background-size: 24px 24px;
+}
+
+.newsletter-modal .close-button {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.newsletter-modal .text-h5 {
+    margin: 0;
+}
+
+.newsletter-modal .image-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-height: 346px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.newsletter-modal .image-container img {
+    border-radius: 0;
+}
+
+.newsletter-modal-success-header {
+    padding: 346px 16px 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.text-close-button {
+    margin-top: 2rem !important;
+    margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 767px) {
+    .relative > :has([name="captchaValue"]) {
+        margin-top: 24px;
+    }
+
+    .newsletter-modal .pill-dropdown-button {
+        height: 42px;
+    }
+
+    .newsletter-modal .pill-dropdown-button {
+        padding-bottom: 0;
+        padding-top: 0;
+        height: 48px;
+    }
+
+    .newsletter-modal-header {
+        width: 100%;
+    }
+
+    .newsletter-modal div:has(> select)::after {
+        top: 16px;
+    }
+
+    .newsletter-modal.block {
+        padding: 2rem 1.25rem;
+        overflow-y: scroll;
+    }
+
+    .newsletter-modal .modal-header {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+
+    .newsletter-modal .image-container img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .newsletter-modal .image-container {
+        height: 217px;
+    }
+
+    .newsletter-modal-success-header {
+        padding-top: 217px;
+    }
+
+    .modal-header p {
+        font-size: 1.5rem !important;
+    }
+
+    .newsletter-modal .text-h5 {
+        font-size: 1.25rem;
+    }
+    .success-newsletter-modal .close-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .newsletter-modal .name-inputs {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .name-inputs > div {
+        width: 100%;
+    }
+}
+
+.success-newsletter-modal {
+    display: none;
+
+    .modal-header p,
+    h5 {
+        font-weight: 400;
+    }
+
+    .modal-header p {
+        font-size: 2rem;
+    }
+
+    h5 {
+        font-size: 1.5rem;
+        color: var(--text-grey);
+        line-height: 120%;
+        /* or 1.2 */
+    }
+}
+
+/* font-family: var(--font-gill-sans), "Cabin", sans-serif; */

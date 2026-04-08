@@ -1,0 +1,9 @@
+.section.floating-widget-container {
+    position: static;
+    width: 100%;
+    height: 100%;
+    .floating-widget.block {
+        position: static;
+        display: flex;
+    }
+}

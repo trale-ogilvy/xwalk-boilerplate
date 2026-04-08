@@ -1,0 +1,318 @@
+.promo-container-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-container-container .default-content-wrapper {
+    align-self: center;
+}
+
+.promo-container-wrapper {
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    @media screen and (max-width: 767px) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.three-column-tile {
+    display: flex;
+    gap: 32px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+
+    @media screen and (max-width: 767px) {
+        align-items: normal;
+    }
+}
+
+.three-column-tile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    aspect-ratio: unset;
+    object-fit: cover;
+    max-width: 100%;
+    object-position: center;
+}
+
+.three-column-tile .main-tile .grid-tile-image picture,
+.three-column-tile .sub-tile .grid-tile-image picture {
+    /* max-height: 480px; */
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.three-column-tile .main-tile .grid-tile-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 626 / 480;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 100%;
+    transform: scale(1);
+
+    img {
+        transition: all 0.5s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width: 767px) {
+        aspect-ratio: 327 / 262;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.three-column-tile .sub-tile .grid-tile-image,
+.three-column-tile .main-tile .grid-tile-image {
+    @media screen and (max-width: 767px) {
+        display: flex;
+        picture {
+            height: 100%;
+            display: flex;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                aspect-ratio: 327 / 262 !important;
+            }
+        }
+    }
+}
+
+.three-column-tile .sub-tile .grid-tile-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 312/480;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 100%;
+    transition: all 0.5s ease;
+    transform: scale(1);
+
+    img {
+        transition: all 0.5s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width: 767px) {
+        aspect-ratio: 327 / 262;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.grid-tile-image[style*="cursor: pointer;"]:hover img,
+.grid-tile-image.hovered img {
+    transform: scale(1.05) !important;
+}
+
+.grid-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.grid-card-category {
+    color: var(--Text-text-black, #333);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+}
+
+.grid-card-title {
+    position: relative;
+    display: inline-block;
+    color: var(--Text-text-black, #333);
+    font-family: Cormorant;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -1.2px;
+    text-decoration: none;
+    transition: color 0.5s ease;
+    width: fit-content;
+}
+
+.grid-card-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 0px;
+    height: 1px;
+    background-color: #9c856b;
+    transition: width 0.5s ease;
+}
+
+.grid-card-title:hover {
+    color: #9c856b;
+}
+
+.grid-card-title:hover::after {
+    width: 100%;
+}
+
+.grid-tile-title {
+    position: relative;
+    width: fit-content;
+}
+
+.grid-tile-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.grid-tile-title p {
+    margin: 0;
+    color: var(--Text-text-black, #333);
+    font-family: Cormorant;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: -0.03em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    position: relative;
+}
+
+.grid-tile-title p::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0px;
+    height: 1px;
+    background-color: #9c856b;
+    transition: width 0.5s ease;
+}
+
+.grid-tile-title p:hover,
+.grid-tile-title.hovered p {
+    color: #9c856b;
+}
+
+.grid-tile-title a:hover p::after,
+.grid-tile-title.hovered a p::after {
+    width: 100%;
+}
+
+.grid-tile-category {
+    color: var(--Text-text-black, #333);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+}
+
+.main-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1 1 50%;
+    height: 100%;
+}
+
+.sub-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1 1 25%;
+    height: 100%;
+
+    @media screen and (max-width: 767px) {
+        gap: 1.5rem !important;
+    }
+}
+
+.grid-tile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media screen and (max-width: 884px) {
+    .three-column-tile .main-tile .grid-tile-image picture,
+    .three-column-tile .sub-tile .grid-tile-image picture {
+        aspect-ratio: 628 / 480;
+    }
+    .three-column-tile .main-tile .grid-tile-image img,
+    .three-column-tile .sub-tile .grid-tile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 628 / 480;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .promo-container-wrapper {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .three-column-tile {
+        flex-direction: column;
+    }
+
+    .three-column-tile img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 327 / 262;
+    }
+
+    .three-column-tile .main-tile .grid-tile-image picture,
+    .three-column-tile .sub-tile .grid-tile-image picture {
+        width: 100%;
+        aspect-ratio: 327 / 262;
+    }
+
+    .three-column-tile .main-tile .grid-tile-image img,
+    .three-column-tile .sub-tile .grid-tile-image img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 327 / 262;
+    }
+
+    .grid-tile-category {
+        font-size: 0.875rem;
+    }
+
+    .main-tile,
+    .sub-tile {
+        gap: 16px;
+        flex: none;
+
+        @media screen and (max-width: 767px) {
+            gap: 1.5rem !important;
+        }
+    }
+
+    .grid-tile-content {
+        gap: 8px;
+    }
+}
+
+.grid-tile-title a p {
+    display: inline;
+}

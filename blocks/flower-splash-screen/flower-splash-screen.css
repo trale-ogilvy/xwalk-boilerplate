@@ -1,0 +1,72 @@
+/* Flower Splash Screen Vanilla CSS */
+
+.flower-splash-container {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 9999;
+    visibility: hidden;
+}
+
+.flower-splash-image-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    max-width: 100vw;
+}
+
+.flower-splash-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 80%;
+    filter: blur(0px);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.flower-splash-bg {
+    position: absolute;
+    inset: 0;
+    background: white;
+}
+
+.flower-splash-text-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow: hidden;
+}
+
+.flower-splash-text-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+
+    @media screen and (max-width: 30rem) {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .main-text {
+        h4 {
+            @media screen and (max-width: 30rem) {
+                font-size: 6.8vw !important;
+            }
+        }
+    }
+}
+
+.flower-splash-heading {
+    text-align: center;
+}

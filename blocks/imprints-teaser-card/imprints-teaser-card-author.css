@@ -1,0 +1,309 @@
+.section.imprints-teaser-card-container {
+    position: relative !important;
+    overflow: hidden !important;
+    height: 100% !important;
+    padding-bottom: 10rem;
+
+    .section-header .title {
+        max-width: 42rem;
+    }
+
+    /* Imprints Logo */
+    .default-content-wrapper {
+        position: relative;
+        height: 7rem;
+        width: 100vw;
+        max-width: none;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .cards-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        z-index: 6;
+        margin-top: 2.1rem;
+        gap: 4rem;
+
+        .imprints-teaser-card-wrapper {
+            position: static;
+            transform: none !important;
+            width: 100vw !important;
+            height: 100% !important;
+            box-sizing: border-box !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            .imprints-teaser-card.block {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                height: 100%;
+                align-items: center;
+                box-sizing: border-box;
+                width: 100vw;
+
+                & > div {
+                    display: none;
+                }
+
+                .carousel-modal-section {
+                    width: 100vw;
+                    overflow: scroll;
+                    max-height: 43.75rem;
+                    display: flex;
+                    box-sizing: border-box;
+
+                    .carousel-modal-scroll-container {
+                        display: flex;
+                        box-sizing: border-box;
+                        height: 100%;
+                        flex-direction: row;
+                        gap: 2rem;
+
+                        .fullscreen-media-with-text,
+                        .fullscreen-image-with-text,
+                        .split-layout-image-with-text,
+                        .split-layout-media-with-text {
+                            width: 100vw !important;
+                            max-width: 76rem;
+                            height: 43.75rem;
+                            box-sizing: border-box;
+                            overflow: hidden;
+                            background-color: rgb(var(--brand-black));
+                            position: relative;
+                            text-align: center;
+
+                            /* Slide Type */
+                            & > div:nth-of-type(1),
+                            & > div:nth-of-type(2) {
+                                display: none;
+                                height: 0;
+                                border: 1px solid red;
+                            }
+
+                            /* Content */
+                            & > div:nth-of-type(3) {
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                flex-direction: column;
+                                color: white;
+
+                                p {
+                                    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+                                    line-height: 120%;
+                                    letter-spacing: -0.03em;
+
+                                    strong {
+                                        font-size: clamp(0.875rem, 1.8vw, 1rem);
+                                        font-family: var(--font-gill-sans),
+                                            "Cabin", sans-serif;
+                                        letter-spacing: 0.1px;
+                                        line-height: 1.3rem;
+                                        font-weight: 400;
+                                    }
+                                }
+                            }
+
+                            /* CTAs */
+                            & > div:nth-of-type(4),
+                            & > div:nth-of-type(5) {
+                                position: absolute !important;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                top: 50%;
+
+                                a {
+                                    text-decoration: none;
+                                    color: white;
+                                }
+                            }
+                            /* CTA 1 */
+                            & > div:nth-of-type(4) {
+                                top: 60%;
+
+                                a {
+                                    text-decoration: none;
+                                    color: black;
+                                    width: fit-content;
+                                    border-radius: 9999px;
+                                    background-color: rgb(var(--text-white));
+                                    padding-left: 1.5rem;
+                                    padding-right: 1.5rem;
+                                    padding-top: 1.25rem;
+                                    padding-bottom: 1.25rem;
+                                    font-family: var(--font-gill-sans), "Cabin",
+                                        sans-serif;
+                                    font-size: 0.95rem;
+                                    text-transform: uppercase;
+                                    line-height: 100%;
+                                    letter-spacing: 0.15rem;
+                                    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+                                }
+                            }
+
+                            /* CTA 2 */
+                            & > div:nth-of-type(5) {
+                                position: relative;
+                                align-items: center;
+                                text-decoration: none;
+                                font-family: var(--font-gill-sans), "Cabin",
+                                    sans-serif;
+                                font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+                                letter-spacing: 0.15em;
+                                text-transform: uppercase;
+                                cursor: pointer;
+                                top: 70%;
+                            }
+
+                            /* Media */
+                            & > div:last-of-type {
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+
+                                & > div {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                img,
+                                video {
+                                    width: 100% !important;
+                                    height: 100% !important;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+
+                        .split-layout-media-with-text,
+                        .split-layout-image-with-text {
+                            background-color: #d2d2d2;
+
+                            /* Media */
+                            & > div:last-of-type {
+                                width: 50%;
+                            }
+
+                            /* Content */
+                            & > div:nth-of-type(3) {
+                                color: rgb(var(--text-black));
+                                width: 50%;
+                                height: 100%;
+                                position: absolute !important;
+                                right: 0 !important;
+                                left: auto !important;
+                                transform: none !important;
+                                top: 0;
+
+                                p {
+                                    width: 70%;
+                                    margin: 0 auto;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .main-section {
+                    position: relative;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    width: 70vw !important;
+
+                    /* Main Media */
+                    .media {
+                        overflow: hidden;
+                        box-sizing: border-box;
+                        position: relative;
+                        z-index: 0;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            background: rgba(0, 0, 0, 0.1);
+                            pointer-events: none;
+                            z-index: 1;
+                        }
+
+                        img,
+                        video {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .card-content {
+                        display: flex !important;
+                        position: absolute;
+                        bottom: 4rem;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        color: white;
+                        flex-direction: column;
+                        text-align: center;
+
+                        /* Text Content */
+                        & > div:nth-of-type(1) {
+                            div {
+                                /* Label */
+                                & > p:nth-of-type(1) {
+                                    font-size: clamp(0.875rem, 1.8vw, 1rem);
+                                    font-family: var(--font-gill-sans), "Cabin",
+                                        sans-serif;
+                                    letter-spacing: 0.1px;
+                                    line-height: 1.3rem;
+                                    margin-bottom: 1rem;
+                                }
+                                /* Header */
+                                & > p:nth-of-type(2) {
+                                    font-size: clamp(1.5rem, 3vw, 2.5rem);
+                                    letter-spacing: -0.03em;
+                                    line-height: 110%;
+                                    margin-bottom: 2.5rem;
+                                }
+                            }
+                        }
+                        /* CTA */
+                        & > div:nth-of-type(2) {
+                            p {
+                                position: relative;
+                                display: inline-flex;
+                                align-items: center;
+                                color: inherit;
+                                text-decoration: none;
+                                font-family: var(--font-gill-sans), "Cabin",
+                                    sans-serif;
+                                font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+                                letter-spacing: 0.15em;
+                                text-transform: uppercase;
+                                padding: 0;
+                                white-space: nowrap;
+
+                                a {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

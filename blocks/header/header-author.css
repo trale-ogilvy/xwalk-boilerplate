@@ -1,0 +1,214 @@
+main {
+    /* Nav bar section */
+    & > div:nth-of-type(1) {
+        display: flex;
+        justify-content: end;
+
+        .default-content-wrapper > *:not(p) {
+            display: flex !important;
+            gap: 1rem !important;
+        }
+
+        .default-content-wrapper {
+            width: fit-content;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            margin-right: 4rem;
+
+            @media screen and (max-width: 767px) {
+                margin-right: 1rem;
+            }
+
+            p {
+                display: none;
+            }
+
+            li {
+                list-style-type: none;
+                font-family: "Gill Sans", Cabin, sans-serif, "Cabin", sans-serif;
+                font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                a {
+                    text-decoration: none;
+                    color: #333333;
+                }
+            }
+        }
+
+        .button-container {
+            display: flex !important;
+            border-radius: 9999px;
+            background-color: rgb(var(--text-white));
+            font-family: var(--font-gill-sans), "Cabin", sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+            max-height: 47px !important;
+            padding: 0 1.5rem;
+            margin-top: 2rem;
+            align-items: center;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+
+    /* Nav Links Section */
+    & > div:nth-of-type(2) {
+        margin: 8rem 0;
+
+        .default-content-wrapper {
+            ul {
+                gap: 1rem;
+                padding: 0;
+
+                li {
+                    list-style-type: none;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+
+                    strong {
+                        font-weight: 400;
+                    }
+
+                    a {
+                        color: #333333;
+                        font-family: Cormorant, sans-serif, serif;
+                        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        .cards-wrapper {
+            display: none;
+        }
+    }
+
+    /* Bottom Section */
+    & > div:nth-of-type(3) {
+        position: relative;
+        display: flex;
+        height: 14rem;
+
+        /* Patina Link */
+        .default-content-wrapper {
+            position: absolute;
+            left: 4rem;
+            top: 50%;
+            transform: translateY(-50%);
+
+            @media screen and (max-width: 767px) {
+                left: 50%;
+                top: -4rem;
+                transform: translateX(-50%);
+            }
+
+            p {
+                font-family: gillsans, Cabin, sans-serif;
+                font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+
+                a {
+                    color: #000000;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        /* Imprints */
+        .nav-imprints-cards-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+
+            .nav-imprints-cards-images {
+                display: flex;
+                margin-top: 2em;
+                overflow: visible;
+                justify-content: center;
+                height: 120px;
+                align-items: start;
+                overflow: hidden;
+
+                .nav-imprints-image {
+                    padding-top: 4rem;
+                    position: static !important;
+                    transform: none;
+                }
+
+                .nav-imprints-image:nth-of-type(1) {
+                    margin-right: -5rem;
+                    margin-top: 2rem;
+                    rotate: -20deg;
+                    z-index: 1;
+                }
+
+                .nav-imprints-image:nth-of-type(2) {
+                    z-index: 2;
+                }
+
+                .nav-imprints-image:nth-of-type(3) {
+                    z-index: 3;
+                    margin-left: -5rem;
+                    rotate: 20deg;
+                }
+            }
+        }
+
+        /* Reserve Card */
+        .cards-wrapper {
+            position: absolute;
+            right: 4rem;
+            top: 50%;
+            transform: translateY(-50%);
+
+            @media screen and (max-width: 767px) {
+                display: none;
+            }
+
+            ul {
+                display: flex;
+
+                li {
+                    padding: 1rem;
+                    gap: 1.5rem;
+                    display: flex;
+                    border-radius: 10px;
+                    align-items: center;
+
+                    .cards-card-image {
+                        border-radius: 10px;
+                        flex-shrink: 0;
+                        height: 57px;
+                        overflow: hidden;
+                        width: 80px;
+                    }
+
+                    .cards-card-body {
+                        width: 7.8rem;
+                        margin: 0;
+                        p {
+                            font-family: Cormorant, sans-serif, serif;
+                            font-size: clamp(1rem, 2vw, 1.25rem);
+                            letter-spacing: -0.03em;
+                            line-height: 120%;
+                        }
+                    }
+
+                    .cards-card-body:has(.button-container) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

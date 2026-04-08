@@ -1,0 +1,212 @@
+.music-banner {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1512 / 881;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    display: block;
+    /* not flex */
+}
+
+.music-banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    pointer-events: none;
+    /* let audio controls still work */
+}
+
+.music-banner-overlay {
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+    text-align: center;
+    pointer-events: auto;
+}
+
+.music-banner-label {
+    margin-bottom: 16px;
+    color: #fff;
+    text-align: center;
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.music-banner-title {
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    margin-bottom: 40px;
+}
+
+.music-card {
+    margin: 0;
+    border-radius: 10px;
+    pointer-events: auto;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    background: rgba(51, 51, 51, 0.5);
+    backdrop-filter: blur(15px);
+    padding: 24px;
+    gap: 24px;
+}
+
+.music-artist-thumbnail {
+    flex: 0 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-artist-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-song-info {
+    /* flex: 1 1 auto; */
+    display: flex;
+    flex-direction: column;
+}
+
+.music-song-label {
+    color: var(--Text-text-white, #fff);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+}
+
+.music-title {
+    color: var(--Text-text-white, #fff);
+    font-family: Cormorant;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.96px;
+    margin-bottom: 24px;
+}
+
+.music-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.music-audio-duration {
+    color: #fff;
+    font-size: 1rem;
+    min-width: 80px;
+    text-align: left;
+}
+
+.music-audio-play {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.music-progress-bar-wrapper {
+    width: 120px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    margin: 8px 0;
+    cursor: pointer;
+    overflow: hidden;
+    display: block;
+}
+
+.music-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    border-radius: 3px;
+    transition: width 0.2s linear;
+}
+
+.music-audio-timing {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    width: 120px;
+}
+
+.music-audio-timing-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--Text-text-white, #fff);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    margin-bottom: 2px;
+}
+
+.music-audio-current {
+    text-align: left;
+}
+
+.music-audio-left {
+    text-align: right;
+}
+
+@media (max-width: 900px) {
+    .music-banner {
+        height: 630px;
+        aspect-ratio: unset;
+        background-size: cover;
+    }
+    .music-song-label {
+        font-size: 0.875rem;
+    }
+    .music-song-title {
+        margin-bottom: 24px;
+    }
+    .music-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .music-artist-thumbnail {
+        width: 80px;
+        height: 80px;
+    }
+
+    .music-title {
+        font-size: 1.25rem;
+    }
+}

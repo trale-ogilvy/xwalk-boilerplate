@@ -1,0 +1,34 @@
+{
+  "fields": [
+    {
+      "name": "header",
+      "type": "string",
+      "label": "Header"
+    },
+    {
+      "name": "variant",
+      "type": "boolean",
+      "label": "Variant Style",
+      "value": false
+    },
+    {
+      "name": "cards",
+      "type": "array",
+      "label": "Cards",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "image": { 
+            "type": "object",
+            "properties": {
+              "_publishUrl": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

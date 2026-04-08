@@ -1,10 +1,8 @@
 {
   "mappings": [
-    "/content/xwalk-demo/:/",
-    "/content/xwalk-demo/configuration:/.helix/config.json",
-    "/content/xwalk-demo/metadata:/metadata.json"
+    "/content/patina-ogilvy-test/:/"
   ],
   "includes": [
-    "/content/xwalk-demo/"
+    "/content/patina-ogilvy-test/"
   ]
 }

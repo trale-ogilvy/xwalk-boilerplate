@@ -1,0 +1,230 @@
+/* --- Main Block Styles --- */
+.carousel-container.block {
+    z-index: 10;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .carousel-container.block {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+/* Content Styles */
+.card-description-swiper > h2 {
+    padding-bottom: 1.5rem;
+}
+
+.carousel-container-container .card-title-swiper {
+    color: var(--Text-text-black, #333);
+    line-height: 100%;
+    margin-bottom: 24px;
+}
+
+.carousel-container-container .card-description-swiper {
+    color: var(--Text-text-black, #333);
+    line-height: 120%;
+    letter-spacing: -0.72px;
+    margin-bottom: 16px;
+}
+
+.card-description-swiper .paragraph-item {
+    margin-bottom: 1rem;
+}
+
+.card-description-swiper .paragraph-item:last-child {
+    margin-bottom: 0;
+}
+
+.carousel-container-container .card-button-container {
+    padding-top: 1rem;
+}
+
+.carousel-container-container .card-link-container {
+    display: none;
+}
+
+.carousel-container-container .card-button-swiper {
+    font-family: "Gill Sans", Cabin, sans-serif;
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+    letter-spacing: 0.1rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+
+    @media all and (max-width: 767px) {
+        font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    }
+}
+
+.carousel-container-container .card-button-swiper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+.carousel-container-container .card-button-swiper:hover::after {
+    width: 100%;
+}
+
+/* Swiper Core Styles */
+.carousel-container.block .swiper-container {
+    width: 100%;
+    overflow: visible !important;
+    position: relative;
+}
+
+.carousel-container.block .swiper-wrapper {
+    display: flex;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* Slide Widths */
+.carousel-container.block .swiper-slide {
+    flex-shrink: 0;
+    width: 70%;
+    height: auto;
+    position: relative;
+    display: flex;
+}
+
+@media (min-width: 768px) {
+    .carousel-container.block .swiper-slide {
+        width: 32%;
+    }
+
+    .carousel-container.block .swiper-slide:has(.is-square) {
+        width: 43%;
+    }
+}
+
+/* Card Container */
+.carousel-container.block .card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    flex-grow: 1;
+    background: transparent;
+}
+
+.carousel-container.block .image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-s);
+}
+
+/* --- Aspect Ratio Styling controlled by data --- */
+.carousel-container.block .image-container.is-standard {
+    aspect-ratio: 1 / 1.4;
+}
+
+@media (min-width: 768px) {
+    .carousel-container.block .image-container.is-standard {
+        aspect-ratio: 1 / 1.34;
+    }
+}
+
+.carousel-container.block .image-container.is-square {
+    aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 767px) {
+    .carousel-container.block .image-container.is-square {
+        aspect-ratio: 1 / 1.4;
+    }
+}
+
+.carousel-container.block .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+/* Navigation Arrows */
+.carousel-container.block .swiper-arrows-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 20;
+}
+
+@media (min-width: 768px) {
+    .carousel-container.block .swiper-arrows-container {
+        display: flex;
+    }
+}
+
+.carousel-container.block .swiper-arrow-button {
+    pointer-events: auto;
+    transition: opacity 300ms;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-container.block .swiper-arrow-button.hidden {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.carousel-container.block .swiper-arrow-button.left-arrow {
+    left: -60px;
+}
+
+.carousel-container.block .swiper-arrow-button.right-arrow {
+    right: -65px;
+}
+
+.carousel-container.block .swiper-arrow-button .arrow-icon {
+    width: 24px;
+    height: 24px;
+    mask: url("/icons/arrow.svg") center center / contain no-repeat;
+    -webkit-mask: url("/icons/arrow.svg") center center / contain no-repeat;
+    background-color: white;
+}
+
+.carousel-container.block .swiper-arrow-button.right-arrow .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.carousel-container.block .swiper-arrow-button:hover {
+    background-color: rgba(0, 0, 0, 1);
+}

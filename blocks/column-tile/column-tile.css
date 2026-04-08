@@ -1,0 +1,254 @@
+.column-tile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    .default-content-wrapper h2 {
+        margin: 0;
+        margin-bottom: 48px;
+    }
+
+    @media (min-width: 800px) {
+        .default-content-wrapper h2 {
+            margin-bottom: 80px;
+        }
+    }
+}
+
+.column-tile-wrapper-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* auto-rows: 1fr; */
+    gap: 1.5rem;
+    row-gap: 5rem;
+}
+
+.column-tile-images {
+    overflow: hidden;
+}
+
+.column-tile-images img {
+    width: 100%;
+    height: auto;
+    object-fit: unset;
+    border-radius: 10px;
+}
+
+.column-tile-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+    gap: 20px;
+}
+
+.column-tile-content-main {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.column-tile-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.column-tile-label {
+    color: var(--Text-text-black, #333);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    margin: 0;
+}
+
+.column-tile-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tiles-card-title {
+    color: #000;
+    font-family: Cormorant;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.72px;
+}
+
+.column-tile-sub-description {
+    position: relative;
+    display: inline-block;
+    color: var(--Text-text-black, #333);
+    font-family: Cormorant;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -1.2px;
+    text-decoration: none;
+    transition: color 0.5s ease;
+    width: fit-content;
+    margin: 0;
+}
+
+.column-tile-sub-description::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 0px;
+    height: 1px;
+    background-color: #9c856b;
+    transition: width 0.5s ease;
+}
+
+.column-tile-sub-description:hover {
+    color: #9c856b;
+}
+
+.column-tile-sub-description:hover::after {
+    width: 100%;
+}
+
+.column-tile-description {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--Text-text-black, #333);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 2.25px;
+    text-decoration: none;
+    transition: color 0.5s ease;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.description-text {
+    position: relative;
+    display: inline-block;
+}
+
+.description-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 0;
+    height: 1px;
+    background-color: #333;
+    transition: width 0.5s ease;
+}
+
+.column-tile-description:hover .description-text::after {
+    width: 100%;
+}
+
+.column-tile-link {
+    text-decoration: none;
+}
+
+.column-tile-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 300px;
+}
+
+.column-tile-feature {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.column-tile-feature-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.column-tile-feature-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.column-tile-feature-text {
+    color: #000;
+    font-family: Cormorant;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.72px;
+}
+
+.column-tile-supporting-text {
+    color: var(--Text-text-black, #333);
+    margin: 0;
+    font-family: Cormorant;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.72px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .column-tile-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .column-tile-wrapper-col {
+        grid-template-columns: 1fr;
+    }
+
+    .column-tile-content {
+        padding-top: 24px;
+    }
+
+    .column-tile-content-main {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .column-tile-left {
+        gap: 8px;
+    }
+
+    .column-tile-label {
+        font-size: 0.875rem;
+    }
+
+    .column-tile-sub-description {
+        font-size: 1.5rem;
+    }
+
+    .column-tile-supporting-text {
+        font-size: 1.25rem;
+    }
+
+    .column-tile-feature-text {
+        font-size: 1rem;
+    }
+
+    .column-tile-features {
+        gap: 8px;
+    }
+
+    .column-tile-feature {
+        gap: 8px;
+    }
+}

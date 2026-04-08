@@ -1,37 +1,1070 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
+/* Hero Wrapper */
+
+.hero-wrapper {
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+    top: -200px;
+    position: sticky;
+
+    .imprints-logo {
+        width: 90vw;
+        opacity: 0;
+        margin-bottom: 1rem;
+        margin-top: 7rem;
+    }
+
+    h1#imprints {
+        /* Hide all text, but not the image */
+        color: transparent;
+        line-height: 0;
+    }
+
+    .hero-para {
+        .line {
+            padding-bottom: 10px;
+        }
+    }
 }
 
-.hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+/* Body class to disable scrolling when modal is open */
+body.modal-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+/* Hero Container */
+.hero-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: #53645c;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero-media-container img {
+    width: 100vw;
+    object-fit: cover;
+    height: 100vh;
+    object-position: center;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.section.hero-container[data-aue-behavior="component"] section.hero-container,
+.section.hero-container[data-aue-behavior="component"],
+.section.hero-container[data-aue-behavior="component"]
+    .hero-overlay
+    .section.hero-container[data-aue-behavior="component"]
+    .hero-media-container
+    img {
+    height: 700px !important;
 }
 
-@media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
-  }
+.section.hero-container[data-aue-behavior="component"]
+    .hero-media-container
+    img {
+    width: 100%;
+}
+
+/* Hero Media Container */
+.hero-media-container {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.hero-media-container video {
+    position: absolute;
+    inset: 0;
+    height: 100vh !important;
+    width: 100vw !important;
+    object-fit: cover;
+}
+
+/* Hero Video */
+.hero-video {
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    object-fit: cover;
+}
+
+/* Hero Overlay */
+.hero-overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.1);
+
+    @media screen and (max-width: 767px) {
+        height: 110vh;
+        top: calc(50% - 30px);
+    }
+}
+
+/* Hero Content */
+
+/* Hero Text Container */
+.hero-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+
+    span {
+        display: block;
+    }
+
+    .text-p1:first-of-type {
+        margin-top: 32px;
+
+        .line {
+            padding-bottom: 0.25rem;
+        }
+    }
+}
+
+.hero-text-container > *:not(p) {
+    padding: 0;
+}
+
+/* Hero Text */
+.hero-text {
+    text-transform: uppercase;
+    line-height: 0.8;
+    opacity: 1;
+    font-size: 3rem;
+    margin: 0;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(0%, 0px);
+}
+
+/* Hero Slide Text Animation Class */
+.hero-slide-text {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+@media (min-width: 640px) {
+    .hero-text {
+        white-space: nowrap;
+    }
+}
+
+/* Hero CTA Wrapper */
+.hero-cta-wrapper {
+    opacity: 1;
+    margin-top: 3.5rem;
+    display: flex;
+    gap: 1rem;
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+        align-items: center;
+    }
+}
+
+.hero-cta-wrapper:has(.secondary-cta) {
+    .divider {
+        height: 21px;
+        width: 1px;
+        background-color: white;
+
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
+    }
+}
+
+.hero-cta-button::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    height: 1px;
+    width: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+.hero-cta-button:hover::before {
+    width: calc(100% - 2rem);
+}
+
+@media (min-width: 768px) {
+    .hero-cta-button {
+        font-size: 1rem;
+    }
+}
+
+/* Hero CTA Icon */
+.hero-cta-icon {
+    display: inline-block;
+    transition: color 0.3s;
+    width: 24px;
+    height: 24px;
+    mask: url("/osaka/icons/play-outline.svg") center center / contain no-repeat;
+    background-color: white;
+}
+
+/* Video Modal */
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border: none;
+    max-height: none;
+    width: 100vw;
+    max-width: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.video-modal.fade-in {
+    opacity: 1;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.video-modal.fade-out {
+    opacity: 0;
+    z-index: -10;
+    pointer-events: none;
+}
+
+@media (min-width: 768px) {
+    .modal-close-container {
+        left: 4rem;
+        top: 2rem;
+    }
+}
+
+/* Modal Close Button */
+.modal-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    color: rgb(var(--text-white));
+    outline: none;
+    position: absolute;
+    top: 2.3rem;
+    left: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close-mobile {
+    display: block;
+}
+
+.modal-close-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .modal-close-mobile {
+        display: none;
+    }
+
+    .modal-close-desktop {
+        display: block;
+    }
+}
+
+/* Modal Close Text */
+.modal-close-text {
+    width: fit-content;
+    padding: 1.5rem 1rem;
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 2.1px;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.modal-close-text-mobile {
+    color: black;
+    display: block;
+}
+
+.modal-close-text-desktop {
+    color: white;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .modal-close-text {
+        font-size: 1rem;
+    }
+
+    .modal-close-text-mobile {
+        display: none;
+    }
+
+    .modal-close-text-desktop {
+        display: block;
+    }
+}
+
+.modal-close-text:hover {
+    color: black;
+}
+
+@media (min-width: 768px) {
+    .modal-close-text-desktop:hover {
+        color: white;
+    }
+}
+
+/* Modal Close Span */
+.modal-close-span {
+    position: relative;
+    display: inline-block;
+}
+
+.modal-close-span::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: currentColor;
+    transition: all 0.3s;
+}
+
+.modal-close-text:hover .modal-close-span::after {
+    width: 100%;
+}
+
+/* Video Container Wrapper */
+.video-container-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgba(var(--surface-white));
+}
+
+/* Video Player Container */
+.video-player-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Modal Video */
+.modal-video {
+    background-size: cover;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    border: 1px;
+}
+
+@media screen and (max-width: 767px) {
+    .modal-video {
+        height: auto !important;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .modal-close-btn {
+        color: rgb(var(--text-black));
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+}
+
+.hero .line {
+    padding: 0;
+}
+
+.hero-ai-chat-input {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 22vh;
+    width: 100%;
+    max-width: 25.625rem;
+    z-index: 10;
+    display: flex;
+
+    @media all and (width < 768px) {
+        width: auto;
+        position: sticky;
+        bottom: 10.5rem;
+        z-index: 9999;
+        margin: 0;
+        transform: translateX(-5%);
+        left: 50vw;
+        right: auto;
+        box-sizing: border-box;
+        max-width: 90vw;
+    }
+}
+
+.ai-chat-input {
+    width: 100%;
+    padding: 1rem 4.625rem 1rem 3.5rem;
+    border-radius: 62.4375rem;
+    border: none;
+    height: 4.125rem;
+    box-sizing: border-box;
+}
+
+.ai-chat-input:focus {
+    outline: none;
+}
+
+.ai-chat-input::placeholder {
+    color: rgba(var(--text-grey), 0.5) !important;
+}
+
+.ai-chat-submit-button {
+    position: absolute;
+    background-color: rgba(var(--text-grey), 0.5);
+    width: 3.125rem;
+    height: 3.125rem;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 62.4375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    pointer-events: none;
+}
+
+/* When chat input is not empty, make submit button green */
+.ai-chat-input:not(:placeholder-shown) + .ai-chat-submit-button,
+.ai-chat-input.filled + .ai-chat-submit-button {
+    background-color: rgba(var(--brand-tan));
+    pointer-events: auto;
+}
+
+/* If chat input is empty, make submit button unclickable and show default cursor */
+.ai-chat-input:placeholder-shown + .ai-chat-submit-button {
+    cursor: default;
+    opacity: 0.6;
+}
+
+/* On hover, set opacity to 80% */
+.ai-chat-submit-button:hover {
+    opacity: 0.8;
+}
+
+.ai-chat-submit-button img {
+    transform: rotate(180deg);
+    filter: brightness(0) invert(1);
+}
+
+.ai-chat-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+
+    .huge-text {
+        font-size: clamp(48px, 20vw, 20rem);
+        margin-bottom: 1rem !important;
+    }
+
+    .text-h2 {
+        .line {
+            padding-bottom: 8px;
+        }
+    }
+
+    .text-h1 {
+        .line {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+.calendar-month-label {
+    color: white;
+}
+
+.reserve-dates-text {
+    color: var(--Text-text-white, #fff);
+    text-align: center;
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.hero-reserve-bar {
+    margin-top: 22vh;
+    border-radius: 80px;
+    padding: 8px 8px 8px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    background: rgba(51, 51, 51, 0.5);
+    backdrop-filter: blur(15px);
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+
+    .reserve-dates-btn {
+        width: auto;
+        max-width: 300px;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &.compact {
+            width: auto;
+            min-width: 180px;
+            max-width: 280px;
+            padding: 0 12px;
+        }
+    }
+
+    .reserve-dates-text {
+        flex: 1;
+        margin-right: 8px;
+    }
+
+    .reserve-chevron {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        margin-left: 0;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        vertical-align: middle;
+
+        &.rotated {
+            transform: rotate(180deg);
+        }
+    }
+
+    .cta-button {
+        color: #fff;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        align-self: end;
+        padding: 0;
+    }
+
+    .calendar-date-inrange {
+        border-radius: 0px 4px 4px 0px;
+        background: var(--Text-text-hover, #9c856b);
+    }
+
+    .calendar-days-row {
+        display: flex !important;
+        justify-content: space-between;
+    }
+
+    .filter-dropdown-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid rgba(var(--border-grey), 0.2);
+    }
+
+    .calendar-grid {
+        button {
+            margin: 0;
+            padding: 0;
+            width: 103%;
+            border: 0 none;
+        }
+    }
+
+    .calendar-date-btn,
+    .calendar-day-label,
+    .calendar-date-blank {
+        height: 2.5rem;
+        width: 40px;
+        font-family: "Gill Sans", Cabin;
+        font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .calendar-day-label {
+        color: #fff;
+    }
+
+    .calendar-date-btn,
+    .calendar-date-blank {
+        color: rgb(var(--text-white));
+
+        &:not(.calendar-date-selected):not(.calendar-date-disabled):not(
+                .calendar-date-inrange
+            ):hover {
+            background-color: rgb(var(--surface-white), 0.1);
+        }
+    }
+
+    .calendar-date-disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    .calendar-date-selected,
+    .calendar-date-inrange {
+        background-color: rgb(var(--brand-tan)) !important;
+    }
+
+    .calendar-dropdown .events-filter-done-btn {
+        margin-top: 2rem;
+        text-align: right;
+        display: inline;
+        max-width: 54px;
+    }
+
+    .calendar-date-inrange {
+        border-radius: 0;
+        background: var(--Text-text-hover, #9c856b);
+        color: #fff;
+    }
+
+    .calendar-date-today {
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
+
+.reserve-form {
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+
+    &:not(.reserve-form-rooms, .reserve-form-rooms-m) {
+        .calendar-dropdown {
+            @media (max-width: 767px) {
+                position: absolute !important;
+                bottom: 12% !important;
+                left: 24px !important;
+                right: 24px !important;
+                margin-top: 8px !important;
+                margin-bottom: 0 !important;
+                width: unset !important;
+                z-index: 10 !important;
+                padding: 24px !important;
+                background-color: #fff !important;
+                box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.18);
+                height: 358px;
+            }
+        }
+        .calendar-month-label {
+            @media (max-width: 767px) {
+                color: #000;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    .reserve-fields {
+        display: flex;
+    }
+
+    .reserve-checkin,
+    .reserve-checkout,
+    .reserve-guests {
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        color: #fff;
+        background: none;
+        border: none;
+        text-align: center;
+        font-family: "Gill Sans", Cabin, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+
+        &::placeholder {
+            color: var(--Text-text-white, #fff);
+            text-align: center;
+            font-family: "Gill Sans", Cabin, sans-serif;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+        }
+    }
+
+    .reserve-guests {
+        display: flex;
+        width: 88px;
+        height: 37px;
+        padding: 8px 0px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 8px;
+
+        &:focus,
+        &:hover {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+    .reserve-field label {
+        color: #fff;
+        background: none;
+    }
+
+    .reserve-submit {
+        background: #fff;
+        border: none;
+        border-radius: 100px;
+        padding: 16px 24px;
+        cursor: pointer;
+        color: var(--Text-text-black, #333);
+        text-align: center;
+        font-family: "Gill Sans", Cabin, sans-serif;
+        font-size: 0.9375rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        letter-spacing: 2.25px;
+        text-transform: uppercase;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.18);
+        margin-left: 32px;
+        &:hover {
+            background-color: rgb(var(--brand-golden));
+            color: rgb(var(--text-white));
+        }
+    }
+}
+
+.calendar-dropdown,
+.guests-dropdown {
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 16px;
+    z-index: 100;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(51, 51, 51, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calendar-dropdown {
+    left: 0;
+    right: 0;
+    width: 270px;
+    gap: 0px;
+
+    > * {
+        display: flex;
+        width: 100%;
+    }
+}
+
+.guests-dropdown {
+    left: 37%;
+    right: 0;
+    width: 220px;
+    gap: 16px;
+
+    > * {
+        position: relative;
+        z-index: 999;
+    }
+
+    .guests-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+
+        span {
+            color: #fff;
+            font-size: 1rem;
+        }
+    }
+
+    .guests-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .guests-minus,
+    .guests-plus {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        color: #333;
+        font-size: 1.25rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .guests-label,
+    .guests-count {
+        color: var(--Text-text-white, #fff);
+        font-family: "Gill Sans", Cabin, sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+    }
+
+    .guests-count {
+        min-width: 24px;
+        text-align: center;
+    }
+}
+
+.reserve-guests-text {
+    color: var(--Text-text-white, #fff);
+    text-align: center;
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.reserve-separator {
+    display: inline-block;
+    width: 0.5px;
+    height: 40px;
+    opacity: 0.5;
+    background: #d9d9d9;
+    vertical-align: middle;
+    margin: 0 32px;
+}
+
+.hero-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 70%;
+
+    .huge-text {
+        font-size: clamp(3rem, 20vw, 20rem);
+        margin-bottom: 1rem !important;
+    }
+
+    .text-h2 .line {
+        padding-bottom: 8px;
+    }
+
+    .text-h1 .line {
+        padding-bottom: 10px;
+    }
+
+    @media all and (max-width: 767px) {
+        width: 90%;
+    }
+}
+
+.nav-quick-links.text-b {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease-in-out;
+
+    &:not(.show) {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+p.text-l2.label-text {
+    margin-bottom: var(--space-xs) !important;
+}
+
+@media (max-width: 767px) {
+    .hero-wrapper .hero-reserve-bar {
+        display: none !important;
+    }
+
+    .calendar-date-btn,
+    .calendar-date-blank,
+    .calendar-day-label {
+        font-family: "Gill Sans", Cabin;
+    }
+
+    .calendar-date-btn {
+        color: #000;
+    }
+
+    .calendar-date-today {
+        background: grey;
+        color: #fff;
+    }
+
+    .calendar-date-selected,
+    .calendar-date-inrange {
+        background-color: var(--Text-text-hover, #9c856b);
+        color: #fff;
+    }
+
+    .filter-dropdown-header {
+        justify-content: space-around;
+        padding-bottom: 0.5rem;
+        border-bottom: 0.5px solid grey;
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            filter: invert(1);
+            padding: 0.5rem 1rem;
+
+            &.calendar-nav-disabled {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .calendar-grid {
+        margin-top: 8px;
+        height: 100%;
+    }
+
+    .calendar-days-row {
+        justify-content: space-around;
+        margin-top: 16px;
+    }
+
+    .reserve-dates-btn,
+    .reserve-guests-btn {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .guests-dropdown {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin-top: 8px !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        z-index: 4 !important;
+        background-color: #fff !important;
+        height: fit-content;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.18);
+        box-sizing: border-box;
+    }
+
+    .guests-controls img {
+        filter: brightness(0) saturate(100%);
+    }
+
+    .guests-label,
+    .guests-count {
+        color: #000 !important;
+    }
+}
+
+body.modal-open {
+    overflow: hidden !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1380px) and (max-height: 830px) {
+    .hero-content {
+        width: 90%;
+        top: 57%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1380px) and (max-height: 610px) {
+    .hero-content {
+        top: 60%;
+    }
+    .hero-text-container h1.text-t1.hero-fade-in {
+        font-size: clamp(2.75rem, 8vw, 5rem);
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1380px) and (max-height: 500px) {
+    .nav-logo-text {
+        display: none;
+    }
+    .hero-content {
+        top: 55%;
+    }
 }

@@ -1,0 +1,180 @@
+.section.large-carousel-with-tooltip-container {
+    .large-carousel-with-tooltip-wrapper {
+        width: 100vw;
+        overflow-x: auto;
+
+        .large-carousel-with-tooltip.block {
+            display: flex;
+            max-width: 100vw;
+            gap: 2rem;
+            margin-bottom: 4.5rem;
+            padding: 0;
+
+            /* Add Padding Left to first Slide */
+            & > div:nth-of-type(1) {
+                padding-left: 4rem;
+                @media screen and (max-width: 767px) {
+                    padding-left: 1.5rem;
+                }
+            }
+
+            /* Add Padding Right to last Slide */
+            & > div:last-of-type {
+                padding-right: 4rem;
+
+                @media screen and (max-width: 767px) {
+                    padding-right: 1.5rem;
+                }
+
+                .tooltip-container {
+                    right: 5rem;
+                    @media screen and (max-width: 767px) {
+                        right: 2.5rem;
+                    }
+                }
+
+                & > div:nth-of-type(3) {
+                    right: 2.5rem;
+                }
+            }
+
+            /* Each Slide */
+            & > div {
+                position: relative;
+                max-width: 90vw;
+
+                /* Media */
+                & > div:nth-of-type(1) {
+                    max-width: 70rem;
+                    overflow: hidden;
+                    border-radius: 0.625rem;
+                    height: 37.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    picture {
+                        width: 90vw !important;
+                        height: 100% !important;
+
+                        img {
+                            width: 90vw;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                /* Coordinates Desktop */
+                & > div:nth-of-type(2) {
+                    position: absolute;
+                    height: 20px;
+                    width: 20px;
+                    background-color: white;
+                    border-radius: 999px;
+                    z-index: 3;
+
+                    @media screen and (max-width: 767px) {
+                        display: none !important;
+                    }
+
+                    p {
+                        display: none;
+                    }
+                }
+
+                /* Media Mobile */
+                & > div:nth-of-type(3) {
+                    height: 37.5rem;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 90vw;
+                    border-radius: 0.625rem;
+                    overflow: hidden;
+
+                    @media screen and (min-width: 767px) {
+                        display: none;
+                    }
+
+                    picture {
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                /* Coordinates Mobile */
+                & > div:nth-of-type(4) {
+                    position: absolute;
+                    height: 20px;
+                    width: 20px;
+                    z-index: 3;
+                    border-radius: 999px;
+                    display: block;
+                    background-color: white;
+                    @media screen and (min-width: 767px) {
+                        display: none;
+                    }
+
+                    p {
+                        display: none !important;
+                    }
+                }
+
+                /* Slide Text */
+                & > div:nth-of-type(5) {
+                    position: absolute;
+                    top: 37rem;
+                    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+                    line-height: 120%;
+                    letter-spacing: -0.03em;
+                    margin-top: 1.5rem;
+                    max-width: 90vw;
+                }
+
+                /* Tooltip */
+                .tooltip-container {
+                    position: absolute;
+                    bottom: 1rem;
+                    right: 1rem;
+                    max-width: 15.75rem;
+                    background-color: white;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: fit-content;
+                    padding: 1rem;
+                    box-sizing: border-box;
+                    border-radius: 0.625rem;
+                    gap: 1rem;
+
+                    @media screen and (max-width: 767px) {
+                        display: none;
+                    }
+
+                    /* Image */
+                    & > div:nth-of-type(1) {
+                        border-radius: 0.625rem;
+                        overflow: hidden;
+                        height: 10.25rem !important;
+
+                        img {
+                            width: 13.75rem;
+                            height: 10.25rem !important;
+                            object-fit: cover;
+                        }
+                    }
+
+                    & > div:nth-of-type(2) {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

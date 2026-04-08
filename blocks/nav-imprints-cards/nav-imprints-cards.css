@@ -1,0 +1,123 @@
+.nav-imprints-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.imprints-title {
+    text-transform: uppercase;
+    letter-spacing: -0.1em;
+    transition: color 0.5s ease;
+}
+
+.nav-imprints-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-imprints-cards:hover .imprints-title {
+    color: rgb(var(--brand-tan));
+}
+
+.nav-imprints-cards-images {
+    box-sizing: border-box;
+    position: relative;
+    height: 240px;
+    width: 400px;
+    overflow: hidden;
+    margin-right: 1rem;
+
+    picture {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+    }
+}
+
+.nav-imprints-header-image {
+    max-width: 12.5rem;
+}
+
+.nav-imprints-header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: filter 0.4s, color 0.4s;
+}
+.nav-imprints-section:hover .nav-imprints-header-image img {
+    filter: brightness(0) saturate(100%) invert(62%) sepia(30%) saturate(338%)
+        hue-rotate(351deg) brightness(96%) contrast(86%);
+    transition: filter 0.4s;
+}
+
+.nav-imprints-image {
+    border-radius: 10px;
+    max-width: 157px !important;
+    max-height: 157px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+    --hover-translate-y: 0px;
+}
+
+.nav-imprints-image img {
+    width: 157px;
+    height: 157px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.nav-imprints-cards .nav-imprints-image img {
+    transition: transform 0.3s ease-out;
+}
+
+.nav-imprints-cards:hover .nav-imprints-image img {
+    --hover-translate-y: -10px;
+    transform: translateY(-10px);
+}
+
+/* Anchor link wrapper styling */
+.nav-imprints-card-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.nav-imprints-card-link:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .nav-imprints-cards {
+        .nav-imprints-header-image {
+            max-width: 7.5rem;
+        }
+
+        .nav-imprints-cards-images {
+            height: 195px;
+
+            picture {
+                top: 30%;
+            }
+        }
+
+        .nav-imprints-image {
+            width: 100px !important;
+            height: 100px !important;
+            box-sizing: border-box;
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+}

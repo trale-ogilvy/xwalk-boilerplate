@@ -1,0 +1,234 @@
+.slider-teaser-content-container {
+    overflow: hidden !important;
+    display: block !important;
+    position: relative !important;
+    min-height: 900px;
+}
+
+.slider-teaser-content-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    height: 900px !important;
+    overflow: hidden;
+    display: block !important;
+    margin-bottom: 0;
+}
+
+.slider-teaser-content.block {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-teaser-content.block > div:nth-child(11) {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden;
+}
+
+.slider-teaser-content.block > div:nth-child(11) picture,
+.slider-teaser-content.block > div:nth-child(11) img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.slider-teaser-content.block > div:nth-child(11) > div {
+    width: 100% !important;
+    height: 100% !important;
+    background-image: url("./media_1c98554dd71afff3d0a131a7e5be5f99cf6ced8d0.jpg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.slider-teaser-content.block > div:nth-child(11) p.button-container {
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+.slider-teaser-content.block > div:nth-child(11) p.button-container a {
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* --- Content Layer */
+.slider-teaser-content.block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Frosted glass overlay  */
+.slider-teaser-content-container
+    > .slider-teaser-content-wrapper:nth-child(2)
+    .slider-teaser-content.block::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 368px;
+    height: auto;
+    min-height: 368px;
+    background: rgba(217, 217, 217, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    padding: 48px 40px !important;
+    border-radius: 30px !important;
+    z-index: 99 !important;
+    box-sizing: border-box;
+}
+
+.slider-teaser-content.block > div:nth-child(13) {
+    position: relative !important;
+    width: auto !important;
+    max-width: 150px;
+    margin-bottom: 1.5rem !important;
+    text-align: center;
+    z-index: 100 !important;
+    display: block !important;
+    order: 1;
+}
+.slider-teaser-content.block > div:nth-child(13) img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.slider-teaser-content.block > div:nth-child(2) {
+    position: relative !important;
+    color: white !important;
+    text-align: center !important;
+    font-size: 1.5em !important;
+    line-height: 1.2 !important;
+    margin-top: 0;
+    z-index: 100 !important;
+    max-width: 300px;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    display: block !important;
+    order: 2;
+}
+.slider-teaser-content.block > div:nth-child(2) p {
+    font-size: inherit !important;
+}
+
+.slider-teaser-content.block > div:nth-child(3) {
+    position: relative !important;
+    margin-top: 2.5rem !important;
+    z-index: 100 !important;
+    width: auto !important;
+    text-align: center;
+    display: block !important;
+    order: 3;
+}
+
+.slider-teaser-content.block > div:nth-child(3) p {
+    width: fit-content;
+    border-radius: 9999px;
+    background-color: rgb(var(--text-white));
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    font-family: var(--font-gill-sans), "Cabin", sans-serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    line-height: 100%;
+    letter-spacing: 0.15rem;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+    color: black;
+    transition-property: all;
+    transition-duration: 600ms;
+    text-decoration: none;
+}
+
+.slider-teaser-content.block > div:nth-child(6),
+.slider-teaser-content.block > div:nth-child(7),
+.slider-teaser-content.block > div:nth-child(8) {
+    position: relative !important;
+    width: auto !important;
+    max-width: 80% !important;
+    color: white !important;
+    text-align: center !important;
+    z-index: 100 !important;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: block !important;
+}
+.slider-teaser-content.block > div:nth-child(6) {
+    order: 2;
+    margin-top: -30px;
+}
+.slider-teaser-content.block > div:nth-child(7) {
+    order: 3;
+    margin-top: 10px;
+}
+.slider-teaser-content.block > div:nth-child(8) {
+    order: 4;
+    margin-top: 20px;
+}
+
+.slider-teaser-content.block > div:nth-child(6) p {
+    font-size: 2.5em;
+    line-height: 1.2;
+}
+.slider-teaser-content.block > div:nth-child(8) p {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+    font-family: var(--font-gill-sans), "Cabin", sans-serif;
+    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0;
+    cursor: pointer;
+}
+
+.slider-teaser-content.block > div:nth-child(8) p a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.slider-teaser-content.block > div:nth-child(1),
+.slider-teaser-content.block > div:nth-child(4),
+.slider-teaser-content.block > div:nth-child(5),
+.slider-teaser-content.block > div:nth-child(9),
+.slider-teaser-content.block > div:nth-child(10),
+.slider-teaser-content.block
+    > div:not([style*="display: block"]):not([class*="parallax-item"]):not(
+        :nth-child(2)
+    ):not(:nth-child(3)):not(:nth-child(6)):not(:nth-child(7)):not(
+        :nth-child(8)
+    ):not(:nth-child(11)):not(:nth-child(13)) {
+    display: none !important;
+}

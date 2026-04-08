@@ -1,0 +1,111 @@
+.accordion-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 3rem;
+
+    .accordion-container-item {
+        width: 828px;
+    }
+
+    @media screen and (max-width: 900px) {
+        .accordion-container-item {
+            width: 90vw;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .accordion-container-item {
+            width: 100vw;
+            box-sizing: border-box;
+        }
+    }
+
+    .accordion-item {
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .accordion-trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        background: none;
+        border: none;
+        text-align: left;
+        font-weight: 400;
+    }
+
+    .accordion-trigger svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .accordion-icon {
+        transition: transform 0.2s ease;
+    }
+
+    .accordion-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.2s ease;
+        padding-bottom: 0rem;
+
+        > *:last-child {
+            margin-bottom: 2rem;
+        }
+        > *:first-child {
+            margin-top: 1.5rem !important;
+        }
+    }
+
+    .accordion-item.active .accordion-content {
+        max-height: 4000px;
+    }
+
+    .accordion-header p {
+        color: var(--Text-text-black, #333);
+        font-family: Cormorant;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        letter-spacing: -0.96px;
+        margin: 0;
+    }
+
+    .accordion-content h4 {
+        font-weight: 400;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        margin-bottom: 0.25rem !important;
+        /* letter-spacing: -0.26px; */
+        margin-top: 2.5rem !important;
+    }
+
+    .accordion-content p,
+    .accordion-content li {
+        font-size: clamp(0.875rem, 2vw, 1.25rem);
+        font-weight: 400;
+        letter-spacing: -0.26px;
+    }
+    .accordion-content ul,
+    .accordion-content li {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .accordion-wrapper {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .accordion-container-item {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}

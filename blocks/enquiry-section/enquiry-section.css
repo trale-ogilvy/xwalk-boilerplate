@@ -1,0 +1,1539 @@
+/* --- Dialog Element Base Styles --- */
+.enquiry-section-container {
+    .general-modal-dialog {
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        width: 908px;
+        height: 839px;
+        max-width: 90vw;
+        max-height: 90vh;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .general-modal-dialog[open] {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    body:has(dialog[open]) {
+        overflow: hidden;
+    }
+
+    /* --- Dialog Backdrop Styles --- */
+    .general-modal-dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .general-modal-dialog[open]::backdrop {
+        opacity: 1;
+    }
+
+    /* --- Modal Content Box --- */
+    .general-modal-content {
+        position: relative;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        z-index: 10;
+    }
+
+    .general-modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        line-height: 1;
+        cursor: pointer;
+        color: #888;
+        z-index: 100;
+    }
+
+    .general-modal-title {
+        font-size: 2em;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    /* --- Form and Rows --- */
+    .general-modal-form {
+        border-radius: 1rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        flex-grow: 1;
+        position: relative;
+        z-index: 1;
+        max-width: 843px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .general-modal__row {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .general-modal__section-title {
+        text-align: center;
+        font-size: 1.25rem;
+        color: #000;
+        font-family: Cormorant;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        letter-spacing: -0.6px;
+        padding-top: 24px;
+        padding-bottom: 16px;
+    }
+
+    /* --- Field Wrapper for Validation --- */
+    .general-modal__field-wrapper {
+        flex: 1;
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    /* --- Input Field Styling --- */
+    .general-modal__input,
+    .general-modal__textarea {
+        width: 100%;
+        height: 56px;
+        border-radius: 96px;
+        border: 1px solid #ccc;
+        padding: 16px 24px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease-in-out;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .general-modal__textarea {
+        height: 150px;
+        min-height: 200px;
+        flex-basis: 100%;
+        resize: vertical;
+        border-radius: 24px;
+    }
+
+    .general-modal__input:focus,
+    .general-modal__textarea:focus {
+        outline: 0px solid #9c856b;
+        border-color: #9c856b;
+    }
+
+    /* --- Subscription Opt-in Styles --- */
+    .general-modal__subscription-optin {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 1rem;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .general-modal__checkbox {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        margin: 2px 0 0 0;
+        background-color: white;
+        border: 1px solid #d9d9d9;
+        border-radius: 50%;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .general-modal__checkbox:checked {
+        background-color: #9c856b;
+        border-color: #9c856b;
+    }
+
+    .general-modal__checkbox:checked::after {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 3px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .general-modal__subscription-label {
+        flex-grow: 1;
+        color: #333;
+        line-height: 1.4;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal__privacy-link {
+        color: inherit;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    /* --- reCAPTCHA Styles --- */
+    .general-modal__recaptcha-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        min-height: 78px;
+        overflow: visible;
+        position: relative;
+        z-index: 20;
+        margin: 0 auto;
+    }
+
+    #general-modal-recaptcha {
+        pointer-events: auto;
+        transform: scale(0.7);
+        transform-origin: center;
+        z-index: 21;
+        display: block;
+        margin: 0;
+        min-width: 304px;
+        min-height: 78px;
+        overflow: hidden;
+    }
+
+    #general-modal-recaptcha * {
+        pointer-events: auto !important;
+    }
+
+    .general-modal__recaptcha-wrapper .error-message {
+        color: #9c856b;
+        font-size: 0.875rem;
+        text-align: center;
+        width: 100%;
+        margin-top: 0.5rem;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        justify-content: center;
+    }
+
+    /* --- reCAPTCHA Challenge Popup Fixes (for external popups) --- */
+    div[style*="z-index: 2000000000"] {
+        z-index: 2000000001 !important;
+        position: fixed !important;
+    }
+
+    /* --- Salutation Dropdown Styles --- */
+    .general-modal-salutation-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 140px;
+    }
+
+    .general-modal-salutation-pill {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 96px;
+        border: 1px solid #e5e7eb;
+        background-color: #ffffff;
+        padding: 16px 24px;
+        font-size: 1rem;
+        transition: border-color 0.2s ease-in-out;
+        cursor: pointer;
+        text-align: left;
+        box-sizing: border-box;
+        height: 56px;
+    }
+
+    .general-modal-salutation-pill[aria-expanded="true"] {
+        border-color: #9c856b;
+    }
+
+    .general-modal-salutation-pill-text {
+        font-weight: 400;
+        color: #757575;
+        white-space: nowrap;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-salutation-pill-icon {
+        margin-left: 8px;
+        transition: transform 0.2s ease-in-out;
+        flex-shrink: 0;
+    }
+
+    .general-modal-salutation-pill-icon svg {
+        color: #757575;
+        margin-top: 6px;
+    }
+
+    .general-modal-salutation-pill[aria-expanded="true"]
+        .general-modal-salutation-pill-icon {
+        transform: rotate(180deg);
+    }
+
+    .general-modal-salutation-dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        position: absolute;
+        z-index: 50;
+        width: 100%;
+        top: calc(100% + 8px);
+        right: 0;
+        backdrop-filter: blur(48px);
+        -webkit-backdrop-filter: blur(48px);
+        background-color: rgba(51, 51, 51, 0.5);
+        color: #ffffff;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+        padding: 1rem;
+        box-sizing: border-box;
+        max-height: 200px;
+        overflow-y: auto;
+        opacity: 0;
+        transform: translateY(-5px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateZ(0);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+    }
+
+    .general-modal-salutation-dropdown::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .general-modal-salutation-dropdown::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    .general-modal-salutation-dropdown::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+    }
+
+    .general-modal-salutation-dropdown::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    .general-modal-salutation-dropdown[aria-open="true"] {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    .general-modal-salutation-item {
+        background: none;
+        border: none;
+        color: #ffffff;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        width: 100%;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-salutation-item:hover {
+        color: #cccccc;
+        background-color: transparent;
+    }
+
+    .general-modal-salutation-item.active {
+        font-weight: 400;
+        background-color: transparent;
+        color: #9c856b;
+    }
+
+    /* --- Phone Input Container --- */
+    .general-modal__phone-input-container {
+        width: 100%;
+        height: 56px;
+        border-radius: 96px;
+        border: 1px solid #ccc;
+        padding: 0 24px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease-in-out;
+    }
+
+    .general-modal__phone-label {
+        color: #757575;
+        margin-right: 12px;
+        white-space: nowrap;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal__phone-number {
+        border: none;
+        outline: 0;
+        background-color: transparent;
+        height: 100%;
+        flex-grow: 1;
+        font-size: 1rem;
+        width: 100%;
+        padding-left: 12px;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal__phone-input-container:focus-within {
+        border-color: #9c856b;
+    }
+
+    /* --- Phone Country Code Dropdown Styles --- */
+    .general-modal-phone-code-wrapper {
+        position: static;
+        flex-shrink: 0;
+        flex-grow: 0;
+    }
+
+    .general-modal__field-wrapper:has(.general-modal__phone-input-container) {
+        position: relative;
+    }
+
+    .general-modal-phone-code-pill {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: none;
+        border: none;
+        padding: 1rem;
+        height: 100%;
+        cursor: pointer;
+        text-align: left;
+        box-sizing: border-box;
+        white-space: nowrap;
+    }
+
+    .general-modal-phone-code-pill-text {
+        font-weight: 400;
+        color: #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-phone-code-pill-icon {
+        margin-left: 8px;
+        transition: transform 0.2s ease-in-out;
+        flex-shrink: 0;
+    }
+
+    .general-modal-phone-code-pill-icon svg {
+        color: #000000;
+        margin-top: 6px;
+    }
+
+    .general-modal-phone-code-pill[aria-expanded="true"]
+        .general-modal-phone-code-pill-icon {
+        transform: rotate(180deg);
+    }
+
+    .general-modal-phone-code-dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        position: absolute;
+        z-index: 50;
+        width: 100%;
+        top: calc(100% + 8px);
+        left: 0;
+        backdrop-filter: blur(48px);
+        -webkit-backdrop-filter: blur(48px);
+        background-color: rgba(51, 51, 51, 0.5);
+        color: #ffffff;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+        padding: 1rem;
+        box-sizing: border-box;
+        max-height: 250px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-5px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateZ(0);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+    }
+
+    .general-modal-phone-code-dropdown[aria-open="true"] {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    /* Phone Code Search Input */
+    .general-modal-phone-code-search {
+        width: 100%;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        box-sizing: border-box;
+        font-size: 0.875rem;
+        transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .general-modal-phone-code-search::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .general-modal-phone-code-search:focus {
+        outline: none;
+        border-color: #9c856b;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .general-modal-phone-code-search:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .general-modal-phone-code-dropdown
+        .general-modal-phone-code-items-container {
+        overflow-y: auto;
+        max-height: 180px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+    }
+
+    .general-modal-phone-code-dropdown
+        .general-modal-phone-code-items-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .general-modal-phone-code-dropdown
+        .general-modal-phone-code-items-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    .general-modal-phone-code-dropdown
+        .general-modal-phone-code-items-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+    }
+
+    .general-modal-phone-code-dropdown
+        .general-modal-phone-code-items-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    .general-modal-phone-code-item {
+        background: none;
+        border: none;
+        color: #ffffff;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        width: 100%;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .general-modal-phone-code-item:hover {
+        color: #cccccc;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .general-modal-phone-code-item.active {
+        font-weight: 400;
+        background-color: rgba(156, 133, 107, 0.3);
+        color: #9c856b;
+    }
+
+    .general-modal-phone-code-no-results {
+        padding: 0.75rem 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+        text-align: center;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        font-size: 0.875rem;
+    }
+
+    @supports not (selector(:has(*))) {
+        .general-modal__field-wrapper {
+            position: relative;
+        }
+
+        .general-modal-phone-code-wrapper {
+            position: static;
+        }
+
+        .general-modal-phone-code-dropdown {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: calc(100% + 8px);
+        }
+    }
+
+    /* --- Calendar Styles --- */
+    .general-modal__calendar-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .calendar-filter-button {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 96px;
+        border: 1px solid #ccc;
+        background-color: #ffffff;
+        padding: 16px 24px;
+        font-size: 1rem;
+        transition: border-color 0.2s ease-in-out;
+        cursor: pointer;
+        text-align: left;
+        box-sizing: border-box;
+        height: 56px;
+    }
+
+    .calendar-filter-button[aria-expanded="true"] {
+        border-color: #9c856b;
+    }
+
+    .calendar-filter-button-text {
+        font-weight: 400;
+        color: #757575;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .calendar-filter-button-icon {
+        margin-left: 8px;
+        transition: transform 0.2s ease-in-out;
+        flex-shrink: 0;
+    }
+
+    .calendar-filter-button-icon svg {
+        color: #000000;
+    }
+
+    .calendar-filter-button[aria-expanded="true"] .calendar-filter-button-icon {
+        transform: rotate(180deg);
+    }
+
+    .calendar-dropdown-container {
+        display: none;
+        position: absolute;
+        z-index: 50;
+        width: 100%;
+        min-width: 270px;
+        top: calc(100% + 8px);
+        right: 0;
+    }
+
+    /* Updated Calendar Board Styles */
+    .general-modal-calendar-board {
+        backdrop-filter: blur(48px);
+        -webkit-backdrop-filter: blur(48px);
+        background-color: rgba(51, 51, 51, 0.5);
+        color: #ffffff;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+        padding: 1.5rem;
+        box-sizing: border-box;
+    }
+
+    .general-modal-calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 0.5rem;
+    }
+
+    .general-modal-calendar-nav {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.25rem;
+        color: white;
+    }
+
+    .general-modal-calendar-nav:not([disabled]):hover {
+        opacity: 0.7;
+    }
+
+    .general-modal-calendar-nav-disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    .general-modal-calendar-month-label {
+        font-weight: 400;
+        margin: 0;
+        flex-grow: 1;
+        text-align: center;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-calendar-weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .general-modal-calendar-weekday {
+        font-size: 0.8rem;
+        color: #ccc;
+        text-transform: uppercase;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.5rem;
+    }
+
+    .general-modal-calendar-day {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.875rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-calendar-day.general-modal-calendar-empty {
+        cursor: default;
+    }
+
+    .general-modal-calendar-day:not(.general-modal-calendar-empty):not(
+            :disabled
+        ):hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .general-modal-calendar-day.general-modal-calendar-disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    .general-modal-calendar-day.general-modal-calendar-today {
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .general-modal-calendar-day.general-modal-calendar-selected-start,
+    .general-modal-calendar-day.general-modal-calendar-selected-end {
+        background-color: #9c856b !important;
+        color: #000000 !important;
+    }
+
+    .general-modal-calendar-day.general-modal-calendar-in-range {
+        background-color: rgba(156, 134, 107, 0.5);
+        color: white;
+        border-radius: 0;
+    }
+
+    .general-modal-calendar-done-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.5rem;
+        background: #ffffff;
+        color: #000000;
+        border: none;
+        border-radius: 96px;
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        text-transform: uppercase;
+        align-self: flex-end;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-calendar-done-btn:hover {
+        background-color: #9c856b;
+        color: #ffffff;
+    }
+
+    /* --- Restaurant Dropdown Styles --- */
+    .general-modal-restaurant-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .general-modal-restaurant-pill {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 96px;
+        border: 1px solid #e5e7eb;
+        background-color: #ffffff;
+        padding: 16px 24px;
+        font-size: 1rem;
+        transition: border-color 0.2s ease-in-out;
+        cursor: pointer;
+        text-align: left;
+        box-sizing: border-box;
+        height: 56px;
+    }
+
+    .general-modal-restaurant-pill[aria-expanded="true"] {
+        border-color: #9c856b;
+    }
+
+    .general-modal-restaurant-pill-text {
+        font-weight: 400;
+        color: #000000;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-restaurant-pill-icon {
+        margin-left: 8px;
+        transition: transform 0.2s ease-in-out;
+        flex-shrink: 0;
+    }
+
+    .general-modal-restaurant-pill-icon svg {
+        color: #000000;
+        margin-top: 6px;
+    }
+
+    .general-modal-restaurant-pill[aria-expanded="true"]
+        .general-modal-restaurant-pill-icon {
+        transform: rotate(180deg);
+    }
+
+    .general-modal-restaurant-dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        position: absolute;
+        z-index: 50;
+        width: 100%;
+        top: calc(100% + 8px);
+        right: 0;
+        backdrop-filter: blur(48px);
+        -webkit-backdrop-filter: blur(48px);
+        background-color: rgba(51, 51, 51, 0.5);
+        color: #ffffff;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+        padding: 1rem;
+        box-sizing: border-box;
+        max-height: 200px;
+        overflow-y: auto;
+        opacity: 0;
+        transform: translateY(-5px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateZ(0);
+    }
+
+    .general-modal-restaurant-dropdown[aria-open="true"] {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    .general-modal-restaurant-item {
+        background: none;
+        border: none;
+        color: #ffffff;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        width: 100%;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-restaurant-item:hover {
+        color: #cccccc;
+        background-color: transparent;
+    }
+
+    .general-modal-restaurant-item.active {
+        font-weight: 400;
+        background-color: transparent;
+        color: #9c856b;
+    }
+
+    /* --- Enquiry Type Dropdown Styles --- */
+    .general-modal-enquiry-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .general-modal-enquiry-pill {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 96px;
+        border: 1px solid #e5e7eb;
+        background-color: #ffffff;
+        padding: 16px 24px;
+        font-size: 1rem;
+        transition: border-color 0.2s ease-in-out;
+        cursor: pointer;
+        text-align: left;
+        box-sizing: border-box;
+        height: 56px;
+    }
+
+    .general-modal-enquiry-pill[aria-expanded="true"] {
+        border-color: #9c856b;
+    }
+
+    .general-modal-enquiry-pill-text {
+        font-weight: 400;
+        color: #757575;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-enquiry-pill-icon {
+        margin-left: 8px;
+        transition: transform 0.2s ease-in-out;
+        flex-shrink: 0;
+    }
+
+    .general-modal-enquiry-pill-icon svg {
+        color: #757575;
+        margin-top: 6px;
+    }
+
+    .general-modal-enquiry-pill[aria-expanded="true"]
+        .general-modal-enquiry-pill-icon {
+        transform: rotate(180deg);
+    }
+
+    .general-modal-enquiry-dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        position: absolute;
+        z-index: 50;
+        width: 100%;
+        top: calc(100% + 8px);
+        right: 0;
+        backdrop-filter: blur(48px);
+        -webkit-backdrop-filter: blur(48px);
+        background-color: rgba(51, 51, 51, 0.5);
+        color: #ffffff;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+        padding: 1rem;
+        box-sizing: border-box;
+        max-height: 200px;
+        overflow-y: auto;
+        opacity: 0;
+        transform: translateY(-5px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateZ(0);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+    }
+
+    .general-modal-enquiry-dropdown::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .general-modal-enquiry-dropdown::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    .general-modal-enquiry-dropdown::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+    }
+
+    .general-modal-enquiry-dropdown::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    .general-modal-enquiry-dropdown[aria-open="true"] {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    .general-modal-enquiry-item {
+        background: none;
+        border: none;
+        color: #ffffff;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        width: 100%;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal-enquiry-item:hover {
+        color: #cccccc;
+        background-color: transparent;
+    }
+
+    .general-modal-enquiry-item.active {
+        font-weight: 400;
+        background-color: transparent;
+        color: #9c856b;
+    }
+
+    /* --- Validation Styles --- */
+    .has-error {
+        border-color: #9c856b !important;
+    }
+
+    .error-message {
+        color: #9c856b;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        width: 100%;
+        text-align: left;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .general-modal__recaptcha-wrapper .error-message,
+    .enquiry-section__recaptcha-wrapper .error-message {
+        text-align: center;
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .general-modal__field-wrapper .calendar-filter-button + .error-message,
+    .general-modal__field-wrapper
+        .general-modal__phone-input-container
+        + .error-message {
+        text-align: left;
+    }
+
+    /* --- Submit Button Styles --- */
+    .general-modal__submit-btn,
+    .enquiry-section__submit-btn {
+        background-color: #ffffff;
+        color: #000000;
+        border: none;
+        border-radius: 96px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: background-color 0.3s, color 0.3s;
+        width: 110px;
+        height: 47px;
+        opacity: 1;
+        align-self: center;
+        box-shadow: 0px 0px 15px 0px #0000002e;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .general-modal__submit-btn:hover,
+    .enquiry-section__submit-btn:hover {
+        background-color: #9c856b;
+        color: #ffffff;
+    }
+
+    .general-modal__submit-btn:disabled,
+    .enquiry-section__submit-btn:disabled {
+        background-color: #9c856b;
+        color: transparent;
+        font-size: 0;
+        line-height: 0;
+        cursor: not-allowed;
+    }
+
+    /* Spinner Styles */
+    .button-spinner {
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid #ffffff;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        animation: spin 0.8s linear infinite;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .general-modal-submission-error {
+        color: #d9534f;
+        font-size: 0.95rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        padding: 10px;
+        border: 1px solid #d9534f;
+        border-radius: 8px;
+        background-color: #ffe0e0;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    /* --- Enquiry Section Inline Form Styles --- */
+    .enquiry-section-form {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        width: 100%;
+        max-width: 900px;
+        margin: 2rem auto;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+    }
+
+    .enquiry-section-title {
+        font-size: 2em;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .enquiry-section__row {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .enquiry-section__field-wrapper {
+        flex: 1;
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .enquiry-section__row:first-child {
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .enquiry-section__row:first-child
+        .enquiry-section__field-wrapper:first-child {
+        flex: 0 0 140px;
+        max-width: 140px;
+        min-width: 140px;
+    }
+
+    .enquiry-section__row:first-child
+        .enquiry-section__field-wrapper:not(:first-child) {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: none;
+    }
+
+    /* --- Input Field Styling --- */
+    .enquiry-section__input,
+    .enquiry-section__textarea {
+        width: 100%;
+        height: 56px;
+        border-radius: 96px;
+        border: 1px solid #ccc;
+        padding: 16px 24px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease-in-out;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .enquiry-section__textarea {
+        height: 150px;
+        min-height: 200px;
+        flex-basis: 100%;
+        resize: vertical;
+        border-radius: 24px;
+    }
+
+    .enquiry-section__input:focus,
+    .enquiry-section__textarea:focus {
+        outline: 0px solid #9c856b;
+        border-color: #9c856b;
+    }
+
+    /* --- Subscription Opt-in Styles --- */
+    .enquiry-section__subscription-optin {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 1rem;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+        max-width: 477px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .enquiry-section__checkbox {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        margin: 2px 0 0 0;
+        background-color: white;
+        border: 1px solid #d9d9d9;
+        border-radius: 50%;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .enquiry-section__checkbox:checked {
+        background-color: #9c856b;
+        border-color: #9c856b;
+    }
+
+    .enquiry-section__checkbox:checked::after {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 3px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .enquiry-section__subscription-label {
+        flex-grow: 1;
+        color: #333;
+        line-height: 1.4;
+        font-family: "Gill Sans", "Cabin", sans-serif;
+    }
+
+    .enquiry-section__privacy-link {
+        color: inherit;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    /* --- reCAPTCHA Styles --- */
+    .enquiry-section__recaptcha-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        min-height: 78px;
+        overflow: visible;
+        position: relative;
+        z-index: 20;
+        margin: 0 auto;
+    }
+
+    #enquiry-section-recaptcha {
+        pointer-events: auto;
+        transform: scale(0.7);
+        transform-origin: center;
+        z-index: 21;
+        display: block;
+        margin: 0;
+        min-width: 304px;
+        min-height: 78px;
+        overflow: hidden;
+    }
+
+    #enquiry-section-recaptcha * {
+        pointer-events: auto !important;
+    }
+
+    /* --- Mobile Phone Input Responsive --- */
+    @media (max-width: 767px) {
+        .general-modal__phone-input-container.has-input
+            .general-modal__phone-label {
+            opacity: 0;
+            width: 0;
+            margin-right: 0;
+            overflow: hidden;
+            transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out,
+                margin-right 0.2s ease-in-out;
+        }
+
+        .general-modal__phone-input-container.has-input
+            .general-modal-phone-code-pill {
+            padding: 0;
+        }
+
+        .general-modal__phone-label {
+            transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out,
+                margin-right 0.2s ease-in-out;
+        }
+
+        .general-modal-phone-code-dropdown {
+            width: 100%;
+            left: 0;
+            max-height: 300px;
+        }
+
+        .general-modal-phone-code-dropdown
+            .general-modal-phone-code-items-container {
+            max-height: 200px;
+        }
+
+        .general-modal-phone-code-search {
+            font-size: 16px;
+        }
+    }
+
+    /* --- General Mobile Responsive --- */
+    @media (max-width: 900px) {
+        .general-modal-form {
+            max-width: unset;
+            width: unset;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .general-modal-form {
+            max-width: unset;
+            width: unset;
+        }
+
+        .general-modal-dialog {
+            width: 95vw;
+            height: auto;
+            padding: 0;
+            max-height: 95vh;
+        }
+
+        .general-modal-content {
+            padding: 1rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .general-modal-form {
+            overflow: visible;
+            padding: 1rem;
+            padding-bottom: 2rem;
+        }
+
+        .general-modal__row {
+            gap: 1rem;
+        }
+
+        .general-modal__field-wrapper {
+            flex: 1 1 100%;
+            min-width: unset;
+            max-width: 100%;
+        }
+
+        .general-modal__row:first-child {
+            flex-wrap: wrap;
+        }
+
+        .general-modal__row:first-child
+            .general-modal__field-wrapper:first-child {
+            flex: 1 1 100%;
+            max-width: 100%;
+            min-width: unset;
+        }
+
+        .general-modal__row:first-child
+            .general-modal__field-wrapper:not(:first-child) {
+            flex: 1 1 100%;
+            min-width: unset;
+            max-width: 100%;
+        }
+
+        .general-modal-salutation-wrapper {
+            max-width: 100%;
+        }
+
+        .general-modal-salutation-pill {
+            max-width: 100%;
+        }
+
+        .general-modal-salutation-dropdown {
+            width: 100%;
+            right: 0;
+            left: 0;
+        }
+
+        .general-modal-phone-code-wrapper {
+            flex-grow: 1;
+        }
+
+        .general-modal__recaptcha-wrapper {
+            overflow: visible;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #general-modal-recaptcha {
+            transform: scale(0.6);
+            transform-origin: center;
+            max-width: 100%;
+        }
+
+        .calendar-dropdown-container {
+            width: 100%;
+        }
+
+        .enquiry-section-form {
+            padding: 1rem;
+            max-width: 100vw;
+        }
+
+        .enquiry-section__row {
+            gap: 1rem;
+        }
+
+        .enquiry-section__field-wrapper {
+            flex: 1 1 100%;
+            min-width: unset;
+            max-width: 100%;
+        }
+
+        .enquiry-section__row:first-child {
+            flex-wrap: wrap;
+        }
+
+        .enquiry-section__row:first-child
+            .enquiry-section__field-wrapper:first-child {
+            flex: 1 1 100%;
+            max-width: 100%;
+            min-width: unset;
+        }
+
+        .enquiry-section__row:first-child
+            .enquiry-section__field-wrapper:not(:first-child) {
+            flex: 1 1 100%;
+            min-width: unset;
+            max-width: 100%;
+        }
+    }
+}
+
+/* remove focus blue state */
+.general-modal__input:-webkit-autofill,
+.general-modal__input:-webkit-autofill:hover,
+.general-modal__input:-webkit-autofill:focus,
+.general-modal__textarea:-webkit-autofill,
+.general-modal__textarea:-webkit-autofill:hover,
+.general-modal__textarea:-webkit-autofill:focus,
+.general-modal__phone-number:-webkit-autofill,
+.general-modal__phone-number:-webkit-autofill:hover,
+.general-modal__phone-number:-webkit-autofill:focus,
+.enquiry-section__input:-webkit-autofill,
+.enquiry-section__input:-webkit-autofill:hover,
+.enquiry-section__input:-webkit-autofill:focus,
+.enquiry-section__textarea:-webkit-autofill,
+.enquiry-section__textarea:-webkit-autofill:hover,
+.enquiry-section__textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-text-fill-color: #333 !important;
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.subscription-checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 20px;
+}

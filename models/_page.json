@@ -21,6 +21,30 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subTitle",
+          "label": "Sub Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "cardDescription",
+          "label": "Card Description"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaName",
+          "label": "Card CTA Name"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaURL",
+          "label": "Card CTA URL"
         }
       ]
     }

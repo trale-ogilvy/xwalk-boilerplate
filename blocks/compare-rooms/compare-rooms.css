@@ -1,0 +1,315 @@
+.compare-rooms-wrapper {
+    display: flex;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+
+    .compare-rooms.block {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+
+        @media screen and (max-width: 767px) {
+            gap: 1rem;
+
+            .compare-rooms-column:nth-child(3) {
+                display: none;
+            }
+        }
+
+        .compare-rooms-column {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+            width: 100%;
+            flex: 1;
+
+            @media screen and (max-width: 767px) {
+                gap: 2.5rem;
+            }
+
+            .filter-button-wrapper {
+                margin: 0;
+                max-width: 30vw;
+                min-width: 100%;
+                width: 384px;
+
+                @media screen and (max-width: 767px) {
+                    max-width: 44vw;
+                }
+
+                .pill-dropdown-button {
+                    color: #000;
+                    width: 100%;
+                    padding: 16px 24px;
+                    padding-right: 64px;
+                }
+
+                .filter-dropdown-inner {
+                    gap: 1rem;
+
+                    input {
+                        display: none;
+                    }
+
+                    label {
+                        cursor: pointer;
+                    }
+                    label:hover:not(:has(input[type="radio"]:checked)) {
+                        opacity: 0.6;
+                    }
+
+                    label.filter-subcategory:has(input[type="radio"]:checked)
+                        span {
+                        color: #9c856b !important;
+                        cursor: default;
+                    }
+                }
+
+                .events-filter-dropdown {
+                    width: 100%;
+                    @media screen and (max-width: 968px) {
+                        width: inherit;
+                    }
+                }
+            }
+
+            .compare-rooms-card {
+                display: flex;
+                flex-direction: column;
+
+                .image-wrapper {
+                    position: relative;
+                    aspect-ratio: 1 / 1;
+                    width: 100%;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    margin-bottom: 1.5rem;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    .remove-icon-button {
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
+                        z-index: 10;
+                        background-color: white;
+                        border-radius: 50%;
+                        width: 2rem;
+                        height: 2rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: opacity 0.5s ease;
+
+                        @media screen and (max-width: 767px) {
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            top: 0.5rem;
+                            right: 0.5rem;
+                        }
+
+                        img {
+                            width: 1.5rem;
+                            height: 1.5rem;
+
+                            @media screen and (max-width: 767px) {
+                                width: 1rem;
+                                height: 1rem;
+                            }
+                        }
+                    }
+                    .remove-icon-button:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                .content-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+                    .first-row {
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                        min-height: 216px;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        .header-content {
+                            .label {
+                                margin-bottom: 1rem !important;
+                            }
+
+                            .title {
+                                margin-bottom: 0.5rem !important;
+                                padding-right: 2rem;
+                            }
+
+                            .cost {
+                                color: rgb(var(--text-grey));
+                            }
+                        }
+
+                        .cta-link {
+                            margin-top: auto;
+                            margin-bottom: 3rem;
+                            width: fit-content;
+                        }
+                    }
+
+                    .second-row {
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                        min-height: 360px;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        .floorplan {
+                            margin-top: auto;
+                            margin-bottom: 3rem !important;
+                            width: fit-content;
+                        }
+                    }
+
+                    .second-row,
+                    .third-row {
+                        .label {
+                            margin-bottom: 1.5rem !important;
+                        }
+
+                        .details {
+                            padding-left: 0;
+                        }
+                    }
+
+                    .second-row {
+                        .details {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5rem;
+
+                            li {
+                                list-style: none;
+                                display: flex;
+                                align-items: start;
+                                gap: 1rem;
+
+                                .icon {
+                                    img {
+                                        width: 1.5rem;
+                                        height: 1.5rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .third-row {
+                        .details {
+                            margin-bottom: 3rem !important;
+                            padding-left: 0;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.2rem;
+
+                            li {
+                                margin-left: 1rem;
+                                padding-left: 0.4rem;
+                            }
+
+                            li::marker {
+                                font-size: 0.7em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.floorplan-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+
+    .floorplan-modal {
+        background: #fff;
+        border-radius: 12px;
+        max-width: 900px;
+        max-height: 90vh;
+        width: 100%;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0.98);
+        transition: opacity 0.4s, transform 0.4s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+
+        @media screen and (max-width: 767px) {
+            width: 100vw;
+            height: 100vh;
+            max-height: none;
+            border-radius: 0;
+        }
+
+        iframe {
+            width: 60%;
+            height: 30rem;
+            border: none;
+
+            @media screen and (max-width: 767px) {
+                width: 90%;
+                height: 50vh;
+            }
+        }
+
+        .floorplan-modal-close {
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+            z-index: 10;
+
+            @media screen and (max-width: 767px) {
+                top: 4rem;
+                left: 1rem;
+            }
+        }
+    }
+}
+
+.floorplan-modal-close.text-b.close-icon.icon-left {
+    color: #000 !important;
+}
+
+
+@media screen and (max-width: 767px) {
+    body .compare-rooms-wrapper .compare-rooms.block .compare-rooms-column:first-child .events-filter-dropdown {
+        width: 272px !important;
+    }
+
+    body .compare-rooms-wrapper .compare-rooms.block .compare-rooms-column:nth-child(2) .events-filter-dropdown {
+        right: 0;
+        left: auto;
+        width: 272px;
+    }
+}

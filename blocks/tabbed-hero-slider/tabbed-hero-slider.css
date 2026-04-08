@@ -1,0 +1,229 @@
+.tabbed-hero-slider-container {
+    position: relative;
+    /*padding: var(--space-xl) 0 0;*/
+}
+
+.tab-nav {
+    position: absolute;
+    left: 50%;
+    bottom: 64px;
+    transform: translateX(-50%);
+    z-index: 3;
+    border-radius: 77.978px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(24px);
+    gap: 16px;
+    display: inline-flex;
+    padding: 7.798px 8px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.tab-highlight {
+    position: absolute;
+    top: 7.798px;
+    left: 8px;
+    height: calc(100% - 15.596px);
+    background: var(--Text-text-white, #fff);
+    border-radius: 96px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.tab-btn {
+    background: transparent;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 96px;
+    padding: 16px 24px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+    border: none;
+}
+
+.tab-btn.active {
+    color: black;
+    text-align: center;
+    background: transparent;
+}
+
+.cta-btn {
+    color: var(--Text-text-white, #fff);
+    text-align: center;
+    padding: 16px 24px;
+}
+
+.hero-slide {
+    position: relative;
+    width: 100%;
+    display: block;
+    max-height: 100vh;
+    object-fit: cover;
+    background-color: rgb(var(--brand-sage));
+}
+
+.hero-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.slide-video {
+    width: 100%;
+    display: block;
+
+    transition: opacity 0.6s ease-in-out;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+    max-width: 750px;
+    z-index: 2;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.tabbed-hero-label {
+    color: var(--Text-text-white, #fff);
+    text-align: center;
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+    margin-bottom: var(--space-xs);
+}
+
+.tabbed-hero-title {
+    color: var(--Text-text-white, #fff);
+    text-align: center;
+    font-family: Cormorant;
+    font-size: 3.25rem;
+    font-style: normal;
+    /* font-weight: 400; */
+    line-height: 100%;
+    letter-spacing: -1.56px;
+    margin-bottom: 24px;
+    @media all and (max-width: 767px) {
+        padding: 0 2.5rem;
+    }
+}
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cta-content img {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.slider-indicators {
+    display: none;
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    z-index: 3;
+    padding: 8px 0;
+}
+
+.slider-indicator {
+    background-color: rgba(var(--border-grey), 1);
+    opacity: 1;
+    border-radius: 4px;
+    width: 4px;
+    height: 4px;
+    margin: 0 4px 0 0;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.slider-indicator.active {
+    width: 25px;
+    background-color: white;
+}
+
+.hero-slide video.slide-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #000;
+    transition: opacity 0.6s ease-in-out;
+}
+
+@media (max-width: 767px) {
+    .tab-nav {
+        display: none;
+    }
+
+    .slider-indicators {
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-slide {
+        position: relative;
+    }
+
+    .tabbed-hero-label {
+        font-size: 0.875rem;
+    }
+
+    .tabbed-hero-title {
+        font-size: 2rem;
+        margin-bottom: 24px;
+    }
+
+    .cta-btn {
+        font-size: 0.8125rem;
+    }
+
+    .slider-indicators {
+        bottom: 16px;
+    }
+
+    .hero-slide img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        transition: opacity 0.6s ease-in-out;
+    }
+    .slide-video {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        transition: opacity 0.6s ease-in-out;
+    }
+
+    .hero-slide video.slide-video {
+        height: 600px !important;
+        transition: opacity 0.6s ease-in-out;
+    }
+    .cta-content img {
+        width: 24px;
+        height: 24px;
+    }
+}

@@ -1,0 +1,355 @@
+.slider-teaser-content-container {
+    overflow: clip;
+
+    .parallax-container {
+        width: 100%;
+    }
+
+    position: relative;
+
+    /* ---------------------------- Parallax Content ---------------------------- */
+    .parallax-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100%;
+
+        .parallax-item {
+            position: absolute;
+            top: 0vh;
+            left: 0px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+
+            .overlay-container {
+                background: rgba(217, 217, 217, 0.1);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 48px 40px;
+                border-radius: 30px;
+                max-width: 448px;
+                max-height: 448px;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .logo-wrapper {
+                    margin-bottom: 2.5rem;
+                    width: 262px;
+                    height: 135px;
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .cta-button {
+                    margin-top: 2.5rem;
+                }
+
+                @media all and (width < 768px) {
+                    max-width: 90vw;
+
+                    .text-h4 {
+                        max-width: 325px;
+                    }
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+
+            .base-container {
+                > *:not(.cta-link) {
+                    padding: 0 2.5rem;
+                    max-width: 700px;
+                }
+
+                .text-label {
+                    margin-bottom: var(--space-xs) !important;
+                }
+
+                .text-p1 {
+                    margin-top: 1.5rem;
+                }
+
+                .cta-link {
+                    margin-top: 2.5rem;
+                }
+            }
+        }
+    }
+
+    /* ---------------------------- Parallax Media ---------------------------- */
+    .parallax-media {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        min-height: 100vh;
+        z-index: 1;
+
+        div.parallax-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .parallax-item {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+
+            &.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            img {
+                height: 100vh !important;
+                width: 100vw !important;
+                object-fit: cover;
+            }
+
+            video {
+                width: 100vw !important;
+                height: 100vh !important;
+                object-fit: cover;
+                background-color: black;
+                display: block;
+            }
+        }
+    }
+}
+
+/* ---------------------------- Music Card Styles --------------------------- */
+.music-card {
+    margin-top: 40px;
+    border-radius: 10px;
+    pointer-events: auto;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    background: rgba(51, 51, 51, 0.5);
+    backdrop-filter: blur(15px);
+    padding: 24px;
+    gap: 24px;
+}
+
+.music-artist-thumbnail {
+    flex: 0 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-artist-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-song-info {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+}
+
+.music-song-label {
+    color: var(--Text-text-white, #fff);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.music-title {
+    color: var(--Text-text-white, #fff);
+    font-family: Cormorant;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.96px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.music-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.music-audio-play {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.music-progress-bar-wrapper {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    margin: 8px 0;
+    cursor: pointer;
+    overflow: hidden;
+    display: block;
+}
+
+.music-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    border-radius: 3px;
+    transition: width 0.2s linear;
+}
+
+.music-audio-timing {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    width: 100%;
+}
+
+.music-audio-timing-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--Text-text-white, #fff);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    margin-bottom: 2px;
+}
+
+.music-audio-current {
+    text-align: left;
+}
+
+.music-audio-left {
+    text-align: right;
+}
+
+@media (max-width: 900px) {
+    .music-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .music-artist-thumbnail {
+        width: 80px;
+        height: 80px;
+    }
+
+    .music-title {
+        font-size: 1.25rem;
+    }
+
+    .music-song-label {
+        font-size: 0.875rem;
+    }
+
+    .music-song-info {
+        width: 149px;
+    }
+}
+
+.slider-teaser-content-container {
+    margin-top: var(--space-xl);
+}
+
+/* ---------------------------- Info Item Styles --------------------------- */
+.info-item-wrapper {
+    width: 100%;
+}
+.info-title {
+    color: var(--Text-text-white, #fff);
+}
+
+.info-item-feature-text {
+    color: var(--Text-text-white, #fff);
+    font-family: Cormorant;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.72px;
+    max-width: 255px;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.info-item-features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.info-item-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 500px) {
+    .info-item {
+        flex-direction: column;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        gap: 16px;
+    }
+    .info-title {
+        text-align: left;
+    }
+}

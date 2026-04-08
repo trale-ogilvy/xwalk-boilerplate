@@ -1,0 +1,277 @@
+.reserve-modal-container {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999;
+    background-color: #ffffff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.7s ease;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.reserve-modal-container.is-visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Scroll hide effect for the close button */
+.reserve-modal-container.is-scroll-hide .reserve-modal-close {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.reserve-modal-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+
+    @media all and (max-width: 767px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0;
+    }
+}
+
+/* Modal content layout */
+.reserve-modal.destinations-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Title styling */
+.reserve-modal-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.reserve-modal-title p {
+    color: #000;
+    margin: 0;
+}
+
+/* Card styling */
+.reserve-modal-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+    flex: 1 1 calc(25% - 2rem);
+    box-sizing: border-box;
+}
+
+.reserve-modal-card:hover {
+}
+
+/* Card image container */
+.reserve-modal-card-image {
+    margin-bottom: 1.5rem;
+    max-height: 400px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.reserve-modal-card-image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.reserve-modal-card-image img {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    transition: transform 1s ease;
+    display: block;
+}
+
+.reserve-modal-card:hover .reserve-modal-card-image img {
+    transform: scale(1.05);
+}
+
+/* Card title styling */
+.reserve-modal-card-title {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.reserve-modal-card-title p {
+    color: #333;
+    margin: 0;
+    letter-spacing: 0px;
+    position: relative;
+    display: inline-block;
+    transition: color 0.5s ease;
+    @media screen and (max-width: 767px) {
+        font-size: 1.25rem;
+    }
+}
+
+/* Underline effect for card title on hover */
+.reserve-modal-card-title p::before {
+    content: "";
+    position: absolute;
+    bottom: -0.1rem;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: #8b7355;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reserve-modal-card:hover .reserve-modal-card-title p {
+    color: #8b7355;
+}
+
+.reserve-modal-card:hover .reserve-modal-card-title p::before {
+    width: 100%;
+}
+
+.reserve-modal-card-cta {
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+    .reserve-modal-container {
+        padding: 1rem;
+    }
+
+    .reserve-modal-card {
+        flex: 1 1 calc(50% - 2rem);
+    }
+}
+
+/* Utility States */
+.reserve-modal-card.is-active {
+}
+
+.reserve-modal-card.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Modal header */
+.reserve-modal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.reserve-modal-close {
+    position: absolute;
+    left: 4rem;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    @media all and (max-width: 767px) {
+        left: 1rem;
+        margin-top: -20px;
+    }
+}
+
+.reserve-modal-close .close-symbol {
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1.8rem;
+    line-height: 110%;
+    font-weight: 400;
+}
+
+.reserve-modal-close .text-b {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.reserve-modal-logo-wrapper {
+    margin-top: 2rem;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reserve-modal-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.reserve-modal-logo img {
+    width: auto;
+    display: block;
+    height: 5rem;
+    max-width: 234px;
+}
+
+.reserve-modal-container:focus {
+    outline: none;
+}
+
+@media (max-width: 767px) {
+    .reserve-modal-logo img {
+        height: 80px;
+        width: 186px;
+    }
+
+    .reserve-modal-close .text-b {
+        display: none;
+    }
+}

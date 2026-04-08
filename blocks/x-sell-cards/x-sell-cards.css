@@ -1,0 +1,302 @@
+.x-sell-cards-wrapper {
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    @media screen and (max-width: 767px) {
+        padding: 0px 1.5rem;
+    }
+}
+
+.xsell-tile {
+    display: flex;
+    gap: 32px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+
+    @media screen and (max-width: 767px) {
+        align-items: normal;
+    }
+}
+
+.xsell-tile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    aspect-ratio: unset;
+    object-fit: cover;
+    max-width: 100%;
+    object-position: center;
+}
+
+.xsell-tile .xsell-main-tile .xsell-tile-image picture,
+.xsell-tile .xsell-sub-tile .xsell-tile-image picture {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.xsell-tile .xsell-main-tile .xsell-tile-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 626 / 480;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 100%;
+    transform: scale(1);
+
+    img {
+        transition: all 0.5s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width: 767px) {
+        aspect-ratio: 327 / 262;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.xsell-tile .xsell-sub-tile .xsell-tile-image,
+.xsell-tile .xsell-main-tile .xsell-tile-image {
+    @media screen and (max-width: 767px) {
+        display: flex;
+        picture {
+            height: 100%;
+            display: flex;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                aspect-ratio: 327 / 262 !important;
+            }
+        }
+    }
+}
+
+.xsell-tile .xsell-sub-tile .xsell-tile-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 312/480;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 100%;
+    transition: all 0.5s ease;
+    transform: scale(1);
+
+    img {
+        transition: all 0.5s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width: 767px) {
+        aspect-ratio: 327 / 262;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.xsell-tile-image[style*="cursor: pointer;"]:hover img,
+.xsell-tile-image.hovered img {
+    transform: scale(1.05) !important;
+}
+
+.xsell-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.xsell-card-category {
+    color: var(--Text-text-black, #333);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+}
+
+.xsell-card-title {
+    position: relative;
+    display: inline-block;
+    color: var(--Text-text-black, #333);
+    font-family: Cormorant, serif;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -1.2px;
+    text-decoration: none;
+    transition: color 0.5s ease;
+    width: fit-content;
+}
+
+.xsell-card-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 0px;
+    height: 1px;
+    background-color: #9c856b;
+    transition: width 0.5s ease;
+}
+
+.xsell-card-title:hover {
+    color: #9c856b;
+}
+
+.xsell-card-title:hover::after {
+    width: 100%;
+}
+
+.xsell-tile-title {
+    position: relative;
+    width: fit-content;
+}
+
+.xsell-tile-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.xsell-tile-title p {
+    margin: 0;
+    color: var(--Text-text-black, #333);
+    font-family: Cormorant, serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: -0.03em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    position: relative;
+}
+
+.xsell-tile-title p::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0px;
+    height: 1px;
+    background-color: #9c856b;
+    transition: width 0.5s ease;
+}
+
+.xsell-tile-title p:hover,
+.xsell-tile-title.hovered p {
+    color: #9c856b;
+}
+
+.xsell-tile-title a:hover p::after,
+.xsell-tile-title.hovered a p::after {
+    width: 100%;
+}
+
+.xsell-tile-category {
+    color: var(--Text-text-black, #333);
+    font-family: "Gill Sans", Cabin, sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
+}
+
+.xsell-main-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1 1 50%;
+    height: 100%;
+}
+
+.xsell-sub-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1 1 25%;
+    height: 100%;
+
+    @media screen and (max-width: 767px) {
+        gap: 1.5rem !important;
+    }
+}
+
+.xsell-tile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media screen and (max-width: 884px) {
+    .xsell-tile .xsell-main-tile .xsell-tile-image picture,
+    .xsell-tile .xsell-sub-tile .xsell-tile-image picture {
+        aspect-ratio: 628 / 480;
+    }
+    .xsell-tile .xsell-main-tile .xsell-tile-image img,
+    .xsell-tile .xsell-sub-tile .xsell-tile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 628 / 480;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .xsell-tile {
+        flex-direction: column;
+    }
+
+    .xsell-tile img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 327 / 262;
+    }
+
+    .xsell-tile .xsell-main-tile .xsell-tile-image picture,
+    .xsell-tile .xsell-sub-tile .xsell-tile-image picture {
+        width: 100%;
+        aspect-ratio: 327 / 262;
+    }
+
+    .xsell-tile .xsell-main-tile .xsell-tile-image img,
+    .xsell-tile .xsell-sub-tile .xsell-tile-image img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 327 / 262;
+    }
+
+    .xsell-tile-category {
+        font-size: 0.875rem;
+    }
+
+    .xsell-main-tile,
+    .xsell-sub-tile {
+        gap: 16px;
+        flex: none;
+
+        @media screen and (max-width: 767px) {
+            gap: 1.5rem !important;
+        }
+    }
+
+    .xsell-tile-content {
+        gap: 8px;
+    }
+}
+
+.xsell-tile-title a p {
+    display: inline;
+}

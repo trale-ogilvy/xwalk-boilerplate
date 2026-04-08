@@ -1,43 +1,194 @@
 [
   {
     "id": "main",
-    "components": [
-      "section"
-    ]
+    "components": ["section"]
   },
   {
     "id": "section",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title",
       "hero",
-      "cards",
-      "columns",
-      "fragment",
-      "head"
+      "slider-teaser-content",
+      "swiper3",
+      "three-image-description",
+      "two-columns-container",
+      "section-header",
+      "text-image",
+      "info-card",
+      "swiper-highlight4",
+      "image-gallery-tile",
+      "hero-banner-alt",
+      "faq-accordion",
+      "highlights-container",
+      "flower-splash-screen",
+      "featured-banner",
+      "awards-container",
+      "category-tabs-gallery",
+      "file-download-container",
+      "banner-toggle",
+      "tabbed-hero-slider",
+      "imprints-teaser-card",
+      "carousel-card-popup",
+      "floor-plan-popup",
+      "text-image-tabs",
+      "double-column-cards",
+      "compare-rooms",
+      "reserve-tabs",
+      "padding-sections",
+      "slide-deck",
+      "large-carousel-with-tooltip",
+      "content-modals",
+      "artist-carousel",
+      "programs-listings",
+      "image-with-link",
+      "x-sell-card",
+      "dynamic-two-columns-container",
+      "text-image-with-carousel"
     ]
   },
   {
     "id": "cards",
-    "components": [
-      "card"
-    ]
+    "components": ["card"]
+  },
+  {
+    "id": "slider-teaser-content",
+    "components": ["profile-modal"]
+  },
+  {
+    "id": "hero",
+    "components": ["profile-modal"]
   },
   {
     "id": "columns",
-    "components": [
-      "column"
-    ]
+    "components": ["column"]
   },
   {
     "id": "column",
+    "components": ["text", "image", "button", "title"]
+  },
+  {
+    "id": "swiper3",
+    "components": ["swiper-card3"]
+  },
+  {
+    "id": "three-image-description",
+    "components": ["title", "text", "cards", "card", "two-columns-card"]
+  },
+  {
+    "id": "two-columns-container",
+    "components": ["two-columns-card"]
+  },
+  {
+    "id": "text-image",
+    "components": ["title", "text", "image", "button"]
+  },
+  {
+    "id": "three-column-tile",
+    "components": ["hero-card"]
+  },
+  {
+    "id": "swiper-highlight4",
+    "components": ["highlight-card4"]
+  },
+  {
+    "id": "image-gallery-tile",
+    "components": ["image-gallery-card"]
+  },
+  {
+    "id": "highlights-container",
+    "components": ["highlights-feed"]
+  },
+  {
+    "id": "info-card",
+    "components": ["info-item"]
+  },
+  {
+    "id": "faq-accordion",
+    "components": ["faq-accordion-item-unit"]
+  },
+  {
+    "id": "awards-container",
+    "components": ["award-card"]
+  },
+  {
+    "id": "profile-container",
+    "components": ["profile-card"]
+  },
+  {
+    "id": "category-tabs-gallery",
+    "components": ["modal-slide-carousel"]
+  },
+  {
+    "id": "imprints-teaser-card",
+    "components": ["modal-slide-carousel"]
+  },
+  {
+    "id": "file-download-container",
+    "components": ["file-item"]
+  },
+  {
+    "id": "banner-toggle",
+    "components": ["banner-card"]
+  },
+  {
+    "id": "property-gallery",
+    "components": ["property-gallery-feed"]
+  },
+  {
+    "id": "text-image-tabs",
+    "components": ["text-image-feed"]
+  },
+  {
+    "id": "double-column-cards",
+    "components": ["split-layout-card"]
+  },
+  {
+    "id": "compare-rooms",
+    "components": ["room-card"]
+  },
+  {
+    "id": "membership-tiers-modal",
+    "components": ["membership-tier-card"]
+  },
+  {
+    "id": "reserve-modal",
+    "components": ["cards", "card"]
+  },
+  {
+    "id": "slide-deck",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title"
+      "slide-with-bottom-left-text-and-tooltip",
+      "slide-with-ai-cta",
+      "newsletter-slide",
+      "slide-with-centered-content",
+      "slide-with-left-and-right-content"
     ]
+  },
+  {
+    "id": "large-carousel-with-tooltip",
+    "components": ["large-carousel-with-tooltip-card"]
+  },
+  {
+    "id": "content-modals",
+    "components": ["split-layout-modal"]
+  },
+  {
+    "id": "artist-carousel",
+    "components": ["artist-carousel-feed"]
+  },
+  {
+    "id": "programs-listings",
+    "components": ["programs"]
+  },
+  {
+    "id": "music-carousel",
+    "components": ["music-slide"]
+  },
+  {
+    "id": "floating-widget",
+    "components": ["highlight-experience", "quick-link"]
+  },
+  {
+    "id": "dynamic-two-columns-container",
+    "components": ["dynamic-two-columns-card"]
   }
 ]

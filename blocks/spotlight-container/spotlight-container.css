@@ -1,0 +1,108 @@
+.three-image-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+
+    ul {
+        margin-top: 0.5rem;
+    }
+}
+
+.three-card-description li {
+    line-height: 120%; /* 28.8px */
+    letter-spacing: -0.72px;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .three-image-grid {
+        grid-template-columns: repeat(12, 1fr);
+        padding: 0 5rem;
+        gap: 0;
+    }
+}
+
+.three-image-grid__left-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.three-image-grid__right-col {
+    display: grid;
+    place-items: center;
+}
+
+@media (min-width: 768px) {
+    .three-image-grid__left-col {
+        grid-column: span 6;
+    }
+
+    .three-image-grid__right-col {
+        grid-column: 8 / span 5;
+    }
+}
+
+.three-image-grid__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.three-image-grid__card-wrapper--staggered {
+    margin-top: 2.5rem;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .three-image-grid__card-wrapper--staggered {
+        align-self: flex-end;
+        width: 80%;
+        margin-top: 4rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .three-image-grid__card-wrapper--staggered {
+        margin-top: 9rem;
+    }
+}
+
+.three-image-grid__image img,
+.three-image-grid__image picture {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    object-fit: contain;
+    display: block;
+}
+
+.text-p2.three-card-description {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    line-height: 1.6rem;
+    max-width: 80%;
+
+    @media (max-width: 767px) {
+        max-width: 100%;
+    }
+}
+
+.text-p2.three-card-description h3,
+.text-p2.three-card-description h4 {
+    padding-bottom: 8px;
+}
+
+h2.text-h4 {
+    font-size: 2rem !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 100% !important;
+    letter-spacing: -0.96px !important;
+    padding-bottom: var(--space-s);
+}
+
+.banner-toggle-swiper .swiper-pagination {
+    display: none;
+}

@@ -1,0 +1,120 @@
+.section.programs-listings-container {
+    .programs-listings-wrapper {
+        .programs-listings.block {
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+
+            .program-pill {
+                width: fit-content;
+                margin: 0 auto;
+                display: flex;
+                background-color: rgba(var(--brand-black), 0.5);
+                border-radius: 99px;
+                padding: 0.5rem;
+
+                & > div {
+                    line-height: 110%;
+                    letter-spacing: 0.15em;
+                    font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+                    font-family: var(--font-gill-sans), "Cabin", sans-serif;
+                    text-transform: uppercase;
+                    padding: 1rem 1.5rem;
+                    color: white;
+                }
+
+                & > div:nth-of-type(1) {
+                    background-color: white;
+                    border-radius: 99px;
+                    color: black;
+                }
+            }
+
+            /* Each Program */
+            & > div:not(.program-pill) {
+                /* Program Type */
+                & > div:nth-of-type(1) {
+                    display: none;
+                }
+
+                /* Program Tab */
+                & > div:nth-of-type(2) {
+                    display: none;
+                }
+
+                /* Text Content */
+                & > div:nth-of-type(3) {
+                    max-width: 56.25rem;
+                    margin: 0 auto;
+                    text-align: center;
+
+                    /* Title */
+                    & > p:nth-of-type(1) {
+                        line-height: 95%;
+                        font-size: clamp(2rem, 4vw, 3.25rem);
+                        margin: 0 !important;
+                        letter-spacing: -0.03em;
+                        /* font-weight: 400; */
+                    }
+
+                    /* Description */
+                    & > p:nth-of-type(2) {
+                        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+                        line-height: 120%;
+                        letter-spacing: -0.03em;
+                        max-width: 33.5rem;
+                        margin: 0 auto;
+                        margin-top: 2rem;
+                    }
+                }
+
+                /* More Options - except the last one */
+                &
+                    > div:not(:last-of-type):not(
+                        .program-filter-pill
+                    ):nth-of-type(n + 4) {
+                    display: none;
+                }
+
+                /* Filter */
+                .program-filter-pill {
+                    margin: 0 auto;
+                    width: 20rem;
+                    border: 1px solid #ccc;
+                    border-radius: 50rem;
+                    padding: 1rem 2rem;
+                    box-sizing: border-box;
+                    font-family: var(--font-gill-sans);
+                    margin-top: 3rem;
+                }
+
+                /* Placeholder Cards */
+                .program-cards-container {
+                    width: 100%;
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    row-gap: 5rem;
+                    column-gap: 1.5rem;
+                    margin-top: 4rem;
+
+                    @media screen and (max-width: 1024px) {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+
+                    @media screen and (max-width: 767px) {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 1rem;
+                        row-gap: 3rem;
+                    }
+
+                    .program-card {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0.625rem;
+                    }
+                }
+            }
+        }
+    }
+}

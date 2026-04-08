@@ -1,0 +1,177 @@
+/* --- Success Modal Wrapper and Overlay --- */
+.success-modal-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.success-modal-wrapper.is-open {
+    display: flex;
+    opacity: 1;
+}
+
+.success-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* --- Modal Content Box --- */
+.success-modal-content {
+    position: relative;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Image Header with Enquiry-Specific and Destination-Specific Styles --- */
+.success-modal-image-header {
+    width: 101%;
+    height: auto;
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.3s ease;
+    background-color: #f0f0f0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Default fallback image if no specific class matches */
+.success-modal-image-header:not([class*="success-image-"]) {
+    background-image: url("/img/success-general-osaka.png");
+}
+
+/* General Enquiry Images */
+.success-image-general-osaka {
+    background-image: url("/img/success-general-osaka.png");
+}
+.success-image-general-maldives {
+    background-image: url("/img/success-general-maldives.png");
+}
+
+/* Wedding Enquiry Images */
+.success-image-wedding-osaka {
+    background-image: url("/img/success-wedding-osaka.png");
+}
+.success-image-wedding-maldives {
+    background-image: url("/img/success-wedding-maldives.png");
+}
+
+/* Event Enquiry Images */
+.success-image-event-osaka {
+    background-image: url("/img/success-event-osaka.png");
+}
+.success-image-event-maldives {
+    background-image: url("/img/success-event-maldives.png");
+}
+
+/* Restaurant Enquiry Images */
+.success-image-restaurant-osaka {
+    background-image: url("/img/success-restaurant-osaka.png");
+}
+.success-image-restaurant-maldives {
+    background-image: url("/img/success-restaurant-maldives.png");
+}
+
+/* Wellness Enquiry Images */
+.success-image-wellbeing-osaka {
+    background-image: url("/img/success-wellbeing-osaka.png");
+}
+.success-image-wellbeing-maldives {
+    background-image: url("/img/success-wellbeing-maldives.png");
+}
+
+/* --- Text Content --- */
+.success-modal-text-content {
+    padding: 2rem;
+}
+
+.success-modal-title {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.success-modal-subtitle {
+    font-size: 1rem;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* --- Done Button --- */
+.success-modal-done-btn {
+    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    width: 98px;
+    height: 47px;
+    border-radius: 96px;
+    padding: 16px 24px;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 15px -2px #0000002e;
+}
+
+.success-modal-done-btn:hover {
+    background-color: #9c856b;
+    color: white;
+    border-color: #9c856b;
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 767px) {
+    .success-modal-content {
+        max-width: 95vw;
+        margin: 1rem;
+    }
+
+    .success-modal-image-header {
+        height: 200px;
+    }
+
+    .success-modal-title {
+        font-size: 1.5rem;
+    }
+
+    .success-modal-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-modal-content {
+    animation: fadeInUp 0.4s ease forwards;
+}

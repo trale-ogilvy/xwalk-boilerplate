@@ -1,0 +1,1197 @@
+/* --- Modal Overlay and Dialog --- */
+.general-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.general-modal-overlay.general-modal-open {
+    opacity: 1;
+}
+
+.general-modal-dialog {
+    width: 908px;
+    height: 839px;
+    max-width: 90vw;
+    max-height: 90vh;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.general-modal-overlay.general-modal-open .general-modal-dialog {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Modal Content --- */
+.general-modal-content {
+    position: relative;
+    background-color: white;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.general-modal-close {
+    margin-right: auto;
+    background: none;
+    padding: 0;
+    border: none;
+    font-size: 3rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #000000;
+    z-index: 100;
+}
+
+html:not([lang="en"]):not([lang="de"]) .general-modal-close {
+    font-size: 32px;
+}
+
+.general-modal-close-symbol {
+    display: inline-block;
+    transform: translate(0px, -20px);
+}
+
+html:not([lang="en"]):not([lang="de"]) .general-modal-close-symbol {
+    transform: none;
+}
+
+.general-modal-title {
+    color: #333;
+    margin-bottom: 2rem !important;
+    text-align: center;
+}
+
+/* --- Form and Rows --- */
+.general-modal-form {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.general-modal__row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* --- Field Wrapper for Validation --- */
+.general-modal__field-wrapper {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* --- First Row Specific Styles --- */
+.general-modal__row:first-child {
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.general-modal__row:first-child .general-modal__field-wrapper:first-child {
+    flex: 0 0 140px;
+    max-width: 140px;
+    min-width: 140px;
+}
+
+.general-modal__row:first-child
+    .general-modal__field-wrapper:not(:first-child) {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+}
+
+/* --- Input Field Styling --- */
+.general-modal__input,
+.general-modal__textarea {
+    width: 100%;
+    height: 56px;
+    border-radius: 96px;
+    border: 1px solid #ccc;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease-in-out;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.general-modal__textarea {
+    height: 150px;
+    min-height: 200px;
+    flex-basis: 100%;
+    resize: vertical;
+    border-radius: 24px;
+}
+
+.general-modal__input:focus,
+.general-modal__textarea:focus {
+    outline: 0px solid #9c856b;
+    border-color: #9c856b;
+}
+
+/* --- Subscription Opt-in Styles --- */
+.general-modal__subscription-optin {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 1rem;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.general-modal__checkbox {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin: 2px 0 0 0;
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 50%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.general-modal__checkbox:checked {
+    background-color: #9c856b;
+    border-color: #9c856b;
+}
+
+.general-modal__checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.general-modal__subscription-label {
+    flex-grow: 1;
+    color: #333;
+    line-height: 1.4;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal__privacy-link {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* --- reCAPTCHA Styles --- */
+.general-modal__recaptcha-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    min-height: 78px;
+    overflow: visible;
+    position: relative;
+    z-index: 20;
+    margin: 0 auto;
+}
+
+#general-modal-recaptcha {
+    pointer-events: auto;
+    transform: scale(0.7);
+    transform-origin: center;
+    z-index: 21;
+    display: block;
+    margin: 0;
+    min-width: 304px;
+    min-height: 78px;
+    overflow: hidden;
+}
+
+#general-modal-recaptcha * {
+    pointer-events: auto !important;
+}
+
+/* --- Salutation Dropdown Styles --- */
+.general-modal-salutation-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 140px;
+}
+
+.general-modal-salutation-pill {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 96px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    padding: 16px 24px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box;
+    height: 56px;
+}
+
+.general-modal-salutation-pill[aria-expanded="true"] {
+    border-color: #9c856b;
+}
+
+.general-modal-salutation-pill-text {
+    color: #757575;
+    white-space: nowrap;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal-salutation-pill-icon {
+    margin-left: 8px;
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+}
+
+.general-modal-salutation-pill-icon svg {
+    color: #757575;
+    margin-top: 6px;
+}
+
+.general-modal-salutation-pill[aria-expanded="true"]
+    .general-modal-salutation-pill-icon {
+    transform: rotate(180deg);
+}
+
+.general-modal-salutation-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    top: calc(100% + 8px);
+    right: 0;
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    background-color: rgba(51, 51, 51, 0.5) !important;
+    color: #ffffff;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+    padding: 1rem;
+    box-sizing: border-box;
+    max-height: 200px;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(-5px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+}
+
+.general-modal-salutation-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.general-modal-salutation-dropdown::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.general-modal-salutation-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+.general-modal-salutation-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.general-modal-salutation-dropdown[aria-open="true"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.general-modal-salutation-item {
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal-salutation-item:hover {
+    color: #cccccc;
+    background-color: transparent;
+}
+
+.general-modal-salutation-item.active {
+    background-color: transparent;
+    color: #9c856b;
+}
+
+/* --- Phone Input Container --- */
+.general-modal__phone-input-container {
+    width: 100%;
+    height: 56px;
+    border-radius: 96px;
+    border: 1px solid #ccc;
+    padding: 0 24px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.general-modal__phone-input-container:focus-within {
+    border-color: #9c856b;
+}
+
+.general-modal__phone-label {
+    color: #757575;
+    margin-right: 12px;
+    white-space: nowrap;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal__phone-number {
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    height: 100%;
+    flex-grow: 1;
+    font-size: 1rem;
+    width: 100%;
+    padding-left: 12px;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+/* Phone Country Code Dropdown */
+.general-modal-phone-code-wrapper {
+    position: static;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.general-modal__field-wrapper:has(.general-modal__phone-input-container) {
+    position: relative;
+}
+
+@supports not (selector(:has(*))) {
+    .general-modal__field-wrapper {
+        position: relative;
+    }
+}
+
+.general-modal-phone-code-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 1rem;
+    height: 100%;
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.general-modal-phone-code-pill-text {
+    color: #000000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal-phone-code-pill-icon {
+    margin-left: 8px;
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+}
+
+.general-modal-phone-code-pill-icon svg {
+    color: #000000;
+    margin-top: 6px;
+}
+
+.general-modal-phone-code-pill[aria-expanded="true"]
+    .general-modal-phone-code-pill-icon {
+    transform: rotate(180deg);
+}
+
+.general-modal-phone-code-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    top: calc(100% + 8px);
+    left: 0;
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    background-color: rgba(51, 51, 51, 0.5) !important;
+    color: #ffffff;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+    padding: 1rem;
+    box-sizing: border-box;
+    max-height: 250px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-5px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+}
+
+.general-modal-phone-code-dropdown[aria-open="true"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+/* Phone Code Search Input */
+.general-modal-phone-code-search {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    box-sizing: border-box;
+    font-size: 0.875rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.general-modal-phone-code-search::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.general-modal-phone-code-search:focus {
+    outline: none;
+    border-color: #9c856b;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.general-modal-phone-code-search:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.general-modal-phone-code-items-container {
+    overflow-y: auto;
+    max-height: 180px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+}
+
+.general-modal-phone-code-items-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.general-modal-phone-code-items-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.general-modal-phone-code-items-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+.general-modal-phone-code-items-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.general-modal-phone-code-item {
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.general-modal-phone-code-item:hover {
+    color: #cccccc;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.general-modal-phone-code-item.active {
+    font-weight: 400;
+    background-color: rgba(156, 133, 107, 0.3);
+    color: #9c856b;
+}
+
+.general-modal-phone-code-no-results {
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    text-align: center;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    font-size: 0.875rem;
+}
+
+/* --- Calendar Styles --- */
+.general-modal__calendar-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.calendar-filter-button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 96px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    padding: 16px 24px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box;
+    height: 56px;
+}
+
+.calendar-filter-button[aria-expanded="true"] {
+    border-color: #9c856b;
+}
+
+.calendar-filter-button-text {
+    color: #757575;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.calendar-filter-button-icon {
+    margin-left: 8px;
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+}
+
+.calendar-filter-button-icon svg {
+    color: #000000;
+}
+
+.calendar-filter-button[aria-expanded="true"] .calendar-filter-button-icon {
+    transform: rotate(180deg);
+}
+
+.calendar-dropdown-container {
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    min-width: 270px;
+    top: calc(100% + 8px);
+    right: 0;
+    opacity: 0;
+    transform: translateY(-5px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.calendar-dropdown-container[aria-open="true"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.general-modal-calendar-board {
+    border-radius: 10px;
+    background: rgba(51, 51, 51, 0.5) !important;
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    color: #ffffff;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+    padding: 1.5rem;
+
+    width: 270px;
+}
+
+.general-modal-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.general-modal-calendar-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: white;
+}
+
+.general-modal-calendar-nav:not([disabled]):hover {
+    opacity: 0.7;
+}
+
+.general-modal-calendar-nav-disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.general-modal-calendar-month-label {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    font-size: 1rem;
+}
+
+.general-modal-calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.general-modal-calendar-weekday {
+    font-size: 0.875rem;
+    color: #fff;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.general-modal-calendar-day {
+    color: var(--Text-text-white, #fff);
+    text-align: center;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 100%;
+    display: flex;
+    height: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.general-modal-calendar-day.general-modal-calendar-empty {
+    cursor: default;
+}
+
+.general-modal-calendar-day.general-modal-calendar-disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.general-modal-calendar-day.general-modal-calendar-today {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 8px;
+}
+
+.general-modal-calendar-day.general-modal-calendar-selected-start,
+.general-modal-calendar-day.general-modal-calendar-selected-end {
+    background: #9c856b;
+    padding: 2px 3px 3px 1px;
+}
+
+.general-modal-calendar-day.general-modal-calendar-in-range {
+    background: #9c856b;
+    color: white;
+}
+
+.general-modal-calendar-done-btn {
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    align-self: flex-end;
+    margin-left: auto;
+    display: block;
+    color: #fff;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    font-size: 0.875rem;
+    line-height: 100%;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+}
+
+/* --- Restaurant Dropdown --- */
+.general-modal-restaurant-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.general-modal-restaurant-pill {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 96px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    padding: 16px 24px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box;
+    height: 56px;
+}
+
+.general-modal-restaurant-pill[aria-expanded="true"] {
+    border-color: #9c856b;
+}
+
+.general-modal-restaurant-pill-text {
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal-restaurant-pill-icon {
+    margin-left: 8px;
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+}
+
+.general-modal-restaurant-pill-icon svg {
+    color: #000000;
+    margin-top: 6px;
+}
+
+.general-modal-restaurant-pill[aria-expanded="true"]
+    .general-modal-restaurant-pill-icon {
+    transform: rotate(180deg);
+}
+
+.general-modal-restaurant-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    top: calc(100% + 8px);
+    right: 0;
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    background-color: rgba(51, 51, 51, 0.5) !important;
+    color: #ffffff;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.18);
+    padding: 1rem;
+    box-sizing: border-box;
+    max-height: 200px;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(-5px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.general-modal-restaurant-dropdown[aria-open="true"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.general-modal-restaurant-item {
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal-restaurant-item:hover {
+    color: #cccccc;
+    background-color: transparent;
+}
+
+.general-modal-restaurant-item.active {
+    background-color: transparent;
+    color: #9c856b;
+}
+
+/* --- Validation Styles --- */
+.has-error {
+    border-color: #9c856b !important;
+}
+
+.error-message {
+    color: #9c856b;
+    font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    margin-top: 0.25rem;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+.general-modal__recaptcha-wrapper .error-message {
+    text-align: center;
+    padding-left: 0;
+    justify-content: center;
+}
+
+.general-modal__field-wrapper .calendar-filter-button + .error-message,
+.general-modal__field-wrapper
+    .general-modal__phone-input-container
+    + .error-message {
+    text-align: left;
+}
+
+/* --- Submit Button --- */
+.general-modal__submit-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 96px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    width: 110px;
+    height: 47px;
+    opacity: 1;
+    align-self: center;
+    box-shadow: 0px 0px 15px 0px #0000002e;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.general-modal__submit-btn:hover {
+    background-color: #9c856b;
+    color: #ffffff;
+}
+
+.general-modal__submit-btn:disabled {
+    background-color: #9c856b;
+    color: transparent;
+    font-size: 0;
+    line-height: 0;
+    cursor: not-allowed;
+}
+
+/* Spinner Styles */
+.button-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #ffffff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.general-modal-submission-error {
+    color: #d9534f;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 10px;
+    border: 1px solid #d9534f;
+    border-radius: 8px;
+    background-color: #ffe0e0;
+    font-family: "Gill Sans", "Cabin", sans-serif;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 767px) {
+    .general-modal-dialog {
+        width: 100%;
+        height: auto;
+        max-height: calc(100vh - 40px);
+        min-height: auto;
+    }
+
+    .general-modal-content {
+        padding: 1rem;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 80vh;
+        max-height: 80vh;
+    }
+
+    .general-modal-form {
+        overflow: visible;
+        padding: 1rem;
+        padding-bottom: 2rem;
+        height: auto;
+    }
+
+    .general-modal__row {
+        gap: 1rem;
+    }
+
+    .general-modal__field-wrapper {
+        flex: 1 1 100%;
+        min-width: unset;
+        max-width: 100%;
+    }
+
+    .general-modal__row:first-child {
+        flex-wrap: wrap;
+    }
+
+    .general-modal__row:first-child .general-modal__field-wrapper:first-child {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: unset;
+    }
+
+    .general-modal__row:first-child
+        .general-modal__field-wrapper:not(:first-child) {
+        flex: 1 1 100%;
+        min-width: unset;
+        max-width: 100%;
+    }
+
+    .general-modal-salutation-wrapper {
+        max-width: 100%;
+    }
+
+    .general-modal-salutation-pill {
+        max-width: 100%;
+    }
+
+    .general-modal-salutation-dropdown {
+        width: 100%;
+        right: 0;
+        left: 0;
+    }
+
+    .general-modal-phone-code-wrapper {
+        flex-grow: 1;
+    }
+
+    .general-modal-phone-code-dropdown {
+        width: 100%;
+        left: 0;
+        max-height: 300px;
+    }
+
+    .general-modal-phone-code-items-container {
+        max-height: 200px;
+    }
+
+    .general-modal-phone-code-search {
+        font-size: 16px;
+    }
+
+    .general-modal__recaptcha-wrapper {
+        overflow: visible;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #general-modal-recaptcha {
+        transform: scale(0.6);
+        transform-origin: center;
+        max-width: 100%;
+    }
+
+    .calendar-dropdown-container {
+        width: 100%;
+    }
+
+    .general-modal-calendar-board {
+        width: 100%;
+        max-width: 270px;
+        margin-left: -10px;
+    }
+
+    /* Mobile phone input animation */
+    .general-modal__phone-input-container.has-input
+        .general-modal__phone-label {
+        opacity: 0;
+        width: 0;
+        margin-right: 0;
+        overflow: hidden;
+        transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out,
+            margin-right 0.2s ease-in-out;
+    }
+
+    .general-modal__phone-input-container.has-input
+        .general-modal-phone-code-pill {
+        padding: 0;
+    }
+
+    .general-modal__phone-label {
+        transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out,
+            margin-right 0.2s ease-in-out;
+    }
+
+    .general-modal-phone-code-pill {
+        transition: padding 0.2s ease-in-out;
+    }
+}
+
+/* remove blue focus state */
+.general-modal__input:-webkit-autofill,
+.general-modal__input:-webkit-autofill:hover,
+.general-modal__input:-webkit-autofill:focus,
+.general-modal__textarea:-webkit-autofill,
+.general-modal__textarea:-webkit-autofill:hover,
+.general-modal__textarea:-webkit-autofill:focus,
+.general-modal__phone-number:-webkit-autofill,
+.general-modal__phone-number:-webkit-autofill:hover,
+.general-modal__phone-number:-webkit-autofill:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-text-fill-color: #333 !important;
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* captcha challenge*/
+body > div[style*="z-index: 2000000000"],
+body > div[style*="z-index:2000000000"] {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+}
+
+@media (max-width: 767px) {
+    body > div[style*="z-index: 2000000000"],
+    body > div[style*="z-index:2000000000"] {
+        width: auto !important;
+        max-width: calc(100vw - 20px) !important;
+    }
+
+    body > div[style*="z-index: 2000000000"] > div,
+    body > div[style*="z-index:2000000000"] > div {
+        margin: 0 auto !important;
+    }
+}
+
+div > iframe[src*="bframe"] {
+    max-width: 100vw !important;
+}
+
+.general-modal-overlay {
+    overflow-x: hidden !important;
+}
+
+.general-modal-content {
+    overflow-x: hidden !important;
+}
+
+.enquiry-subscription-checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 20px;
+}
+
+.enquiry-subscription-paragraph {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.enquiry-subscription-checkbox-container .enquiry-subscription-paragraph {
+    flex: 1;
+}

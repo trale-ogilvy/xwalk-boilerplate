@@ -1,0 +1,232 @@
+.section.banner-toggle-container {
+    height: 800px;
+    min-height: auto;
+}
+
+.bt-authoring-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 1rem;
+    background: #282828;
+    height: 800px;
+    align-items: center;
+}
+
+.bt-authoring-card {
+    position: relative;
+    width: 85vw;
+    height: 90%;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #333;
+    color: white;
+    display: block !important;
+}
+
+.bt-authoring-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bt-authoring-card > div {
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.bt-authoring-card > div:nth-child(1),
+.bt-authoring-card > div:nth-child(2) {
+    top: 0;
+    height: 100%;
+    width: 50%;
+}
+.bt-authoring-card > div:nth-child(1) {
+    left: 0;
+}
+.bt-authoring-card > div:nth-child(2) {
+    right: 0;
+}
+
+.bt-authoring-card > div:nth-child(1) img,
+.bt-authoring-card > div:nth-child(2) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Add 'Day'/'Night'/'Seasonal' labels for clarity */
+.bt-authoring-card > div:nth-child(1)::before,
+.bt-authoring-card > div:nth-child(2)::before {
+    content: "Day Image";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 3;
+    font-family: sans-serif;
+    font-size: 0.75rem;
+}
+
+.bt-authoring-card > div:nth-child(2)::before {
+    content: "Night Image";
+}
+
+.bt-authoring-card[data-seasonal="true"] > div:nth-child(2)::before {
+    content: "Seasonal Image";
+}
+
+/* --- Conditional Full-Width Image Logic --- */
+
+.bt-authoring-card > div:nth-child(1):has(+ div:nth-child(2):empty) {
+    width: 100%;
+}
+
+.bt-authoring-card > div:nth-child(1):has(+ div:nth-child(2):empty)::before {
+    content: "Image";
+}
+
+.bt-authoring-card > div:nth-child(1):empty + div:nth-child(2) {
+    width: 100%;
+    left: 0;
+}
+
+.bt-authoring-card > div:nth-child(1):empty + div:nth-child(2)::before {
+    content: "Image";
+}
+
+.bt-authoring-card > div:nth-child(3),
+.bt-authoring-card > div:nth-child(4),
+.bt-authoring-card > div:nth-child(5) {
+    /* CTA Text */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.bt-authoring-card > div:nth-child(3) {
+    /* Label */
+    top: 35%;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+.bt-authoring-card > div:nth-child(4) {
+    /* Title */
+    top: 40%;
+    font-family: "Cormorant", serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1;
+}
+.bt-authoring-card > div:nth-child(5) {
+    /* CTA Text */
+    top: 60%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    padding-bottom: 2px;
+    border-bottom: 1px solid white;
+    width: auto;
+}
+
+.bt-authoring-card > div:nth-child(7),
+.bt-authoring-card > div:nth-child(8),
+.bt-authoring-card > div:nth-child(9) {
+    /* Small Card Title */
+    z-index: 2;
+    background: rgba(51, 51, 51, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    bottom: 2rem;
+}
+
+.bt-authoring-card > div:nth-child(7) {
+    /* Image */
+    left: calc(50% - 150px);
+    width: 80px;
+    height: 80px;
+    border-radius: 8px 0 0 8px;
+    padding: 0;
+}
+.bt-authoring-card > div:nth-child(7) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.bt-authoring-card > div:nth-child(8),
+.bt-authoring-card > div:nth-child(9) {
+    left: calc(50% - 70px);
+    height: 40px;
+    width: 220px;
+    padding: 0.5rem 1rem;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    text-align: left;
+}
+.bt-authoring-card > div:nth-child(8) {
+    /* Label */
+    bottom: calc(2rem + 40px);
+    border-radius: 0 8px 0 0;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+.bt-authoring-card > div:nth-child(9) {
+    /* Title */
+    bottom: 2rem;
+    border-radius: 0 0 8px 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.bt-authoring-card > div:nth-child(17) {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 165, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-family: sans-serif;
+    font-size: 0.6875rem;
+    z-index: 4;
+    display: none;
+}
+
+.bt-authoring-card[data-seasonal="true"] > div:nth-child(17) {
+    display: block;
+}
+
+.bt-authoring-card[data-seasonal="true"] > div:nth-child(17)::before {
+    content: "seasonal";
+}
+
+/* --- Hide Irrelevant Fields --- */
+.bt-authoring-card > div:nth-child(6),
+.bt-authoring-card > div:nth-child(10),
+.bt-authoring-card > div:nth-child(11),
+.bt-authoring-card > div:nth-child(12),
+.bt-authoring-card > div:nth-child(13),
+.bt-authoring-card > div:nth-child(14),
+.bt-authoring-card > div:nth-child(15),
+.bt-authoring-card > div:nth-child(16),
+.bt-authoring-card > div:nth-child(17),
+.bt-authoring-card > div:empty {
+    display: none !important;
+}

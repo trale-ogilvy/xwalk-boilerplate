@@ -1,0 +1,245 @@
+.featured-banner-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0 5rem;
+    margin: 5rem 0 7.5rem;
+    aspect-ratio: 1352 / 455;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.featured-banner.block {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.banner-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 0.5s ease;
+}
+
+.banner-image.hovered img {
+    transform: scale(1.05);
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.banner-image:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.banner-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Fixed dual CTA styling */
+.banner-cta-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    flex-wrap: wrap;
+}
+
+.banner-cta-wrapper .cta-link {
+    flex: 0 1 auto;
+    /* min-width: 120px; */
+}
+
+.cta-divider {
+    width: 1px;
+    height: 20px;
+    background-color: white;
+}
+
+.featured-banner-container .cta-link {
+    margin-top: 0;
+}
+
+.banner-description {
+    margin-top: 1.5rem;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.banner-label {
+    margin-bottom: 16px !important;
+}
+
+/* Secondary Banner Chevron Styles */
+.secondary-banner-chevron {
+    position: relative;
+    padding-right: 2rem;
+}
+
+.secondary-banner-chevron .animate-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.secondary-banner-chevron::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-image: url("/icons/chevron_forward.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+
+    filter: brightness(0) invert(1);
+}
+
+@media (max-width: 767px) {
+    .secondary-banner-chevron {
+        padding-right: 1.5rem;
+    }
+
+    .secondary-banner-chevron::after {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .featured-banner-wrapper {
+        padding: 0 1.5rem;
+        aspect-ratio: auto;
+        height: 100vh;
+        width: 100vw;
+        max-height: 600px;
+        padding: 0 24px;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+    }
+
+    .banner-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .banner-content {
+        width: 100%;
+        > p,
+        > div {
+            padding: 0 3rem;
+            box-sizing: border-box;
+        }
+        .banner-label {
+            margin-bottom: 40px !important;
+        }
+    }
+    
+
+    .banner-cta-wrapper {
+        margin-top: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        /* display: inline-block; */
+        max-width: 100%;
+        padding: 0 5px !important;
+    }
+
+    .banner-cta-wrapper .cta-link {
+        /* max-width: 280px; */
+        /* text-align: center;
+        display: flex;
+        justify-content: center; */
+        display: inline-block;
+        margin-bottom: 16px;
+    }
+
+    .cta-divider {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-cta-wrapper .cta-link {
+        /* width: 100%; */
+        max-width: none;
+    }
+}
+
+@media (max-width: 380px) {
+    .banner-content {
+        > p,
+        > div {
+            padding: 0 2rem;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .banner-image {
+        .mobile-image {
+            display: none;
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .banner-image {
+        .mobile-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+        }
+    }
+}

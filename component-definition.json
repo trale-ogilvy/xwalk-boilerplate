@@ -79,49 +79,81 @@
       ]
     },
     {
-      "title": "Blocks",
-      "id": "blocks",
+      "title": "Text & Content Components",
+      "id": "text-content",
       "components": [
         {
-          "title": "Cards",
-          "id": "cards",
+          "title": "Text Image",
+          "id": "text-image",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Cards",
-                  "filter": "cards"
+                  "name": "Text Image",
+                  "model": "text-image-model",
+                  "filter": "text-image"
                 }
               }
             }
           }
         },
         {
-          "title": "Card",
-          "id": "card",
+          "title": "Text Image Tabs",
+          "id": "text-image-tabs",
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
+                "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Card",
-                  "model": "card"
+                  "name": "Text Image Tabs",
+                  "model": "text-image-tabs-model",
+                  "filter": "text-image-tabs"
                 }
               }
             }
           }
         },
         {
-          "title": "Columns",
-          "id": "columns",
+          "title": "Text Image with Carousel",
+          "id": "text-image-with-carousel",
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/columns/v1/columns",
+                "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "columns": "2",
-                  "rows": "1"
+                  "name": "Text Image with carousel",
+                  "model": "text-image-carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Section Header",
+          "id": "section-header",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Section Header",
+                  "model": "section-header"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Accordion Container",
+          "id": "faq-accordion",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Accordion Container",
+                  "filter": "faq-accordion"
                 }
               }
             }
@@ -143,6 +175,158 @@
           }
         },
         {
+          "title": "Image with Link",
+          "id": "image-with-link",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Image with Link",
+                  "model": "image-with-link"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Containers & Layouts",
+      "id": "containers-layouts",
+      "components": [
+        {
+          "title": "Cards",
+          "id": "cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards",
+                  "filter": "cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Columns",
+          "id": "columns",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/columns/v1/columns",
+                "template": {
+                  "columns": "2",
+                  "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Two Columns Container",
+          "id": "two-columns-container",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Two Columns Container",
+                  "model": "two-columns-container",
+                  "filter": "two-columns-container"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Dynamic Two Columns Container",
+          "id": "dynamic-two-columns-container",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Dynamic Two Columns Container",
+                  "model": "dynamic-two-columns-container",
+                  "filter": "dynamic-two-columns-container"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Double Column Cards",
+          "id": "double-column-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Double Column Cards",
+                  "model": "double-column-cards",
+                  "filter": "double-column-cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Padding Sections",
+          "id": "padding-sections",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Padding Sections",
+                  "model": "padding-sections",
+                  "filter": "padding-sections"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "X-Sell Cards",
+          "id": "x-sell-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "X-Sell Cards",
+                  "model": "dynamic-hero-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Spotlight Container",
+          "id": "three-image-description",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Spotlight Container",
+                  "model": "three-image-description",
+                  "filter": "three-image-description"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Hero & Banner Components",
+      "id": "hero-banner",
+      "components": [
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
@@ -151,22 +335,862 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Hero",
-                  "model": "hero"
+                  "model": "hero",
+                  "filter": "hero",
+                  "ai_aiChatInputPlaceholderText": "What would you like to explore?"
                 }
               }
             }
           }
         },
         {
-          "title": "Head",
-          "id": "head",
+          "title": "Hero Banner Alt",
+          "id": "hero-banner-alt",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Head",
-                  "model": "head"
+                  "name": "Hero Banner Alt",
+                  "model": "hero-banner-alt"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Featured Banner",
+          "id": "featured-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Featured Banner",
+                  "model": "featured-banner",
+                  "event_showDate": false,
+                  "event_startDate": "2025-09-19T00:00:00.000Z",
+                  "event_endDate": "2025-09-22T00:00:00.000Z",
+                  "mainText": "Fari Islands Festival",
+                  "descText": "Blaze through a spectacle of art, music and culinary mastery",
+                  "linkText": "Secure your festival experience",
+                  "link": "https://www.google.com"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GHA Banner",
+          "id": "gha-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "GHA Banner",
+                  "model": "gha-banner",
+                  "signIn_signInHeader": "Member Sign In",
+                  "create_createAccountHeader": "Join GHA Discovery",
+                  "success_header": "Meaningful experiences and great rewards await you",
+                  "success_description": "We've sent you an email on how to log into your GHA DISCOVERY account",
+                  "signOutMessage": "Are you sure you want to sign out?"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Carousels & Sliders",
+      "id": "carousels-sliders",
+      "components": [
+        {
+          "title": "Carousel Container",
+          "id": "swiper3",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel Container",
+                  "filter": "swiper3"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Events Carousel",
+          "id": "swiper-highlight4",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Events Carousel",
+                  "filter": "swiper-highlight4",
+                  "model": "swiper-highlight4"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Artist Carousel",
+          "id": "artist-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Artist Carousel",
+                  "filter": "artist-carousel",
+                  "model": "artist-carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Music Carousel",
+          "id": "music-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Music Carousel",
+                  "model": "music-carousel",
+                  "filter": "music-carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Large Carousel with Tooltip",
+          "id": "large-carousel-with-tooltip",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Large Carousel with Tooltip",
+                  "model": "large-carousel-with-tooltip",
+                  "filter": "large-carousel-with-tooltip"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tabbed Hero Slider",
+          "id": "tabbed-hero-slider",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Tabbed Hero Slider",
+                  "model": "tabbed-hero-slider"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Banner Toggle",
+          "id": "banner-toggle",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Banner Toggle",
+                  "filter": "banner-toggle"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Parallax",
+      "id": "parallax-items",
+      "components": [
+        {
+          "title": "Slide Deck",
+          "id": "slide-deck",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Slide Deck",
+                  "model": "slide-deck",
+                  "filter": "slide-deck"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Slider Teaser Content",
+          "id": "slider-teaser-content",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Slider Teaser Content",
+                  "model": "slider-teaser-content",
+                  "filter": "slider-teaser-content"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Gallery & Image Components",
+      "id": "gallery-image",
+      "components": [
+        {
+          "title": "Property Gallery",
+          "id": "property-gallery",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Property Gallery",
+                  "filter": "property-gallery",
+                  "model": "property-gallery"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image Gallery Tile",
+          "id": "image-gallery-tile",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Image Gallery Tile",
+                  "filter": "image-gallery-tile",
+                  "model": "image-gallery-tile-model"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Category Tabs Gallery",
+          "id": "category-tabs-gallery",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Category Tabs Gallery",
+                  "model": "category-tabs-gallery",
+                  "filter": "category-tabs-gallery",
+                  "main_label": "Art & Design at Maldives",
+                  "main_title": "Laid-back Coastal Luxury with Chris Stamp",
+                  "description": "Dive into STAMPD's collection of ocean-conscious resort wear",
+                  "ctaText": "Discover"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Card Components",
+      "id": "card-components",
+      "components": [
+        {
+          "title": "Spotlight Card",
+          "id": "card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Spotlight Card",
+                  "model": "card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Two Columns Card",
+          "id": "two-columns-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Two Columns Card",
+                  "model": "two-columns-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Dynamic Two Columns Card",
+          "id": "dynamic-two-columns-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Dynamic Two Columns Card",
+                  "model": "dynamic-two-columns-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Carousel Card",
+          "id": "swiper-card3",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Carousel Card",
+                  "model": "swiper-card3"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image Gallery Card",
+          "id": "image-gallery-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Image Gallery Card",
+                  "model": "image-gallery-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Promo Card",
+          "id": "hero-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Promo Card",
+                  "model": "hero-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Highlight Card4",
+          "id": "highlight-card4",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Highlight Card4",
+                  "model": "highlight-card4"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Split Layout Card",
+          "id": "split-layout-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Split Layout Card",
+                  "model": "split-layout-card",
+                  "label": "End of Year Cheer",
+                  "title": "Festive Getaway",
+                  "description": "Enjoy 25% savings off during Christmas and New Year's"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Room Card",
+          "id": "room-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Room Card",
+                  "model": "room-card",
+                  "firstrow_label": "Bliss By The Beach",
+                  "firstrow_roomName": "One Bedroom Beach Pool Villa",
+                  "firstrow_cost": 1165,
+                  "firstrow_linkText": "Book Now",
+                  "firstrow_link": "https://be.synxis.com/?adult=1&arrive=2025-07-27&chain=5154&child=0&currency=USD&depart=2025-07-28&hotel=31794&level=hotel&locale=en-US&productcurrency=USD&rooms=1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Membership Tier Card",
+          "id": "membership-tier-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Membership Tier Card",
+                  "model": "membership-tier-card",
+                  "tierType": "Silver",
+                  "benefitsAvailability": "Upon Joining"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Lists & Collections",
+      "id": "lists-collections",
+      "components": [
+        {
+          "title": "Information Table Container",
+          "id": "info-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Information Table Container",
+                  "filter": "info-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Programs Listings",
+          "id": "programs-listings",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Programs Listings",
+                  "model": "programs-listings",
+                  "filter": "programs-listings"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Promo Container",
+          "id": "three-column-tile",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Promo Container",
+                  "filter": "Promo Container",
+                  "model": "three-column-tile"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Highlights Container",
+          "id": "highlights-container",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Highlights Container",
+                  "filter": "highlights-container",
+                  "model": "highlights-container"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Awards Container",
+          "id": "awards-container",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Awards Container",
+                  "filter": "awards-container"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Profile Container",
+          "id": "profile-container",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Profile Container",
+                  "filter": "profile-container"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "File Download Container",
+          "id": "file-download-container",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "File Download Container",
+                  "filter": "file-download-container"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Nav Imprints Cards",
+          "id": "nav-imprints-cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Nav Imprints Cards",
+                  "model": "nav-imprints-cards",
+                  "text_title": "Imprints",
+                  "text_desc": "An Anthology of Creatives"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Interactive & Widgets",
+      "id": "interactive-widgets",
+      "components": [
+        {
+          "title": "Floating Widget",
+          "id": "floating-widget",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Floating Widget",
+                  "model": "floating-widget",
+                  "filter": "floating-widget",
+                  "marqueeText": "Discover what's next"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Reserve Tabs",
+          "id": "reserve-tabs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Reserve Tabs",
+                  "model": "reserve-tabs"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Compare Rooms",
+          "id": "compare-rooms",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Compare Rooms",
+                  "model": "compare-rooms",
+                  "filter": "compare-rooms"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GHA Dashboard",
+          "id": "gha-dashboard",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "GHA Dashboard",
+                  "model": "gha-dashboard"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Enquiry Section",
+          "id": "enquiry-section",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Enquiry Section",
+                  "model": "enquiry-section",
+                  "filter": "enquiry-section"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Specialized Components",
+      "id": "specialized",
+      "components": [
+        {
+          "title": "Flower Splash Screen",
+          "id": "flower-splash-screen",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Flower Splash Screen",
+                  "model": "flower-splash-screen"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Music Artistry",
+          "id": "music-artistry",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Music Artistry",
+                  "model": "music-artistry"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Imprints Teaser Card",
+          "id": "imprints-teaser-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Imprints Teaser Card",
+                  "model": "imprints-teaser-card",
+                  "filter": "imprints-teaser-card",
+                  "teaserTitle": "imprints",
+                  "main_label": "Art & Design At Osaka",
+                  "main_title": "Laid-back Coastal Luxury with Chris Stamp",
+                  "ctaText": "discover"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Modals & Popups",
+      "id": "modals-popups",
+      "components": [
+        {
+          "title": "Profile Modal",
+          "id": "profile-modal",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Profile Modal",
+                  "model": "profile-modal"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Carousel Card Popup",
+          "id": "carousel-card-popup",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel Card Popup",
+                  "model": "carousel-card-popup"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Newsletter Modal",
+          "id": "newsletter-modal",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Newsletter Modal",
+                  "model": "newsletter-modal"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Floor Plan popup",
+          "id": "floor-plan-popup",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Floor Plan popup",
+                  "model": "floor-plan-popup"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "General Modal",
+          "id": "general-modal",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "General Modal",
+                  "model": "general-modal",
+                  "filter": "general-modal"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Success Modal",
+          "id": "success-modal",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Success Modal",
+                  "model": "success-modal",
+                  "filter": "success-modal"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Membership Tiers Modal",
+          "id": "membership-tiers-modal",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Membership Tiers Modal",
+                  "model": "membership-tiers-modal",
+                  "filter": "membership-tiers-modal",
+                  "headerTitle": "Member Benefits"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Reserve Modal",
+          "id": "reserve-modal",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Reserve Modal",
+                  "model": "reserve-modal",
+                  "filter": "reserve-modal"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Content Modals",
+          "id": "content-modals",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Content Modals",
+                  "model": "content-modals",
+                  "filter": "content-modals"
                 }
               }
             }

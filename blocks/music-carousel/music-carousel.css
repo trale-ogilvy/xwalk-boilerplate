@@ -1,0 +1,120 @@
+.section.music-carousel-container {
+    position: relative;
+
+    .music-carousel-wrapper {
+        overflow: hidden;
+    }
+
+    .music-carousel.swiper {
+        box-sizing: border-box;
+
+        .swiper-slide {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            box-sizing: border-box;
+
+            .media {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+
+                & > div,
+                & > div > div {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                video {
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover;
+                }
+            }
+
+            .center-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 1.5rem;
+                box-sizing: border-box !important;
+                width: 100vw;
+                z-index: 4;
+
+                .iframe {
+                    max-width: 27rem;
+                    width: 100%;
+                    height: fit-content;
+                    border: none !important;
+                    z-index: 4;
+
+                    iframe {
+                        border: none !important;
+                        border-radius: 10px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+
+    .category-title {
+        display: flex;
+        z-index: 3;
+        pointer-events: none;
+
+        &.mobile {
+            display: none;
+            flex-direction: column;
+            @media screen and (max-width: 767px) {
+                display: flex;
+            }
+        }
+
+        &.desktop {
+            display: flex;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            gap: 27rem;
+            margin-left: -7px;
+
+            @media screen and (max-width: 767px) {
+                display: none;
+            }
+
+            h2 {
+                width: 480px;
+            }
+            h2:first-child {
+                text-align: right;
+            }
+
+            h2:last-child {
+                text-align: left;
+            }
+        }
+
+        h2 {
+            font-size: clamp(3.5rem, 10vw, 8.125rem);
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-align: center;
+            line-height: 0.7;
+        }
+    }
+
+    .category-tabs {
+        position: absolute;
+        bottom: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+    }
+}

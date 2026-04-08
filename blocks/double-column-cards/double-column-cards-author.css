@@ -1,0 +1,138 @@
+.section.double-column-cards-container {
+    .double-column-cards-wrapper {
+        width: 100vw;
+        overflow: hidden;
+        .double-column-cards.block {
+            /* Each Card */
+            & > div {
+                .image-container {
+                    position: relative;
+
+                    /* Card Image */
+                    & > div:nth-of-type(1) {
+                        position: relative;
+                        display: flex;
+                        aspect-ratio: 660 / 480;
+                        overflow: hidden;
+                        border-radius: 0.625rem;
+
+                        img {
+                            width: 100% !important;
+                            height: 100% !important;
+                            object-fit: cover;
+                        }
+                    }
+
+                    /* Artist Small Card */
+                    & > div:nth-of-type(2) {
+                        position: absolute;
+                        display: flex;
+                        flex-direction: row-reverse;
+                        align-items: center;
+                        justify-content: start;
+                        gap: 1rem;
+                        padding: 1rem;
+                        bottom: 1.5rem;
+                        left: 1.5rem;
+                        width: 261px;
+                        height: 88px;
+                        background: rgba(51, 51, 51, 0.5);
+                        backdrop-filter: blur(30px);
+                        -webkit-backdrop-filter: blur(30px);
+                        border-radius: 12px;
+                        box-sizing: border-box;
+
+                        /* Artist Name */
+                        & > p:nth-of-type(1) {
+                            font-size: clamp(0.875rem, 1.8vw, 1rem);
+                            font-family: var(--font-gill-sans), "Cabin",
+                                sans-serif;
+                            letter-spacing: 0.1px;
+                            line-height: 1.3rem;
+                            color: white;
+                        }
+                        /* Artist Image */
+                        & > p:nth-of-type(2) {
+                            width: 3.5rem;
+                            height: 3.5rem;
+                            overflow: hidden;
+                            border-radius: 10px;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+                }
+
+                .card-content {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 2rem;
+
+                    @media screen and (max-width: 480px) {
+                        flex-direction: column;
+                    }
+
+                    .left-container {
+                        width: 50%;
+                        /* Label */
+                        & > div:nth-of-type(1) {
+                            font-size: clamp(0.875rem, 1.8vw, 1rem);
+                            font-family: var(--font-gill-sans), "Cabin",
+                                sans-serif;
+                            letter-spacing: 0.1px;
+                            line-height: 1.3rem;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        /* Left Label */
+                        & > div:nth-of-type(2) {
+                            font-size: clamp(1.5rem, 3vw, 2.5rem);
+                            letter-spacing: -0.03em;
+                            line-height: 110%;
+                        }
+
+                        /* CTA */
+                        & > div:nth-of-type(3) {
+                            font-family: var(--font-gill-sans), "Cabin",
+                                sans-serif;
+                            font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+                            letter-spacing: 0.15em;
+                            text-transform: uppercase;
+                            padding: 0;
+                            cursor: pointer;
+                            white-space: nowrap;
+                            margin-top: 1.5rem;
+
+                            a {
+                                text-decoration: none;
+                                color: inherit;
+                            }
+                        }
+                    }
+                    .right-container {
+                        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+                        line-height: 120%;
+                        letter-spacing: -0.03em;
+                        width: 50%;
+                        text-align: right;
+
+                        @media screen and (max-width: 480px) {
+                            text-align: left;
+                        }
+                    }
+                }
+
+                /* Modal Content */
+                & > div:nth-of-type(3),
+                & > div:nth-of-type(4),
+                & > div:nth-of-type(5) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

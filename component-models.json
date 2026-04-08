@@ -129,13 +129,33 @@
         "description": "The label shown for this section in the Content Tree"
       },
       {
-        "component": "multiselect",
+        "component": "select",
         "name": "style",
         "label": "Style",
         "options": [
           {
-            "name": "Highlight",
-            "value": "highlight"
+            "name": "Accommodations",
+            "value": "accommodations"
+          },
+          {
+            "name": "Rooms and suites",
+            "value": "rooms"
+          },
+          {
+            "name": "Wellbeing",
+            "value": "wellbeing"
+          },
+          {
+            "name": "Drink and Dine",
+            "value": "drink"
+          },
+          {
+            "name": "Events and Weddings",
+            "value": "events"
+          },
+          {
+            "name": "Remove Gap",
+            "value": "no-padding"
           }
         ]
       }
@@ -157,6 +177,13 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link",
+        "label": "Card CTA URL",
+        "value": " "
       }
     ]
   },
@@ -190,39 +217,367 @@
     ]
   },
   {
-    "id": "head",
+    "id": "hero",
     "fields": [
       {
-        "component": "select",
-        "name": "tag",
-        "label": "Tag",
+        "component": "text",
         "valueType": "string",
-        "value": "h2",
-        "options": [
-          { "name": "H1", "value": "h1" },
-          { "name": "H2", "value": "h2" },
-          { "name": "H3", "value": "h3" }
-        ]
+        "name": "label",
+        "label": "Label",
+        "value": " ",
+        "description": "Short text displayed above the hero text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "mainHeroText",
+        "label": "Main Hero Text",
+        "value": " ",
+        "required": true,
+        "description": "Main text displayed in the hero section"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isSlideInText",
+        "label": "Is Slide In Text",
+        "value": false,
+        "description": "If true, the hero text will slide in from the left and right"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true
       },
       {
         "component": "text",
-        "name": "text",
-        "label": "Text",
         "valueType": "string",
-        "value": ""
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": " "
       },
       {
         "component": "text",
-        "name": "fontSize",
-        "label": "Font Size (e.g. 32px, 2rem)",
         "valueType": "string",
-        "value": ""
+        "name": "ctaText",
+        "label": "CTA Text",
+        "value": " ",
+        "description": "Primary CTA link displayed below the hero text"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isVideoCta",
+        "label": "Is Video CTA",
+        "value": false,
+        "description": "If true, clicking on the CTA will open a video modal",
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "value": "",
+        "description": "Video for the video modal",
+        "condition": {
+          "and": [
+            {
+              "!==": [
+                {
+                  "var": "ctaText"
+                },
+                " "
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "isVideoCta"
+                },
+                true
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaUrl",
+        "label": "CTA Url",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "and": [
+            {
+              "!==": [
+                {
+                  "var": "ctaText"
+                },
+                " "
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "isVideoCta"
+                },
+                false
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "cta_linkText",
+        "label": "Secondary CTA Text",
+        "value": " ",
+        "description": "Second CTA link displayed below the hero text",
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "cta_link",
+        "label": "Secondary CTA URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "cta_linkText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "reserveBar",
+        "label": "Reserve Bar",
+        "value": false,
+        "description": "If true, the reserve bar will be displayed in the hero section",
+        "condition": {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "ai_aiChatInput"
+                },
+                false
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "artist"
+                },
+                false
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "ai_aiChatInput",
+        "label": "AI Chat Input",
+        "value": false,
+        "description": "If true, AI chat input will be displayed in the hero section",
+        "condition": {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "reserveBar"
+                },
+                false
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "artist"
+                },
+                false
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ai_aiChatInputPlaceholderText",
+        "value": "What would you like to explore?",
+        "label": "AI Chat Input Placeholder Text",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "ai_aiChatInput"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "artist",
+        "label": "Artist",
+        "value": false,
+        "description": "If true, artist widget will be displayed. Add profile modal item to this component for the pop up artist modal.",
+        "condition": {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "ai_aiChatInput"
+                },
+                false
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "reserveBar"
+                },
+                false
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "artist-name",
+        "label": "Artist Name",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "artist"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "artistImage",
+        "label": "Artist Image",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "artist"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "artistImageAlt",
+        "label": "Artist Image Alt Text",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "artist"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
       }
     ]
   },
   {
-    "id": "hero",
+    "id": "carousel-card",
     "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "reference",
+        "valueType": "array",
+        "name": "images",
+        "label": "Images",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "value": ""
+      },
+      {
+        "component": "checkbox",
+        "valueType": "boolean",
+        "name": "isExternalLink",
+        "label": "Is External Link",
+        "value": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "slideText",
+        "label": "Slide Text",
+        "value": ""
+      },
       {
         "component": "reference",
         "valueType": "string",
@@ -238,11 +593,4532 @@
         "value": ""
       },
       {
+        "component": "checkbox",
+        "valueType": "boolean",
+        "name": "isVideo",
+        "label": "Is Video",
+        "value": false
+      }
+    ]
+  },
+  {
+    "id": "swiper-card3",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isImageSquare",
+        "label": "Make Image Square?",
+        "value": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Card Title"
+      },
+      {
         "component": "richtext",
+        "name": "description",
+        "valueType": "string",
+        "label": "Card Description"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Link for title, leave empty if not needed"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttonText",
+        "label": "Link text for button, leave empty if not needed"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttonLink",
+        "label": "Link for button, leave empty if not needed",
+        "condition": {
+          "!==": [
+            {
+              "var": "buttonText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelTag",
+        "label": "Label tag that will be used to display on card profile"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "popupTtitle",
+        "label": "Secondary title for card profile"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dateRange",
+        "label": "Date range ie: 15 May - 15 June 2025 for card profile"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "timeRange",
+        "label": "Time range ie: 8am – 8:30am for card profile"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "location",
+        "label": "Location for card profile"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "descriptionCard",
+        "label": "Dedicated description for card profile"
+      }
+    ]
+  },
+  {
+    "id": "carousel-card-popup",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Popup Title",
+        "valueType": "string",
+        "defaultValue": "Default Popup Title"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Popup Description",
+        "valueType": "string",
+        "defaultValue": "<p>This is the default description for the popup.</p>"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Popup Image",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string",
+        "defaultValue": "Default image alt text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelTag",
+        "label": "Label tag that will come from main card",
+        "defaultValue": "Default Label Tag"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "popupTtitle",
+        "label": "Secondary title for card profile",
+        "defaultValue": "Default Popup Secondary Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dateRange",
+        "label": "Date range from main card",
+        "defaultValue": "Default Date Range"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "timeRange",
+        "label": "Time range from main card",
+        "defaultValue": "Default Time Range"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "location",
+        "label": "Location from main card",
+        "defaultValue": "Default Location"
+      }
+    ]
+  },
+  {
+    "id": "slider-teaser-content",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "overlay",
+        "label": "Overlay",
+        "value": false,
+        "description": "If true, the content will be displayed in a box with an overlay effect"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "text",
-        "value": "",
         "label": "Text",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttonText",
+        "label": "Button Text",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttonUrl",
+        "label": "Button URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": " ",
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            false
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": " ",
+        "required": false,
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            false
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": " ",
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            false
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text",
+        "value": " ",
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            false
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaUrl",
+        "label": "CTA Url",
+        "value": " ",
+        "required": false,
+        "condition": {
+          "and": [
+            {
+              "!==": [
+                {
+                  "var": "ctaText"
+                },
+                " "
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "overlay"
+                },
+                false
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isExternalLink",
+        "label": "Is External Link",
+        "value": false,
+        "condition": {
+          "and": [
+            {
+              "!==": [
+                {
+                  "var": "ctaText"
+                },
+                ""
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "overlay"
+                },
+                false
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": " ",
+        "description": "Add alt text to media if media is an image"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "logo",
+        "label": "Logo",
+        "multi": false,
+        "required": true,
+        "value": "",
+        "condition": {
+          "===": [
+            {
+              "var": "overlay"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "artist",
+        "label": "Artist",
+        "value": false,
+        "description": "If true, artist widget will be displayed. Add profile modal item to this component for the pop up artist modal."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "artist-name",
+        "label": "Artist Name",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "artist"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "artistImage",
+        "label": "Artist Image",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "artist"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "artistImageAlt",
+        "label": "Artist Image Alt Text",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "artist"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "musicPlayer",
+        "label": "Music Player",
+        "value": false,
+        "description": "If true, music player widget will be displayed"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "musicThumbnail",
+        "label": "Music Thumbnail Image",
+        "multi": false,
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "musicPlayer"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "musicArtist",
+        "label": "Music Artist",
+        "value": " ",
+        "description": "Short text displayed artist name",
+        "condition": {
+          "===": [
+            {
+              "var": "musicPlayer"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "musicSongTitle",
+        "label": "Music Song Title",
+        "value": " ",
+        "description": "Short text displayed song title",
+        "condition": {
+          "===": [
+            {
+              "var": "musicPlayer"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "musicSong",
+        "label": "Music Song",
+        "multi": false,
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "musicPlayer"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "infoItem",
+        "label": "Info Item",
+        "value": false,
+        "description": "If true, info item will be displayed"
+      },
+      {
+        "component": "text",
+        "name": "infotitle",
+        "label": "Info Title",
+        "description": "Main title for the info item",
+        "condition": {
+          "===": [
+            {
+              "var": "infoItem"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon 1",
+        "label": "Icon 1",
+        "description": "Small icon 1 for the feature",
+        "multi": false,
+        "condition": {
+          "===": [
+            {
+              "var": "infoItem"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description 1",
+        "label": "Feature Description 1",
+        "condition": {
+          "===": [
+            {
+              "var": "infoItem"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon 2",
+        "label": "Icon 2",
+        "description": "Small icon 2 for the feature",
+        "multi": false,
+        "condition": {
+          "===": [
+            {
+              "var": "infoItem"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description 2",
+        "label": "Feature Description 2",
+        "condition": {
+          "===": [
+            {
+              "var": "infoItem"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon 3",
+        "label": "Icon 3",
+        "description": "Small icon 3 for the feature",
+        "multi": false,
+        "condition": {
+          "===": [
+            {
+              "var": "infoItem"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description 3",
+        "label": "Feature Description 3",
+        "condition": {
+          "===": [
+            {
+              "var": "infoItem"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "three-image-description",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Section Title",
+        "description": "Main title for the section"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "description": "Main description text for the section"
+      },
+      {
+        "component": "select",
+        "name": "layout",
+        "label": "Layout Style",
+        "options": [
+          {
+            "name": "Images Above",
+            "value": "images-above"
+          },
+          {
+            "name": "Images Below",
+            "value": "images-below"
+          },
+          {
+            "name": "Images Left",
+            "value": "images-left"
+          },
+          {
+            "name": "Images Right",
+            "value": "images-right"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "two-columns-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaTitleLink",
+        "label": "CTA Title Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaTitleText",
+        "label": "CTA Title Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "singleDescription",
+        "value": "",
+        "label": "Single Description"
+      },
+      {
+        "component": "container",
+        "name": "features",
+        "label": "Features",
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 1",
+            "label": "Icon 1",
+            "description": "Small icon 1 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 1",
+            "label": "Feature Description 1"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 2",
+            "label": "Icon 2",
+            "description": "Small icon 2 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 2",
+            "label": "Feature Description 2"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 3",
+            "label": "Icon 3",
+            "description": "Small icon 3 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 3",
+            "label": "Feature Description 3"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "categories",
+        "label": "Insert category for destination here",
+        "description": "Add category to be matched with the filter."
+      },
+      {
+        "component": "text",
+        "name": "categories-type",
+        "label": "Insert category for types here",
+        "description": "Add category to be matched with the filter."
+      }
+    ]
+  },
+  {
+    "id": "section-header",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "title",
+        "label": "Title",
+        "required": true,
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            ""
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "text-image-model",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "Content"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image"
+      },
+      {
+        "component": "select",
+        "name": "imagePosition",
+        "label": "Image Position",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ],
+        "value": "left"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "floorButtonText",
+        "label": "Link text for first button, leave empty if not needed",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "floorButtonLink",
+        "label": "Link for first button, leave empty if not needed",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "floorButtonText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "galleryButtonText",
+        "label": "Link text for second button, leave empty if not needed",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "galleryButtonLink",
+        "label": "Link for second button, leave empty if not needed",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "galleryButtonText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "name": "useMapInstead",
+        "label": "Use map instead",
+        "value": false
+      },
+      {
+        "component": "text",
+        "name": "latitude",
+        "label": "Insert latitude for map",
+        "valueType": "number",
+        "condition": {
+          "===": [
+            {
+              "var": "useMapInstead"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "longitude",
+        "label": "Insert longitude for map",
+        "valueType": "number",
+        "condition": {
+          "===": [
+            {
+              "var": "useMapInstead"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "iconMap",
+        "label": "Insert icon for map",
+        "condition": {
+          "===": [
+            {
+              "var": "useMapInstead"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "name": "tnc-modal",
+        "label": "T&C Modal",
+        "value": false,
+        "description": "If true, clicking on a link with the url 'tnc' will open a modal with the T&C content."
+      },
+      {
+        "component": "reference",
+        "name": "modal_image",
+        "label": "Modal Image",
+        "multi": false,
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "tnc-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "modal_imageAlt",
+        "label": "Modal Image Alt Text",
+        "value": " ",
+        "condition": {
+          "===": [
+            {
+              "var": "tnc-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "modal_mainText",
+        "label": "Modal Main Text",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "tnc-modal"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "info-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Section Title",
+        "description": "Main title for the card"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "description": "Single description text for the card"
+      },
+      {
+        "component": "container",
+        "name": "features",
+        "label": "Features",
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 1",
+            "label": "Icon 1",
+            "description": "Small icon 1 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 1",
+            "label": "Feature Description 1"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 2",
+            "label": "Icon 2",
+            "description": "Small icon 2 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 2",
+            "label": "Feature Description 2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "programs-listings"
+  },
+  {
+    "id": "programs",
+    "fields": [
+      {
+        "component": "select",
+        "label": "Programs Type",
+        "name": "programsType",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Event",
+            "value": "event"
+          },
+          {
+            "name": "Activity",
+            "value": "activity"
+          },
+          {
+            "name": "Artist",
+            "value": "artist"
+          },
+          {
+            "name": "Festive",
+            "value": "festive"
+          }
+        ],
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tabName",
+        "label": "Tab Name",
+        "description": "Name of the tab for the programs listing, displayed at the top of the section if more than one programs listing is present",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "header_title",
+        "label": "Title",
+        "description": "Main title for the programs listing displayed at the top of the section below the tabs"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "header_description",
+        "label": "Description",
+        "description": "Main description for the programs listing displayed at the top of the section below the title"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "options",
+        "label": "More Options",
+        "value": false,
+        "description": "Configure how the programs are displayed"
+      },
+      {
+        "component": "select",
+        "name": "option_columnsNum",
+        "label": "Select the columns number",
+        "options": [
+          {
+            "name": "3 Columns",
+            "value": "3"
+          },
+          {
+            "name": "4 Columns",
+            "value": "4"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "options"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "option_maxPrograms",
+        "label": "Max Programs",
+        "description": "Limit the number of programs displayed. Leave it as 0 to display all.",
+        "condition": {
+          "===": [
+            {
+              "var": "options"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "option_hideFilters",
+        "label": "Hide Filters",
+        "value": false,
+        "description": "If true, filter components will be hidden",
+        "condition": {
+          "===": [
+            {
+              "var": "options"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "container",
+        "name": "no-programs-message",
+        "label": "No Programs Message",
+        "condition": {
+          "===": [
+            {
+              "var": "options"
+            },
+            true
+          ]
+        },
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "title",
+            "label": "Title",
+            "description": "Title displayed when no programs are available",
+            "required": true,
+            "value": "No hosted experiences today, wander at will"
+          },
+          {
+            "component": "text",
+            "name": "linkText",
+            "label": "Link Text",
+            "value": "Know when experiences arrive",
+            "required": true
+          },
+          {
+            "component": "text",
+            "name": "link",
+            "label": "Link",
+            "value": "/newsletter",
+            "required": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hero-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text"
+      }
+    ]
+  },
+  {
+    "id": "highlight-card4",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "Highlightimage",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "Highlightlabel",
+        "label": "Label",
+        "description": "Short identifying label"
+      },
+      {
+        "component": "text",
+        "name": "Highlighttitle",
+        "label": "Title",
+        "required": true,
+        "description": "Main headline for the card"
+      },
+      {
+        "component": "richtext",
+        "name": "Highlightdescription",
+        "label": "Description",
+        "description": "Detailed content about the highlight"
+      },
+      {
+        "component": "text",
+        "name": "Highlighttime",
+        "label": "Time",
+        "description": "2pm example"
+      },
+      {
+        "component": "text",
+        "name": "Highlightvenue",
+        "label": "Venue",
+        "description": "Location "
+      },
+      {
+        "component": "date-time",
+        "label": "Date & Time",
+        "name": "date",
+        "valueType": "date"
+      }
+    ]
+  },
+  {
+    "id": "image-gallery-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mainImages 1",
+        "label": "Main Images 1",
+        "description": "Multiple images 1",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mainImages 2",
+        "label": "Main Images 2",
+        "description": "Multiple images 2",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mainImages 3",
+        "label": "Main Images 3",
+        "description": "Multiple images 3",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "category",
+        "label": "Category"
+      },
+      {
+        "component": "container",
+        "name": "features",
+        "label": "Features",
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 1",
+            "label": "Icon 1",
+            "description": "Small icon 1 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 1",
+            "label": "Feature Description 1"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 2",
+            "label": "Icon 2",
+            "description": "Small icon 2 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 2",
+            "label": "Feature Description 2"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "icon 3",
+            "label": "Icon 3",
+            "description": "Small icon 3 for the feature",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description 3",
+            "label": "Feature Description 3"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondCtaText",
+        "label": "Second CTA Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondCtaUrl",
+        "label": "Second CTA Url",
+        "value": " ",
+        "condition": {
+          "!==": [
+            {
+              "var": "secondCtaText"
+            },
+            " "
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hero-banner-alt",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "upperHeroText",
+        "label": "Upper Hero Text",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "lowerHeroText",
+        "label": "Lower Hero Text",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "firstCtaText",
+        "label": "First CTA Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "firstCtaUrl",
+        "label": "First CTA Url",
+        "value": " ",
+        "required": true,
+        "description": "For email links, use 'mailto:' prefix. Eg. mailto:someone@example.com",
+        "condition": {
+          "!==": [
+            {
+              "var": "firstCtaText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondCtaText",
+        "label": "Second CTA Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondCtaUrl",
+        "label": "Second CTA Url",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "secondCtaText"
+            },
+            " "
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "faq-accordion-item-unit",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "required": true,
+        "description": "Faq ccordion title",
+        "defaultValue": "Accordion Item Title"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "description": "Detailed content about the accordion item",
+        "defaultValue": "<p>Accordion item description.</p>"
+      }
+    ]
+  },
+  {
+    "id": "highlights-container",
+    "fields": [
+      {
+        "component": "text",
+        "name": "topics",
+        "label": "Values to be inserted into the topics filter",
+        "description": "Add topics for the filter dropdown. Each entry will be a new option.",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "name": "dates",
+        "label": "Values to be inserted into the dates filter",
+        "description": "Add date ranges IE 'Jan 2025 - Mar 2025' for the filter dropdown. Each entry will be a new option.",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "highlights-feed",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "date",
+        "label": "Date",
+        "description": "Display date"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "description": "Title text"
+      },
+      {
+        "component": "aem-content",
+        "name": "titleLink",
+        "label": "Title Link URL",
+        "description": "URL for the title"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "name": "buttonText",
+        "label": "Button Text",
+        "description": "text for action button"
+      },
+      {
+        "component": "aem-content",
+        "name": "buttonLink",
+        "label": "Button Link URL",
+        "description": "URL for the action button"
+      },
+      {
+        "component": "text",
+        "name": "categories",
+        "label": "insert category here",
+        "description": "Add category to be matched with the filter."
+      }
+    ]
+  },
+  {
+    "id": "newsletter-modal",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "headerText",
+        "label": "Header Text",
+        "value": "<p>Subscribe to<br></br>our newsletter</p>",
+        "description": "Text displayed at the top of the modal",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "buttonText",
+        "label": "Button Text",
+        "value": "Continue",
+        "description": "Text displayed on the button",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "termsText",
+        "label": "Terms Text",
+        "value": "<p>By Subscribing To Our Newsletter, You Accept The <a href='https://capellahotelgroup.com/privacy-policy/'>Privacy Policy</a>.</p>",
+        "description": "Text displayed at the bottom of the modal",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "description": "Image displayed when the user successfully subscribes",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": "Patina Osaka",
+        "description": "Alternative text for the image displayed when the user successfully subscribes",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "successHeaderText",
+        "label": "Success Header Text",
+        "value": "<p>You're in.<br></br>The journey begins</p>",
+        "description": "Text displayed when the user successfully subscribes",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "successDescriptionText",
+        "label": "Success Description Text",
+        "value": "Expect exclusive updates from the world of Patina, sent straight to your inbox",
+        "description": "Text displayed when the user successfully subscribes",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "closeButtonText",
+        "label": "Close Button Text",
+        "value": "Done",
+        "description": "Text displayed on the button to close the modal after subscription",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "flower-splash-screen",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "mainText",
+        "label": "Main Text",
+        "value": "<h4>Freedom is the luxury to<br>move effortlessly across worlds</h4>",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "profile-modal",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "profile_image",
+        "label": "Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "profile_imageAlt",
+        "label": "Image Alt Text",
+        "value": " ",
+        "description": "Alternative text for the image displayed"
+      },
+      {
+        "component": "richtext",
+        "name": "profile_mainText",
+        "label": "Main Text",
+        "value": " ",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "featured-banner",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": " ",
+        "description": "Alternative text for the image displayed"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "event_showDate",
+        "label": "Show Date",
+        "value": false
+      },
+      {
+        "component": "date-time",
+        "valueType": "date",
+        "name": "event_startDate",
+        "label": "Start Date",
+        "description": "Start date for the event"
+      },
+      {
+        "component": "date-time",
+        "valueType": "date",
+        "name": "event_endDate",
+        "label": "End Date",
+        "description": "End date for the event",
+        "condition": {
+          "!==": [
+            {
+              "var": "event_startDate"
+            },
+            null
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Label",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "name": "mainText",
+        "label": "Main Text",
+        "value": " ",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "descText",
+        "label": "Description Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "CTA Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "name": "link",
+        "label": "CTA URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isExternalLink",
+        "label": "Is External Link",
+        "value": false
+      },
+      {
+        "component": "text",
+        "name": "secondLinkText",
+        "label": "Secondary CTA Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "name": "secondLink",
+        "label": "Secondary CTA URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "secondIsExternalLink",
+        "label": "Is External Link",
+        "value": false
+      },
+      {
+        "component": "reference",
+        "name": "mobileImage",
+        "label": "Mobile Image",
+        "multi": false,
+        "required": false
+      },
+      {
+        "component": "text",
+        "name": "mobileImageAlt",
+        "label": "Mobile Image Alt Text",
+        "value": " ",
+        "description": "Alternative text for the mobile image displayed"
+      }
+    ]
+  },
+  {
+    "id": "nav-imprints-cards",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "imprints-header",
+        "label": "Imprints Main Header Image",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "text_desc",
+        "label": "Description",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "image1",
+        "label": "Image 1",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "image2",
+        "label": "Image 2",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "image3",
+        "label": "Image 3",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link",
+        "label": "Card CTA URL",
+        "value": " "
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isExternalLink",
+        "label": "Is External Link",
+        "value": false
+      }
+    ]
+  },
+  {
+    "id": "award-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Card Title",
+        "description": "Main title for the card"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "description": "Main description text for the card"
+      }
+    ]
+  },
+  {
+    "id": "profile-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Card Title",
+        "description": "Main title for the card"
+      },
+      {
+        "component": "text",
+        "name": "position",
+        "label": "Position",
+        "description": "Main description text for the card"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaTitleText",
+        "label": "CTA Title Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link"
+      }
+    ]
+  },
+  {
+    "id": "two-columns-container",
+    "fields": [
+      {
+        "component": "text",
+        "name": "destinations",
+        "label": "Destination Filter Options",
+        "description": "Add destinations for the filter dropdown",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "name": "types",
+        "label": "Type Filter Options",
+        "description": "Add types for the filter dropdown",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "name": "attribute",
+        "label": "Attribute",
+        "description": "Data attribute, used to filter",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "category-tabs-gallery",
+    "fields": [
+      {
+        "component": "select",
+        "name": "category",
+        "label": "Category",
+        "options": [
+          {
+            "name": "artDesign",
+            "value": "Art & Design"
+          },
+          {
+            "name": "culinary",
+            "value": "Culinary"
+          },
+          {
+            "name": "music",
+            "value": "Music"
+          },
+          {
+            "name": "wellbeing",
+            "value": "Wellbeing"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "main_label",
+        "label": "Label",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "main_title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_ctaText",
+        "label": "CTA Text",
+        "value": " ",
+        "required": true,
+        "description": "Add Modal Slide Carousel to open the modal, otherwise add a link to open a new page"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_ctaTextLink",
+        "label": "CTA Link",
+        "value": "",
+        "description": "Leave blank if using Modal Slide Carousel. Otherwise clicking on cta will open this link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "upnextThumbnailText",
+        "label": "Up Next Thumbnail Text",
+        "value": "",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "cta_ctaTextLink"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "modal-slide-carousel",
+    "fields": [
+      {
+        "component": "select",
+        "name": "slideFormat",
+        "label": "Slide Format",
+        "options": [
+          {
+            "name": "fullscreenMediaText",
+            "value": "Fullscreen Media with Text"
+          },
+          {
+            "name": "splitLayoutMediaText",
+            "value": "Split Layout Media with Text"
+          }
+        ],
+        "defaultValue": "fullscreenMediaText",
+        "required": true
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "Media Right",
+        "label": "Media on the right side",
+        "value": false,
+        "description": "If true, the media will be on the right, otherwise it will be on the left",
+        "condition": {
+          "===": [
+            {
+              "var": "slideFormat"
+            },
+            "Split Layout Media with Text"
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "media",
+        "label": "Media",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mediaAlt",
+        "label": "Media Alt Text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "cta_linkText",
+        "label": "Primary CTA Text",
+        "value": " ",
+        "description": "CTA displayed in a pill primary button style",
+        "condition": {
+          "===": [
+            {
+              "var": "slideFormat"
+            },
+            "Fullscreen Media with Text"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "cta_link",
+        "label": "Primary CTA URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "cta_linkText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "cta2_linkText",
+        "label": "Secondary CTA Text",
+        "value": " ",
+        "description": "CTA displayed in a text link style",
+        "condition": {
+          "===": [
+            {
+              "var": "slideFormat"
+            },
+            "Fullscreen Media with Text"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "cta2_link",
+        "label": "Secondary CTA URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "cta2_linkText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "coverImage",
+        "label": "Cover Image",
+        "multi": false,
+        "description": "If media is a video, the cover image will be displayed as a placeholder before the video is played",
+        "condition": {
+          "===": [
+            {
+              "var": "slideFormat"
+            },
+            "Fullscreen Media with Text"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "coverImageAlt",
+        "label": "Cover Image Alt Text",
+        "condition": {
+          "===": [
+            {
+              "var": "slideFormat"
+            },
+            "Fullscreen Media with Text"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "file-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "title icon",
+        "label": "Title Icon",
+        "description": "Icon for the title",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "required": true,
+        "description": "File Title"
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "File Type",
+        "required": true,
+        "description": "Label for file type"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "file upload",
+        "label": "File Upload",
+        "description": "File",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon description",
+        "label": "Icon Description",
+        "description": "Small icon for the description",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "External link if not a file"
+      }
+    ]
+  },
+  {
+    "id": "banner-card",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "dayImage",
+        "label": "Day Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "dayImageAlt",
+        "label": "Day Image Alt Text"
+      },
+      {
+        "component": "reference",
+        "name": "nightImage",
+        "label": "Night Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "nightImageAlt",
+        "label": "Night Image Alt Text"
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Label",
+        "description": "Small text above the title"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Text"
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "smallCardImage",
+        "label": "Small Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "smallCardLabel",
+        "label": "small card label",
+        "description": "Small text above the title"
+      },
+      {
+        "component": "text",
+        "name": "smallCardTitle",
+        "label": "small card title",
+        "description": "title card"
+      },
+      {
+        "component": "date-time",
+        "label": "Date & Time",
+        "name": "date",
+        "valueType": "date"
+      },
+      {
+        "component": "select",
+        "name": "site",
+        "label": "Site",
+        "options": [
+          {
+            "name": "Osaka",
+            "value": "osaka"
+          },
+          {
+            "name": "Maldives",
+            "value": "maldives"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "category",
+        "label": "Category",
+        "options": [
+          {
+            "name": "Connection",
+            "value": "connection"
+          },
+          {
+            "name": "Growth",
+            "value": "growth"
+          },
+          {
+            "name": "Nourishment",
+            "value": "nourishment"
+          },
+          {
+            "name": "Wellbeing",
+            "value": "wellbeing"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "venue",
+        "label": "Venue",
+        "options": [
+          {
+            "name": "P72",
+            "value": "p72"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isSeasonal",
+        "label": "Is seasonal image",
+        "value": false,
+        "description": "If true, the icon for night will change to seasonal icon"
+      }
+    ]
+  },
+  {
+    "id": "tabbed-hero-slider",
+    "fields": [
+      {
+        "component": "select",
+        "name": "destinationtype",
+        "label": "Destination Type",
+        "options": [
+          {
+            "name": "maldives",
+            "value": "maldives"
+          },
+          {
+            "name": "osaka",
+            "value": "osaka"
+          },
+          {
+            "name": "tianjin",
+            "value": "tianjin"
+          },
+          {
+            "name": "sanya",
+            "value": "sanya"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": "",
+        "description": "Short text displayed above the hero text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "mainHeroText",
+        "label": "Main Hero Text",
+        "value": "",
+        "required": true,
+        "description": "Main text displayed in the hero section"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text",
+        "value": " ",
+        "description": "CTA link displayed below the hero text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaUrl",
+        "label": "CTA Url",
+        "value": " ",
+        "required": true,
+        "description": "The URL that wraps the CTA Text",
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "imprints-teaser-card",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "media_media",
+        "label": "Media",
+        "multi": false,
+        "required": true,
+        "description": "Image or video to be displayed in the teaser"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_mediaAlt",
+        "label": "Media Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "main_label",
+        "label": "Label",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "main_title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_ctaText",
+        "label": "CTA Text",
+        "value": " ",
+        "required": true,
+        "description": "Add Modal Slide Carousel to open the modal, otherwise add a link to open a new page"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_ctaTextLink",
+        "label": "CTA Link",
+        "value": "",
+        "description": "Leave blank if using Modal Slide Carousel"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "upnextThumbnailText",
+        "label": "Up Next Thumbnail Text",
+        "value": "",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "cta_ctaTextLink"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "music-artistry",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": "",
+        "description": "Short text displayed above the hero text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "mainHeroText",
+        "label": "Main Hero Text",
+        "value": "",
+        "required": true,
+        "description": "Main text displayed in the hero section"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "musicThumbnail",
+        "label": "Music Thumbnail Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "artist",
+        "label": "Artist",
+        "value": "",
+        "description": "Short text displayed artist name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "songTitle",
+        "label": "Song Title",
+        "value": "",
+        "description": "Short text displayed song title"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "song",
+        "label": "Song",
+        "multi": false
+      }
+    ]
+  },
+  {
+    "id": "floor-plan-popup",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "iframeLink",
+        "label": "insert iframe link ",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "property-gallery",
+    "fields": [
+      {
+        "component": "text",
+        "name": "categories",
+        "label": "Gallery Filter Categories",
+        "description": "Comma-separated list of categories for filtering",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "property-gallery-feed",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "category",
+        "label": "Category",
+        "description": "Must match one of the categories defined in the container",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "swiper-highlight4",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Label",
+        "description": "Short identifying label for the event",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "description": "Main headline for the event",
+        "valueType": "string",
+        "required": false
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "description": "Text for the call-to-action button",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaLink",
+        "label": "CTA Button Link",
+        "description": "URL for the call-to-action button",
+        "valueType": "string",
+        "condition": {
+          "!==": [
+            {
+              "var": "ctaText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "venue",
+        "label": "Venue",
+        "description": "venue value to be passed to the API"
+      },
+      {
+        "component": "text",
+        "name": "bgcolor",
+        "label": "Background Color",
+        "description": "Background color for the swiper highlight"
+      },
+      {
+        "component": "text",
+        "name": "category",
+        "label": "Category",
+        "description": "Category value to be passed to the API"
+      },
+      {
+        "component": "text",
+        "name": "site",
+        "label": "Site",
+        "description": "Site value to be passed to the API"
+      },
+      {
+        "component": "text",
+        "name": "secondaryCtaText",
+        "label": "Secondary CTA Text",
+        "description": "Text for the secondary call-to-action button",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "secondaryCtaLink",
+        "label": "Secondary CTA Link",
+        "description": "URL for the secondary call-to-action button",
+        "valueType": "string",
+        "condition": {
+          "!==": [
+            {
+              "var": "secondaryCtaText"
+            },
+            ""
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "text-image-tabs-model",
+    "fields": [
+      {
+        "component": "text",
+        "name": "categories",
+        "label": "Tab Categories",
+        "description": "Comma-separated list of categories that will appear as tabs.",
+        "valueType": "string",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "text-image-feed-model",
+    "fields": [
+      {
+        "component": "text",
+        "name": "category",
+        "label": "Category",
+        "description": "Assign this item to a category defined in the container.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "Content"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image"
+      },
+      {
+        "component": "select",
+        "name": "imagePosition",
+        "label": "Image Position",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ],
+        "value": "left"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "floorButtonText",
+        "label": "Link text for first button"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "floorButtonLink",
+        "label": "Link for first button",
+        "condition": {
+          "!==": [
+            {
+              "var": "floorButtonText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "galleryButtonText",
+        "label": "Link text for second button"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "galleryButtonLink",
+        "label": "Link for second button",
+        "condition": {
+          "!==": [
+            {
+              "var": "galleryButtonText"
+            },
+            ""
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "image-gallery-tile-model",
+    "fields": [
+      {
+        "component": "text",
+        "name": "categories",
+        "label": "Categories",
+        "description": "Comma-separated list of categories for filtering.",
+        "valueType": "string",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "double-column-cards"
+  },
+  {
+    "id": "split-layout-card",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Card Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Card Image Alt Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "name": "link",
+        "label": "Main CTA URL",
+        "value": " ",
+        "description": "Clicking on the image or title will navigate to this URL",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "description": "Small text above the title"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "cta_linkText",
+        "label": "CTA Text",
+        "value": " ",
+        "description": "CTA link displayed below the title"
+      },
+      {
+        "component": "text",
+        "name": "cta_link",
+        "label": "CTA URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "linkText"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "name": "profile-modal",
+        "label": "Profile Modal",
+        "value": false,
+        "description": "If true, an artist profile card will be displayed on the image. Clicking on the card will open a modal."
+      },
+      {
+        "component": "text",
+        "name": "profile_text",
+        "label": "Artist Name",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "profile-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "profile_image",
+        "label": "Artist Thumbnail Image",
+        "multi": false,
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "profile-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "profile_imageAlt",
+        "label": "Artist Thumbnail Image Alt Text",
+        "value": " ",
+        "condition": {
+          "===": [
+            {
+              "var": "profile-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "modal_image",
+        "label": "Modal Artist Image",
+        "multi": false,
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "profile-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "modal_imageAlt",
+        "label": "Modal Artist Image Alt Text",
+        "value": " ",
+        "condition": {
+          "===": [
+            {
+              "var": "profile-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "modal_mainText",
+        "label": "Modal Main Text",
+        "value": " ",
+        "required": true,
+        "description": "Use H2 for the main title, P for the body text",
+        "condition": {
+          "===": [
+            {
+              "var": "profile-modal"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "compare-rooms"
+  },
+  {
+    "id": "room-card",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "firstrow_image",
+        "label": "Card Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "firstrow_imageAlt",
+        "label": "Card Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "firstrow_label",
+        "label": "Label",
+        "description": "Small text above the room name",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "firstrow_roomName",
+        "label": "Room Name",
+        "required": true
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "firstrow_cost",
+        "label": "Room Cost",
+        "required": true,
+        "value": 0,
+        "description": "If value is 0, cost will be hidden"
+      },
+      {
+        "component": "text",
+        "name": "firstrow_linkText",
+        "label": "CTA Text",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "firstrow_link",
+        "label": "CTA URL",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "secondrow_secondRowDetails",
+        "label": "Second Row Details",
+        "description": "Additional details to be displayed in the second row of the card"
+      },
+      {
+        "component": "text",
+        "name": "secondrow_floorPlan",
+        "label": "Floor Plan",
+        "description": "iframe url for the floor plan, if applicable, displayed on the second row"
+      },
+      {
+        "component": "richtext",
+        "name": "thirdrow_thirdRowDetails",
+        "label": "Third Row Details",
+        "description": "Additional details to be displayed in the third row of the card"
+      }
+    ]
+  },
+  {
+    "id": "reserve-tabs",
+    "fields": [
+      {
+        "component": "text",
+        "name": "content",
+        "label": "Reserve Tabs Content",
+        "description": "Multi tabs content.",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "description": "Titles for each tab",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "name": "attribute",
+        "label": "Attribute",
+        "description": "Data attribute, used to filter",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "membership-tiers-modal",
+    "fields": [
+      {
+        "component": "text",
+        "name": "headerTitle",
+        "label": "Header Title",
+        "description": "Title displayed at the top of the modal",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "footerText",
+        "label": "Footer Text",
+        "description": "Text displayed at the bottom of the modal"
+      }
+    ]
+  },
+  {
+    "id": "membership-tier-card",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Card Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Card Image Alt Text",
+        "value": " "
+      },
+      {
+        "component": "text",
+        "name": "tierType",
+        "label": "Tier Type",
+        "description": "The type of membership tier (e.g., 'Silver', 'Gold')",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "benefitsAvailability",
+        "label": "Benefits Availability",
+        "description": "When is the benefit available?",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "benefits",
+        "label": "Benefits",
+        "description": "What are the benefits of this membership tier?",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "padding-sections",
+    "fields": [
+      {
+        "component": "select",
+        "name": "paddingSelect",
+        "label": "Select your spacings for padding top",
+        "options": [
+          {
+            "name": "--space-xs",
+            "value": "--space-xs"
+          },
+          {
+            "name": "--space-s",
+            "value": "--space-s"
+          },
+          {
+            "name": "--space-m",
+            "value": "--space-m"
+          },
+          {
+            "name": "--space-l",
+            "value": "--space-l"
+          },
+          {
+            "name": "--space-xl",
+            "value": "--space-xl"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gha-banner",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Banner Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "signIn_signInHeader",
+        "label": "Sign In Header",
+        "description": "The header text for the sign-in section",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "signIn_privacyPolicy",
+        "label": "Sign In Privacy Policy",
+        "description": "The privacy policy text for the sign-in section",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "create_createAccountHeader",
+        "label": "Create Account Header",
+        "description": "The header text for the create account section",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "create_image",
+        "label": "Create Account Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "create_imageAlt",
+        "label": "Create Account Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "create_tnc",
+        "label": "Create Account Terms and Conditions",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "success_header",
+        "label": "Success Header",
+        "description": "The header text for the success section",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "success_description",
+        "label": "Success Description",
+        "description": "The description text for the success section",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "success_image",
+        "label": "Success Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "success_imageAlt",
+        "label": "Success Image Alt Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "gha-dashboard",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "benefits_image",
+        "label": "Benefits Image",
+        "multi": false,
+        "required": true,
+        "description": "Image displayed in the benefits modal"
+      },
+      {
+        "component": "text",
+        "name": "benefits_imageAlt",
+        "label": "Benefits Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "benefits_cardBenefits",
+        "label": "Card Benefits",
+        "description": "The benefits of the card tier displayed in the benefits modal",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "reserve-modal",
+    "fields": [
+      {
+        "component": "text",
+        "name": "main_title",
+        "label": "Main Title",
+        "multi": false,
+        "required": true,
+        "description": "The main title for the reserve modal."
+      }
+    ]
+  },
+  {
+    "id": "slide-deck"
+  },
+  {
+    "id": "slide-with-bottom-left-text-and-tooltip",
+    "fields": [
+      {
+        "component": "text",
+        "name": "slideType",
+        "label": "Slide Type",
+        "value": "slide-with-bottom-left-text-and-tooltip",
+        "readOnly": true
+      },
+      {
+        "component": "reference",
+        "name": "desktop_image",
+        "label": "Image",
+        "multi": false,
+        "required": true,
+        "description": "Image to be displayed in the slide"
+      },
+      {
+        "component": "text",
+        "name": "desktop_imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "content_media-text",
+        "valueType": "string",
+        "label": "Media Text",
+        "value": "",
+        "description": "Text to be displayed on the media"
+      },
+      {
+        "component": "text",
+        "name": "content_linkText",
+        "label": "CTA Text",
+        "value": "",
+        "description": "CTA link displayed below the text"
+      },
+      {
+        "component": "text",
+        "name": "content_link",
+        "label": "CTA URL",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "content_linkText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "tooltip-card",
+        "label": "Show Tooltip Card",
+        "value": false,
+        "description": "If true, a tooltip card will be displayed on hover on the provided coordinates"
+      },
+      {
+        "component": "number",
+        "name": "tooltip_tooltip-x-coordinate",
+        "valueType": "number",
+        "label": "Tooltip X Coordinate",
+        "value": "",
+        "required": true,
+        "validation": {
+          "numberMin": 0,
+          "numberMax": 100
+        },
+        "condition": {
+          "===": [
+            {
+              "var": "tooltip-card"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "number",
+        "name": "tooltip_tooltip-y-coordinate",
+        "valueType": "number",
+        "label": "Tooltip Y Coordinate",
+        "value": "",
+        "required": true,
+        "validation": {
+          "numberMin": 0,
+          "numberMax": 100
+        },
+        "condition": {
+          "===": [
+            {
+              "var": "tooltip-card"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "container",
+        "name": "tooltip-card-content",
+        "label": "Tooltip Card Content",
+        "fields": [
+          {
+            "component": "reference",
+            "name": "image",
+            "label": "Image",
+            "multi": false,
+            "required": true,
+            "description": "Image to be displayed in the card"
+          },
+          {
+            "component": "text",
+            "name": "imageAlt",
+            "label": "Image Alt Text",
+            "value": ""
+          },
+          {
+            "component": "text",
+            "name": "card_title",
+            "valueType": "string",
+            "label": "Title",
+            "value": ""
+          },
+          {
+            "component": "text",
+            "name": "card_desc",
+            "valueType": "string",
+            "label": "Description",
+            "value": ""
+          }
+        ],
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "tooltip-card"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "mobile-content",
+        "label": "Use Mobile Content",
+        "value": false,
+        "description": "If true, these content will be used for mobile, otherwise desktop content will be used by default"
+      },
+      {
+        "component": "container",
+        "name": "mobile",
+        "label": "mobile",
+        "fields": [
+          {
+            "component": "reference",
+            "name": "mobile_image",
+            "label": "Image",
+            "multi": false,
+            "required": true,
+            "description": "Image to be displayed in the slide"
+          },
+          {
+            "component": "text",
+            "name": "mobile_imageAlt",
+            "label": "Image Alt Text",
+            "value": ""
+          },
+          {
+            "component": "number",
+            "name": "tooltip-mobile_tooltip-x-coordinate",
+            "valueType": "number",
+            "label": "Tooltip X Coordinate",
+            "value": "",
+            "required": true,
+            "validation": {
+              "numberMin": 0,
+              "numberMax": 100
+            },
+            "condition": {
+              "===": [
+                {
+                  "var": "tooltip-card"
+                },
+                true
+              ]
+            }
+          },
+          {
+            "component": "number",
+            "name": "tooltip-mobile_tooltip-y-coordinate",
+            "valueType": "number",
+            "label": "Tooltip Y Coordinate",
+            "value": "",
+            "required": true,
+            "validation": {
+              "numberMin": 0,
+              "numberMax": 100
+            },
+            "condition": {
+              "===": [
+                {
+                  "var": "tooltip-card"
+                },
+                true
+              ]
+            }
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "mobile-content"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "slide-with-ai-cta",
+    "fields": [
+      {
+        "component": "text",
+        "name": "slideType",
+        "label": "Slide Type",
+        "value": "slide-with-ai-cta",
+        "readOnly": true
+      },
+      {
+        "component": "reference",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true,
+        "description": "Image or video to be displayed in the slide"
+      },
+      {
+        "component": "text",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "content_media-text",
+        "valueType": "string",
+        "label": "Media Text",
+        "value": "",
+        "description": "Main text to be displayed on the media"
+      },
+      {
+        "component": "text",
+        "name": "input-text",
+        "valueType": "string",
+        "label": "Input Text",
+        "value": "",
+        "description": "Text to be displayed on the input"
+      },
+      {
+        "component": "text",
+        "name": "aiLink",
+        "valueType": "string",
+        "label": "AI Link",
+        "value": "",
+        "description": "Link to the AI content",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "newsletter-slide",
+    "fields": [
+      {
+        "component": "text",
+        "name": "slide",
+        "label": "Slide Type",
+        "value": "newsletter-slide",
+        "readOnly": true
+      },
+      {
+        "component": "reference",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true,
+        "description": "Image or video to be displayed in the slide"
+      },
+      {
+        "component": "text",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "overlay_image",
+        "label": "Logo",
+        "multi": false,
+        "required": true,
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "overlay_imageAlt",
+        "label": "Logo Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "overlay_text",
+        "label": "Main Text",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "overlay_linkText",
+        "label": "Button Text",
+        "value": " ",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "overlay_link",
+        "label": "Link URL",
+        "value": " ",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "slide-with-centered-content",
+    "fields": [
+      {
+        "component": "text",
+        "name": "slide",
+        "label": "Slide Type",
+        "value": "slide-with-centered-content",
+        "readOnly": true
+      },
+      {
+        "component": "reference",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true,
+        "description": "Image or video to be displayed in the slide"
+      },
+      {
+        "component": "text",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": ""
+      },
+      {
+        "component": "container",
+        "name": "content",
+        "label": "Content",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "label",
+            "label": "Label",
+            "value": ""
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "header",
+            "label": "Header",
+            "value": ""
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "description",
+            "label": "Description",
+            "value": ""
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "linkText",
+            "label": "Link Text",
+            "value": " "
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "link",
+            "label": "Link URL",
+            "value": " ",
+            "required": true,
+            "condition": {
+              "!==": [
+                {
+                  "var": "linkText"
+                },
+                " "
+              ]
+            }
+          },
+          {
+            "component": "boolean",
+            "valueType": "boolean",
+            "name": "showArrow",
+            "label": "Show Arrow",
+            "value": false,
+            "description": "If true, an arrow will be shown next to the CTA text.",
+            "condition": {
+              "!==": [
+                {
+                  "var": "linkText"
+                },
+                " "
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "slide-with-left-and-right-content",
+    "fields": [
+      {
+        "component": "text",
+        "name": "slide",
+        "label": "Slide Type",
+        "value": "slide-with-left-and-right-content",
+        "readOnly": true
+      },
+      {
+        "component": "reference",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true,
+        "description": "Image or video to be displayed in the slide"
+      },
+      {
+        "component": "text",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": ""
+      },
+      {
+        "component": "container",
+        "name": "left-content",
+        "label": "Left Content",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "header",
+            "label": "Header",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "name": "right-content",
+        "label": "Right Content",
+        "fields": [
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "body",
+            "label": "Body",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "previewImage",
+        "label": "Preview Image",
+        "multi": false,
+        "description": "A preview image that displays during video load, acting as a fallback for autoplay on slow networks and mobile devices."
+      }
+    ]
+  },
+  {
+    "id": "large-carousel-with-tooltip"
+  },
+  {
+    "id": "large-carousel-with-tooltip-card",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "desktopImage",
+        "label": "Desktop Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "desktopImageAlt",
+        "label": "Desktop Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "desktopCoordinates",
+        "label": "Desktop Coordinates",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "mobileImage",
+        "label": "Mobile Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "mobileImageAlt",
+        "label": "Mobile Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "mobileCoordinates",
+        "label": "Mobile Coordinates",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "popupImage",
+        "label": "Pop Up Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "popupImageAlt",
+        "label": "Pop Up Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "popupDescription",
+        "label": "Pop Up Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "content-modals"
+  },
+  {
+    "id": "split-layout-modal",
+    "fields": [
+      {
+        "component": "text",
+        "name": "modalType",
+        "label": "Modal Type",
+        "value": "split-layout-modal",
+        "readOnly": true
+      },
+      {
+        "component": "text",
+        "name": "trigger-text",
+        "label": "Trigger Text",
+        "value": "",
+        "description": "Clicking on a link with href of this text will open the modal"
+      },
+      {
+        "component": "reference",
+        "name": "modal_image",
+        "label": "Modal Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "modal_imageAlt",
+        "label": "Modal Image Alt Text",
+        "value": " "
+      },
+      {
+        "component": "richtext",
+        "name": "modal_mainText",
+        "label": "Modal Main Text",
+        "value": " ",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "artist-carousel",
+    "fields": [
+      {
+        "component": "text",
+        "name": "categories",
+        "label": "Artist Carousel Categories",
+        "description": "Comma-separated list of categories for filtering artists or art styles",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "artist-carousel-feed",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "required": true,
+        "description": "Image for the carousel item"
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "description": "A rich text description for the carousel item.",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "category",
+        "label": "Category",
+        "description": "Must match one of the categories defined in the Artist Carousel container (e.g., Painting, Sculpture, Photography)"
+      }
+    ]
+  },
+  {
+    "id": "music-carousel",
+    "fields": [
+      {
+        "component": "container",
+        "name": "slides",
+        "label": "Music Slides",
+        "multi": true,
+        "required": true,
+        "reference": "music-slide"
+      }
+    ]
+  },
+  {
+    "id": "music-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "background",
+        "label": "Background Image/Video",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "spotifyIframe",
+        "label": "Spotify Iframe",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "floating-widget",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "iconImage",
+        "label": "Icon Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "iconImageAlt",
+        "label": "Icon Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "marqueeText",
+        "label": "Marquee Text",
+        "value": "",
+        "description": "Scrolling text that moves continuously beside the widget."
+      }
+    ]
+  },
+  {
+    "id": "highlight-experience",
+    "fields": [
+      {
+        "component": "text",
+        "name": "widgetItem",
+        "label": "Widget Item",
+        "value": "highlight-experience",
+        "readOnly": true
+      },
+      {
+        "component": "reference",
+        "name": "media",
+        "label": "Media",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "date-time",
+        "valueType": "date",
+        "name": "experience_startDate",
+        "label": "Start Date",
+        "description": "Start date for the experience"
+      },
+      {
+        "component": "date-time",
+        "valueType": "date",
+        "name": "experience_endDate",
+        "label": "End Date",
+        "description": "End date for the experience",
+        "condition": {
+          "!!": {
+            "var": "experience_startDate"
+          }
+        }
+      },
+      {
+        "component": "text",
+        "name": "content_label",
+        "label": "Label",
+        "valueType": "string",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "content_title",
+        "label": "Title",
+        "valueType": "string",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "link",
+        "label": "Experience Link",
+        "valueType": "string",
+        "value": "",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "quick-link",
+    "fields": [
+      {
+        "component": "text",
+        "name": "widgetItem",
+        "label": "Widget Item",
+        "value": "quick-link",
+        "readOnly": true
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Link Text",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "link",
+        "label": "Link",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "iconImage",
+        "label": "Icon Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "iconImageAlt",
+        "label": "Icon Image Alt Text",
+        "valueType": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "general-modal",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "generalTerms",
+        "label": "Enquiry Terms & Conditions",
+        "description": "Terms and conditions text for the general modal subscription opt-in",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "enquiry-section",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "enquiryTerms",
+        "label": "Enquiry Terms & Conditions",
+        "description": "Terms and conditions text for the enquiry modal subscription opt-in",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "image-with-link",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text"
+      },
+      {
+        "component": "text",
+        "name": "link",
+        "label": "Image Link"
+      }
+    ]
+  },
+  {
+    "id": "text-image-carousel",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "Content"
+      },
+      {
+        "component": "reference",
+        "name": "carouselImage1",
+        "label": "Carousel Image 1",
+        "multi": false,
+        "description": "First carousel image (required)"
+      },
+      {
+        "component": "text",
+        "name": "carouselImage1Alt",
+        "label": "Carousel Image 1 Alt Text",
+        "value": "",
+        "description": "Alternative text for first carousel image"
+      },
+      {
+        "component": "reference",
+        "name": "carouselImage2",
+        "label": "Carousel Image 2",
+        "multi": false,
+        "description": "Second carousel image (optional)"
+      },
+      {
+        "component": "text",
+        "name": "carouselImage2Alt",
+        "label": "Carousel Image 2 Alt Text",
+        "value": "",
+        "description": "Alternative text for second carousel image",
+        "condition": {
+          "!==": [
+            {
+              "var": "carouselImage2"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "carouselImage3",
+        "label": "Carousel Image 3",
+        "multi": false,
+        "description": "Third carousel image (optional)"
+      },
+      {
+        "component": "text",
+        "name": "carouselImage3Alt",
+        "label": "Carousel Image 3 Alt Text",
+        "value": "",
+        "description": "Alternative text for third carousel image",
+        "condition": {
+          "!==": [
+            {
+              "var": "carouselImage3"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "carouselImage4",
+        "label": "Carousel Image 4",
+        "multi": false,
+        "description": "Fourth carousel image (optional)"
+      },
+      {
+        "component": "text",
+        "name": "carouselImage4Alt",
+        "label": "Carousel Image 4 Alt Text",
+        "value": "",
+        "description": "Alternative text for fourth carousel image",
+        "condition": {
+          "!==": [
+            {
+              "var": "carouselImage4"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "name": "carouselImage5",
+        "label": "Carousel Image 5",
+        "multi": false,
+        "description": "Fifth carousel image (optional)"
+      },
+      {
+        "component": "text",
+        "name": "carouselImage5Alt",
+        "label": "Carousel Image 5 Alt Text",
+        "value": "",
+        "description": "Alternative text for fifth carousel image",
+        "condition": {
+          "!==": [
+            {
+              "var": "carouselImage5"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "name": "imagePosition",
+        "label": "Image Position",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ],
+        "value": "left"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "floorButtonText",
+        "label": "Link text for first button, leave empty if not needed",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "floorButtonLink",
+        "label": "Link for first button, leave empty if not needed",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "floorButtonText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "galleryButtonText",
+        "label": "Link text for second button, leave empty if not needed",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "galleryButtonLink",
+        "label": "Link for second button, leave empty if not needed",
+        "required": true,
+        "condition": {
+          "!==": [
+            {
+              "var": "galleryButtonText"
+            },
+            ""
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "name": "tnc-modal",
+        "label": "T&C Modal",
+        "value": false,
+        "description": "If true, clicking on a link with the url 'tnc' will open a modal with the T&C content."
+      },
+      {
+        "component": "reference",
+        "name": "modal_image",
+        "label": "Modal Image",
+        "multi": false,
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "tnc-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "modal_imageAlt",
+        "label": "Modal Image Alt Text",
+        "value": " ",
+        "condition": {
+          "===": [
+            {
+              "var": "tnc-modal"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "modal_mainText",
+        "label": "Modal Main Text",
+        "value": " ",
+        "required": true,
+        "condition": {
+          "===": [
+            {
+              "var": "tnc-modal"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dynamic-hero-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "path1",
+        "label": "Path 1",
+        "value": "",
+        "description": "Optional field. If any of Path 1, Path 2, or Path 3 is filled, you should manually fill all for consistency."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "path2",
+        "label": "Path 2",
+        "value": "",
+        "description": "Optional field. If any of Path 1, Path 2, or Path 3 is filled, you should manually fill all for consistency."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "path3",
+        "label": "Path 3",
+        "value": "",
+        "description": "Optional field. If any of Path 1, Path 2, or Path 3 is filled, you should manually fill all for consistency."
+      }
+    ]
+  },
+  {
+    "id": "dynamic-two-columns-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "itemPath",
+        "label": "Path of where the item should lead to"
       }
     ]
   }

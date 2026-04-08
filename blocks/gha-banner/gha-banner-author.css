@@ -1,0 +1,71 @@
+.gha-banner.block {
+    height: 700px;
+    position: relative;
+
+    /* Image */
+    & > div:nth-of-type(1) {
+        picture {
+            height: 700px;
+            overflow: hidden;
+
+            img {
+                height: 700px;
+                width: 100vw;
+                object-fit: cover;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                height: 700px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.35);
+            }
+        }
+    }
+
+    /* Text Content */
+    & > div:nth-of-type(2) {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 4rem 3rem;
+        border-radius: 10px;
+        text-align: center;
+
+        p[data-aue-prop="signIn_signInHeader"] {
+            color: #333333;
+            font-family: Cormorant, sans-serif, serif;
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 100%;
+            margin: 0;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            color: rgba(102, 102, 102, 0.8);
+            font-family: "Gill Sans", Cabin, sans-serif, "Cabin", sans-serif;
+            font-size: clamp(0.875rem, 1.8vw, 1rem);
+            letter-spacing: 0.1px;
+            line-height: 1.3rem;
+            margin: 0;
+
+            a {
+                color: inherit;
+            }
+        }
+    }
+
+    & > div:nth-of-type(3),
+    & > div:nth-of-type(4) {
+        display: none;
+    }
+}
